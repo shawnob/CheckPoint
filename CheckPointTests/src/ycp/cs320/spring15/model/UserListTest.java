@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class UserListTest {
 	//User Lists
-	private UserList userList1 = new Userlist();
+	private UserList userList1 = new UserList();
 	
 	//Users
 	private User user1 = new User("ben", "test");
