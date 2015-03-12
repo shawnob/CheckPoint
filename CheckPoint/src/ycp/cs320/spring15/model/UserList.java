@@ -61,7 +61,8 @@ public class UserList {
 	}
 	
 	//returns Users
-	public ArrayList getUserList(){
+	//added Usere to arraylist return
+	public ArrayList<User> getUserList(){
 		return userList;
 	}
 	

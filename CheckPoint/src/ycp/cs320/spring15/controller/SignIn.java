@@ -1,6 +1,8 @@
 package ycp.cs320.spring15.controller;
 
+import ycp.cs320.spring15.model.Model;
 import ycp.cs320.spring15.model.User;
+import ycp.cs320.spring15.model.UserList;
 
 /*
  * SignIn will be called from the controller class to check if a user credentials are valid
@@ -12,6 +14,9 @@ public class SignIn {
 	 */
 	User signIn (String uName, String pWord){
 		//TODO compare uName and Pword to list
+		//if (UserList.getUserList().contains()   ) {
+			
+		//}
 		return null;
 	}
 	/* 
