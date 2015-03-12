@@ -5,6 +5,7 @@ import java.util.List;
 public class Model {
 	
 	UserList users = new UserList();
+	CourseList courses = new CourseList();
 	
 	public User getUser(String username)
 	{
@@ -35,6 +36,20 @@ public class Model {
 	public List<User> getListofUsers()
 	{
 		return users.getUserList();
+	}
+	
+	public Course getCourse(String courseName)
+	{
+		return courses.getCourse(courseName);
+	}
+	
+	public CourseList getCourseList()
+	{
+		return courses;
+	}
+	
+	public List<Course> getListOfCourses() {
+		return courses.getCourseList();
 	}
 	
 	

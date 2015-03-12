@@ -8,12 +8,17 @@ import ycp.cs320.spring15.model.UserList;
  */
 public class SignIn {
 	
-	private UserList userList = new UserList();
+	private UserList userList;
+	
+	public SignIn (UserList ul)
+	{
+		userList = ul;
+	}
 
 	/* returns null if none    match
 	 * returns  a user object with the specified username and password
 	 */
-	 public User signIn (String uName, String pWord, ){
+	 public User signIn (String uName, String pWord){
 		//Check if user exists
 		if (userList.containsUser(uName)) {
 			//check if passwords match
