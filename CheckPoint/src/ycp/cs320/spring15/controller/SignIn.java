@@ -13,7 +13,7 @@ public class SignIn {
 	/* returns null if none    match
 	 * returns  a user object with the specified username and password
 	 */
-	 public User signIn (String uName, String pWord){
+	 public User signIn (String uName, String pWord, ){
 		//Check if user exists
 		if (userList.containsUser(uName)) {
 			//check if passwords match

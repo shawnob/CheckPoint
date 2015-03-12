@@ -14,17 +14,28 @@ public class UserList {
 
 	private ArrayList<User> userList;
 	
-	
+
+
 	public UserList(){
 		userList =  new ArrayList<User>();
 	}
+
+
 	//Contains boolean contains  
 	public boolean containsUser(String username){
-		if (userList.contains(username) == true){
-			return true;
-		}else {
-			return false;
+		for (int i = 0; i < userList.size(); i++){
+			if (userList.get(i).getUsername() == username){
+				return true;
+			}
 		}
+		
+		return false;
+		
+//		if (userList..contains(username) == true){
+//			return true;
+//		}else {
+//			return false;
+//		}
 	}
 	
 	
