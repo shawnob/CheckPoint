@@ -42,8 +42,15 @@ public class UserList {
 	
 	//returns a user object with the given username
 	public User getUser(String username){
-		int index = userList.indexOf(username);
-		return userList.get(index);
+		//int index = userList.indexOf(username);
+		//return userList.get(index);
+		for (int i = 0; i < userList.size(); i++){
+			if (userList.get(i).getUsername() == username){
+				return userList.get(i);
+			}
+		}	
+			return null;
+		
 	}
 	
 	

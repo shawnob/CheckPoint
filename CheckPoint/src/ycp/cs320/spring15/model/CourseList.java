@@ -24,7 +24,7 @@ public class CourseList {
 	
 	public boolean createCourse(String coursename, String teacher){
 		
-		if (CourseList.contains(coursename)){   //not done
+		if (CourseList.contains(coursename)){ 
 			return false;
 		}
 		
@@ -43,7 +43,7 @@ public class CourseList {
 		
 	}
 	
-	public ArrayList getCourseList(){
+	public ArrayList<Course> getCourseList(){
 		return CourseList;
 	}
 	
