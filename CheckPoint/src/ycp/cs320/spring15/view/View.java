@@ -3,6 +3,7 @@ package ycp.cs320.spring15.view;
 import java.util.Scanner;
 
 public class View {
+	
 	public static void main(String [] args)
 	{
 		login();
