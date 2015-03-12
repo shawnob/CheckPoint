@@ -3,6 +3,8 @@ package ycp.cs320.spring15.view;
 import java.util.Scanner;
 
 public class View {
+	
+private SignIN
 	public static void main(String [] args)
 	{
 		login();
@@ -18,5 +20,6 @@ public class View {
 		user = sc.nextLine();
 		System.out.println("Enter in your Password");
 		pass = sc.nextLine();
+		s
 	}
 }
