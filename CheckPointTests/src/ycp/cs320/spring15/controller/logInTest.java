@@ -11,7 +11,7 @@ import ycp.cs320.spring15.model.UserList;
 public class logInTest {
 	//User Lists
 	private UserList userList1 = new UserList();
-	private SignIn signIn = new SignIn();
+	private SignIn signIn = new SignIn(userList1);
 	
 	//Users
 	private User user1 = new User("ben", "test");
@@ -26,6 +26,26 @@ public class logInTest {
 		userList1.addUser(user1);
 		userList1.addUser(user2);
 		userList1.addUser(user3);
+	}
+	@Test
+	public void testCreateAcc() throws Exception{
+		String uName4 = "Paranoid";
+		String pWord4 = "Android";
+		String uName5 = "Something to always have";
+		String pWord5 = "Towel";
+		
+		User user4 = new User(uName4,pWord4);
+		User user5 = new User(uName5, pWord5);
+		
+		signIn.createAccount(uName4, pWord4);
+		signIn.createAccount(uName5, pWord5);
+		
+		assertTrue(userList1.containsUser(uName5));
+		assertTrue(userList1.containsUser(uName4));
+		
+		assertEquals(user4.getPassword(), userList1.getUser(uName4).getPassword());
+		assertEquals(user5.getPassword(), userList1.getUser(uName5).getPassword());
+		
 	}
 
 	@Test
