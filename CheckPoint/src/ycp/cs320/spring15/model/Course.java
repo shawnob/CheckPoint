@@ -11,21 +11,21 @@ public class Course {
 
 	//List Assignment AssignList;
 	
-	public boolean isOnStudentList (String username){
+	public boolean isOnStudentList(String username){
 		if (StudentList.contains(username)){
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean isOnTeacherList (String username){
+	public boolean isOnTeacherList(String username){
 		if (TeacherList.contains(username)){
 			return true;
 		}
 		return false;
 	}
 	
-	public boolean addStudent (String username){
+	public boolean addStudent(String username){
 		
 		if (isOnStudentList(username)==true){
 			return false;
@@ -35,7 +35,7 @@ public class Course {
 		return true;
 	}
 	
-	public boolean addTeacher (String username){
+	public boolean addTeacher(String username){
 		if (isOnTeacherList(username)){
 			return false;
 		}
@@ -43,7 +43,7 @@ public class Course {
 		return true;
 	}
 	
-	public boolean removeTeacher (String username){
+	public boolean removeTeacher(String username){
 		if (TeacherList.size()<=1){
 			return false;
 		}
@@ -51,7 +51,7 @@ public class Course {
 		return true;
 	}
 	
-	public void removeStudent (String username){
+	public void removeStudent(String username){
 		StudentList.remove(username);
 	}
 	
