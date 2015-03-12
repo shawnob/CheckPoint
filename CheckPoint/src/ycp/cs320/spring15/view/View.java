@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class View {
 	
-private SignIN
 	public static void main(String [] args)
 	{
 		login();
@@ -20,6 +19,5 @@ private SignIN
 		user = sc.nextLine();
 		System.out.println("Enter in your Password");
 		pass = sc.nextLine();
-		s
 	}
 }
