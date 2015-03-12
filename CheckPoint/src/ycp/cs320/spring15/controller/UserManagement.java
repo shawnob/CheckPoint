@@ -1,10 +1,18 @@
 package ycp.cs320.spring15.controller;
+import ycp.cs320.spring15.model.UserList;
 
 import java.util.List;
 
 import ycp.cs320.spring15.model.User;
 
-public class UserManagment {
+public class UserManagement {
+	
+	private UserList userList;
+	
+	public UserManagement (UserList ul)
+	{
+		userList = ul;
+	}
 	
 	/*
 	 * checks if accessor    has admin privileges, creates new User if there are none with uName as a username, false if failed, true if succeeded
