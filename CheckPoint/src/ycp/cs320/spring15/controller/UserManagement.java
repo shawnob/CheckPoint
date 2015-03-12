@@ -1,15 +1,21 @@
 package ycp.cs320.spring15.controller;
+import ycp.cs320.spring15.model.UserList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import ycp.cs320.spring15.model.User;
-import ycp.cs320.spring15.model.UserList;
 
-public class UserManagment {
-	private UserList userList = new UserList();
+public class UserManagement {
+	
+	private UserList userList;
+	
+	public UserManagement (UserList ul)
+	{
+		userList = ul;
+	}
+	
 	/*
-	 * checks if accessor has admin privileges, creates new User if there are none with uName as a username, false if failed, true if succeeded
+	 * checks if accessor    has admin privileges, creates new User if there are none with uName as a username, false if failed, true if succeeded
 	 */
 	boolean addUser (String uName, String pWord, User accessor){
 		//TODO Implement
@@ -20,11 +26,7 @@ public class UserManagment {
 	 * returns true if success, false if failed
 	 */
 	boolean deleteUser(String uName, User accessor){
-		//TODO: Implement Permissions 
-		if(accessor == userList.getUser(uName)){
-			userList.deleteUser(userList.getUser(uName));
-			return true;
-		}
+		//TODO Implement
 		return false;
 	}
 	/*
@@ -32,20 +34,15 @@ public class UserManagment {
 	 *returns true if success, or false if failed. 
 	 */
 	boolean changePassword (String uName, String pWord, User accessor) {
-		//TODO Implement Permissions
-		if(accessor == userList.getUser(uName)){
-			userList.getUser(uName).setPassword(pWord);
-			return true;
-		}
-			return false;
+		//TODO Implement
+		return false;
 	}
 	/*
 	 * checks if accessor is admin. if so, return user list, otherwise return null
 	 */
-	ArrayList<User> getUserList (User accessor){
-		//TODO Implement Permissions
-		return userList.getUserList();
-		//return null;
+	List getUserList (User accessor){
+		//TODO Implement
+		return null;
 	}
 	/*
 	 * checks if a user is an admin, using AdminList

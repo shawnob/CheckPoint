@@ -1,11 +1,12 @@
 package ycp.cs320.spring15.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
 	
-	UserList users = new UserList();
-	CourseList courses = new CourseList();
+	private UserList users = new UserList();
+	private CourseList courses = new CourseList();
 	
 	public User getUser(String username)
 	{
