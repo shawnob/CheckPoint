@@ -15,6 +15,7 @@ public class CourseManagement {
 	 */
 	boolean addCourse (String courseName, User accessor){
 		//TODO: Implement
+		
 		return false;
 	}
 	/*

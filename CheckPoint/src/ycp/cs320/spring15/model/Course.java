@@ -6,10 +6,15 @@ import java.util.*;
 public class Course {
 	
 	String courseName;
-	ArrayList<String> StudentList = new ArrayList<String>();
-	ArrayList<String> TeacherList = new ArrayList<String>();
-
-	//List Assignment AssignList;
+	ArrayList<String> StudentList;
+	ArrayList<String> TeacherList;
+	ArrayList<Assignment> AssignList;
+	
+	public Course(String courseName){
+		this.courseName = courseName;
+		ArrayList<String> StudentList = new ArrayList<String>();
+		ArrayList<String> TeacherList = new ArrayList<String>();
+	}
 	
 	public boolean isOnStudentList(String username){
 		if (StudentList.contains(username)){
@@ -55,13 +60,15 @@ public class Course {
 		StudentList.remove(username);
 	}
 	
-	//public void removeAllStudents(){
-		
-	//}
+	public void removeAllStudents(){
+		for(int i = 0; i < StudentList.size(); i++){
+		StudentList.remove(i);
+		}
+	}
 	
-	//List getAssignmentList(){
-		
-	//}
+	public ArrayList<Assignment> getAssignmentList(){
+		return this.AssignList;	
+	}
 	
 	
 }

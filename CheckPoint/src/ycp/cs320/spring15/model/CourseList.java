@@ -5,9 +5,12 @@ import java.util.*;
 
 
 public class CourseList {
-	ArrayList<Course> CourseList = new ArrayList<Course>();
+	ArrayList<Course> CourseList;
 	
-	
+	public CourseList(){
+		ArrayList<Course> CourseList = new ArrayList<Course>();
+		
+	}
 	public Course getCourse(String coursename){
 		Course temp;
 		
