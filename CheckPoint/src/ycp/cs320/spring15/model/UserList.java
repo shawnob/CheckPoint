@@ -15,7 +15,9 @@ public class UserList {
 	private ArrayList<User> userList;
 	
 	
-	
+	public UserList(){
+		userList =  new ArrayList<User>();
+	}
 	//Contains boolean contains  
 	public boolean containsUser(String username){
 		if (userList.contains(username) == true){
