@@ -53,12 +53,12 @@ public class CourseListTest {
 		
 	}
 	
-//	@Test
-//	public void testgetCourseList() {    //doesn't work
-//		
-//		assertEquals(course1, CourseListtest1.getCourseList());
-//		
-//	}
+	@Test
+	public void testgetCourseList() {  
+		
+		assertEquals(CourseListarraytest1, CourseListtest1.getCourseList());
+		
+	}
 
 	
 	

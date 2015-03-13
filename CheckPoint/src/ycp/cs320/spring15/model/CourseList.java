@@ -16,13 +16,12 @@ public class CourseList {
 		
 		for (int c = 0; c < CourseList2.size(); c++){
 			temp = CourseList2.get(c);
-			System.out.println(temp.courseName);
 			
 			if (temp.courseName == coursename){
 				return temp;
 			}
 		}
-		System.out.println("dead");
+		System.out.println("error");
 		return null;
 		
 	}
@@ -39,11 +38,9 @@ public class CourseList {
 		
 		Course temp = new Course(null);
 			
-		temp.courseName = coursename;
-		System.out.println(temp.courseName);         //adding teacher doesn't work
+		temp.courseName = coursename;     
 		
-		//temp.StudentList.indexOf(temp.StudentList.size()+1).add(teacher);
-		System.out.println("hi2");
+		//temp.StudentList.indexOf(temp.StudentList.size()+1).add(teacher);     //adding teacher doesn't work
 		CourseList2.add(temp);
 		
 		
