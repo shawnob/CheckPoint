@@ -18,7 +18,7 @@ public class CourseTest {       //init test variables
 		StudentListtest1.add("brad");
 		TeacherListtest1.add("bob");
 		
-		course1 = new Course();
+		course1 = new Course(null);
 		course1.courseName = "math";
 		course1.StudentList = StudentListtest1;
 		course1.TeacherList = TeacherListtest1;

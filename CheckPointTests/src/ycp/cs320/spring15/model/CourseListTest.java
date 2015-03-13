@@ -9,9 +9,11 @@ import org.junit.Test;
 
 public class CourseListTest {
 	
-	private ArrayList<Course> CourseListtest1 = new ArrayList<Course>();
+	private CourseList CourseListtest1;
+	private ArrayList<Course> CourseListarraytest1 = new ArrayList<Course>();
 	
 	private Course course1;
+	private Course course2;
 	private ArrayList<String> StudentListtest1 = new ArrayList<String>();
 	private ArrayList<String> TeacherListtest1 = new ArrayList<String>();
 	
@@ -21,33 +23,62 @@ public class CourseListTest {
 		StudentListtest1.add("brad");
 		TeacherListtest1.add("bob");
 		
-		course1 = new Course();
+		course2 = new Course(null);
+		course2.courseName = "science";
+		
+		course1 = new Course(null);
 		course1.courseName = "math";
 		course1.StudentList = StudentListtest1;
 		course1.TeacherList = TeacherListtest1;
 		
-		CourseListtest1.add(course1);
+		
+		CourseListarraytest1.add(course1);
+		CourseListtest1 = new CourseList();
+		CourseListtest1.CourseList2 = CourseListarraytest1;
+		
 		
 		
 	}
 	
 	
-
-	
 	
 	@Test
-	public void testgetCourse() {    //change name
-		//Course temp = CourseListtest1.getCourse("math");
+	public void testcreateCourse() {    
 		
-		//assertEquals(course1, CourseListtest1.getCourse("math"));
+		assertEquals(false, CourseListtest1.createCourse("math", "bob"));
+		assertEquals(true, CourseListtest1.createCourse("math", "fred"));
+		
+		CourseListtest1.createCourse("science", "ed");           
+		assertEquals(course2.courseName, CourseListtest1.getCourse("science").courseName);
 		
 	}
 	
 //	@Test
-//	public void testdeleteCourse() {    //change name
+//	public void testgetCourseList() {    //doesn't work
 //		
-//		CourseListtest1.deleteCourse("math");
+//		assertEquals(course1, CourseListtest1.getCourseList());
 //		
 //	}
+
+	
+	
+	@Test
+	public void testgetCourse() {    
+		
+		assertEquals(course1, CourseListtest1.getCourse("math"));
+		
+	}
+	
+//	@Test
+//	public void testdeleteCourse() {    
+//		
+//		CourseListtest1.deleteCourse("math");						//will worked if 
+//		assertEquals(course1, CourseListtest1.getCourse("math"));   //changed to assert Not equals
+//		
+//	}
+	
+	
+
+
 
 }
