@@ -4,22 +4,13 @@ import java.util.*;
 
 public class Assignment {
 	
-	//false for Multiple Choice, true for Fill in the Blank
-	private boolean questionType;
+	private ArrayList<Question> question = new ArrayList<Question>();
 	private String assignmentName;
 	private int numberOfQuestions;
 	
 	/*
 	 * Getter and setter methods
 	 */
-	public boolean getQuestionType() {
-		return questionType;
-	}
-	
-	public void setQuestionType(boolean type){
-		questionType = type;
-	}
-	
 	public String getAssignmentName() {
 		return assignmentName;
 	}
