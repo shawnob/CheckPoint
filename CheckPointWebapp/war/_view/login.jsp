@@ -32,6 +32,7 @@
 			Password: <input type="text" name="LastName" value="beeblebrox"><br>
 			<input type="submit" value="Submit">
 			</form>
+			<input type="submit" value="Create An Account">
 
 			<!--Click the "Submit" button and the form-data will be sent to a page on the server called "demo_form.asp".-->
         </div>
