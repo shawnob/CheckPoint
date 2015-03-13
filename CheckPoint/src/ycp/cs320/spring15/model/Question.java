@@ -10,7 +10,7 @@ public class Question {
 	
 	//getter/setter
 	public boolean questionType() {
-		return questionType;
+		return questionType; 
 	}
 	
 	public void setQuestionType(boolean type) {

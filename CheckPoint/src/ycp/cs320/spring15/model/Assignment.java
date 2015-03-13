@@ -8,7 +8,7 @@ public class Assignment {
 	private String assignmentName;
 	private int numberOfQuestions;
 	
-	/*
+	/* 
 	 * Getter and setter methods
 	 */
 	public String getAssignmentName() {
