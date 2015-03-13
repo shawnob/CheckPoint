@@ -2,7 +2,7 @@
 
 <html lang="en">
     <head>
-        <title>CheckPoint Welcome</title>
+        <title>Checkpoint Log In</title>
         <style type="text/css">
                 body {
                         
@@ -18,25 +18,23 @@
                         
                     
                 }
-                
-                #data {
-                        
-                        text-align: center;
-                        margin-top: 200px;
-                        font-size: 100%;
-                        color: #000000;
-                        
-                    
-                }
                 </style>
     </head>
     <body>
         <div id="title">
-        Welcome to CheckPoint 
+        Welcome to Checkpoint
         </div>
         
-        <div id="data">
-            You successfully logged in!!
+        <div>
+            Please Log in
+            <form action="demo_form.asp">
+			User Name: <input type="text" name="FirstName" value="zaphod"><br>
+			Password: <input type="text" name="LastName" value="beeblebrox"><br>
+			<input type="submit" value="Submit">
+			</form>
+			<input type="submit" value="Create An Account">
+
+			<!--Click the "Submit" button and the form-data will be sent to a page on the server called "demo_form.asp".-->
         </div>
     </body>
 </html>

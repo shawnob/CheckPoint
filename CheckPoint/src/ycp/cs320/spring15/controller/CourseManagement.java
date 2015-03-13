@@ -1,4 +1,5 @@
 package ycp.cs320.spring15.controller;
+import ycp.cs320.spring15.model.CourseList;
 
 import java.util.List;
 
@@ -8,8 +9,13 @@ import ycp.cs320.spring15.model.User;
  * Allows teachers to modify their courses, or admins to modify any course
  */
 public class CourseManagement {
-
 	
+	private CourseList courseList;
+
+	public CourseManagement (CourseList cl)
+	{
+		courseList = cl;
+	}
 	/*
 	 * Creates new course if there are none with courseName as a course name, false if failed, true if succeeded
 	 */
