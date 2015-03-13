@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Assignment {
 	
-	//0 for Multiple Choice, 1 for Fill in the Blank
+	//false for Multiple Choice, true for Fill in the Blank
 	private boolean questionType;
 	private String assignmentName;
 	private int numberOfQuestions;
@@ -35,4 +35,6 @@ public class Assignment {
 	public void setNumberOfQuestions(int num) {
 		numberOfQuestions = num;
 	}
+	
+	
 }
