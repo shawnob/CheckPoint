@@ -6,6 +6,6 @@
 	</head>
 
 	<body>
-		This is the index view jsp. Does this work?
+		This is where people will log in 
 	</body>
 </html>

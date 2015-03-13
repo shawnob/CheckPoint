@@ -21,7 +21,7 @@ public class UserList {
 	}
 
 
-	//Contains boolean contains  
+	//Contains boolean   
 	public boolean containsUser(String username){
 		for (int i = 0; i < userList.size(); i++){
 			if (userList.get(i).getUsername() == username){
@@ -31,11 +31,6 @@ public class UserList {
 		
 		return false;
 		
-//		if (userList..contains(username) == true){
-//			return true;
-//		}else {
-//			return false;
-//		}
 	}
 	
 	
