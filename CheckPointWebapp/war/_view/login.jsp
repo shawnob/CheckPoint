@@ -27,6 +27,13 @@
         
         <div>
             Please Log in
+            <form action="demo_form.asp">
+			User Name: <input type="text" name="FirstName" value="zaphod"><br>
+			Password: <input type="text" name="LastName" value="beeblebrox"><br>
+			<input type="submit" value="Submit">
+			</form>
+
+			<!--Click the "Submit" button and the form-data will be sent to a page on the server called "demo_form.asp".-->
         </div>
     </body>
 </html>
