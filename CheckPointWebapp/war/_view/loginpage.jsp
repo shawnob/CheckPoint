@@ -12,6 +12,7 @@
 		
 		td.label {
 			text-align: right;
+			align: center;
 		}
 		
 		#title {
@@ -39,11 +40,11 @@
 			<table>
 				<tr>
 					<td class="label">Username:</td>
-					<td><input type="text" name="username" size="12" value="${first}" /></td>
+					<td><input type="text" name="username" size="12" value="${username}" /></td>
 				</tr>
 				<tr>
 					<td class="label">Password:</td>
-					<td><input type="password" name="password" size="12" value="${second}" /></td>
+					<td><input type="password" name="password" size="12" value="${password}" /></td>
 				</tr>
 				<tr>
 					<td class="label">Result:</td>

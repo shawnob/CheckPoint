@@ -57,8 +57,8 @@ public class loginpageServlet extends HttpServlet {
 		}
 		
 		// Add parameters as request attributes
-		req.setAttribute("first", req.getParameter("username"));
-		req.setAttribute("second", req.getParameter("password"));
+		req.setAttribute("username", req.getParameter("username"));
+		req.setAttribute("password", req.getParameter("password"));
 		
 		// Add result objects as request attributes
 		req.setAttribute("errorMessage", errorMessage);
