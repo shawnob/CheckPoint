@@ -12,14 +12,16 @@ public class Course {
 	
 	public Course(String courseName){
 		this.courseName = courseName;
-		ArrayList<String> StudentList = new ArrayList<String>();
-		ArrayList<String> TeacherList = new ArrayList<String>();
+		StudentList = new ArrayList<String>();
+		TeacherList = new ArrayList<String>();
+		//TeacherList.add(Teacher);
 	}
 	
 	public boolean isOnStudentList(String username){
 		if (StudentList.contains(username)){
 			return true;
 		}
+		StudentList.add(username);
 		return false;
 	}
 	
@@ -27,6 +29,7 @@ public class Course {
 		if (TeacherList.contains(username)){
 			return true;
 		}
+		TeacherList.add(username);
 		return false;
 	}
 	

@@ -36,12 +36,15 @@ public class CourseList {
 			}
 		}
 		
-		Course temp = new Course(null);
+		Course temp = new Course(coursename);
 			
-		temp.courseName = coursename;     
-		
-		//temp.StudentList.indexOf(temp.StudentList.size()+1).add(teacher);     //adding teacher doesn't work
 		CourseList2.add(temp);
+		
+		System.out.println("1");
+		temp.addTeacher(teacher);
+		System.out.println("2");
+		
+		System.out.println(temp.TeacherList);
 		
 		
 		return true;
