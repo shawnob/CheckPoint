@@ -13,7 +13,7 @@ public class Main {
 		// Create and register a webapp context
 		WebAppContext handler = new WebAppContext();
 		handler.setContextPath("/checkpoint");
-		handler.setWar("./war/_view"); // web app is in the war directory of the project
+		handler.setWar("./war"); // web app is in the war directory of the project
 		server.setHandler(handler);
 		
 		// Use 20 threads to handle requests
