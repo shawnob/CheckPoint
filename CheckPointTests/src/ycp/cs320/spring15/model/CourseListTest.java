@@ -69,13 +69,13 @@ public class CourseListTest {
 		
 	}
 	
-//	@Test
-//	public void testdeleteCourse() {    
-//		
-//		CourseListtest1.deleteCourse("math");						//will worked if 
-//		assertEquals(course1, CourseListtest1.getCourse("math"));   //changed to assert Not equals
-//		
-//	}
+	@Test
+	public void testdeleteCourse() {    
+		
+		CourseListtest1.deleteCourse("math");
+		assertNotEquals(course1, CourseListtest1.getCourse("math"));
+		
+	}
 	
 	
 

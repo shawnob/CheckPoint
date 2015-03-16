@@ -8,7 +8,7 @@ public class CourseList {
 	ArrayList<Course> CourseList2;
 	
 	public CourseList(){
-		ArrayList<Course> CourseList2 = new ArrayList<Course>();
+		CourseList2 = new ArrayList<Course>();
 		
 	}
 	public Course getCourse(String coursename){
