@@ -28,6 +28,10 @@
     <url-pattern>/loginpage</url-pattern>
   </servlet-mapping>
   
+  <listener>
+    <listener-class>ycp.cs320.spring15.webapp.servlets.DatabaseInitListener</listener-class>
+  </listener>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>

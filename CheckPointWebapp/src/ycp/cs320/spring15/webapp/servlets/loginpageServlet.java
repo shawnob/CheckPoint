@@ -12,7 +12,6 @@ import ycp.cs320.spring15.model.User;
 
 
 
-
 public class loginpageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +28,7 @@ public class loginpageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		User user1 = new User("zaphod", "42");
+		User testUser = new User("zaphod", "42");
 		
 		
 		// Decode form parameters and dispatch to controller
@@ -47,9 +46,17 @@ public class loginpageServlet extends HttpServlet {
 			password = "";
 		}
 		
-		if (username.equals(user1.getUsername()) && password.equals(user1.getPassword())){ 
+		if (username.equals(testUser.getUsername()) && password.equals(testUser.getPassword())){ 
 			login = true;
 			result = "Passed";
+			
+			// User is now logged in
+			User user = new User(username, password);
+			req.getSession().setAttribute("user", user);
+			
+			// Redirect to index page
+			resp.sendRedirect(req.getContextPath() + "/index");
+			return;
 		}
 		else{
 			login = false;
@@ -65,9 +72,11 @@ public class loginpageServlet extends HttpServlet {
 		req.setAttribute("result", result);
 		
 		// Forward to view to render the result HTML document
+		/*
 		if (login == true){
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		}
+		*/
 		if (login == false){
 		req.getRequestDispatcher("/_view/loginpage.jsp").forward(req, resp);
 		}
