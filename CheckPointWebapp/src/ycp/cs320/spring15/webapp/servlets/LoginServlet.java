@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ycp.cs320.spring15.controller.SignInToBedeleted;
+
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.IDatabase;
@@ -24,6 +24,7 @@ public class LoginServlet extends HttpServlet {
 		
 		System.out.println("doGet called");
 		
+		//Calls the login.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		
 	}
@@ -44,6 +45,7 @@ public class LoginServlet extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		
+		//If nothing is entered and by making an empty string
 		if (username == null){
 			username = "";
 		}
@@ -52,7 +54,8 @@ public class LoginServlet extends HttpServlet {
 			password = "";
 		}
 		
-		SignIn controller = new SignIn();
+		//Call Controller which is now in webapp.servlets
+		Controller controller = new Controller();
 		User user =  controller.signIn(username, password);
 		if (user != null) {
 			// successful login
@@ -83,12 +86,7 @@ public class LoginServlet extends HttpServlet {
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("result", result);
 		
-		// Forward to view to render the result HTML document
-		/*
-		if (login == true){
-		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
-		}
-		*/
+		//If login in failed redirect back to login page
 		if (login == false){
 		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		}

@@ -16,6 +16,7 @@ public class IndexServlet extends HttpServlet {
 		
 		System.out.println("In the Index servlet");
 		
+		//Calls the index.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 	}
 }

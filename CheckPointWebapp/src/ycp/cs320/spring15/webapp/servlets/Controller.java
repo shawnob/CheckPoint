@@ -4,8 +4,11 @@ import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.IDatabase;
 
-public class SignIn {
+public class Controller {
 
+	//Controller for the WebApp. 
+	//Calls IDatabase whic is linked to the FakeDatabase
+	
 	public User signIn(String username, String password) {
 		IDatabase db = DatabaseProvider.getInstance();
 		return db.findUser(username, password);

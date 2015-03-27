@@ -73,7 +73,8 @@ public class FakeDatabase implements IDatabase {
 				}
 		return null;
 	}
-
+	
+	//Search user by email
 	@Override
 	public User searchUserByEmail(String email) {
 		if(userList.containsEmail(email) == true){

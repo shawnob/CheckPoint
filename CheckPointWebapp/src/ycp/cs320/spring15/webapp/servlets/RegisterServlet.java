@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ycp.cs320.spring15.controller.SignInToBedeleted;
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.IDatabase;
@@ -24,6 +23,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		System.out.println("doGet called");
 		
+		//Calls the register.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/register.jsp").forward(req, resp);
 		
 	}
@@ -51,11 +51,11 @@ public class RegisterServlet extends HttpServlet {
 		
 		
 		
-		SignIn controller = new SignIn();
+		Controller controller = new Controller();
 		User user;
 		
 		
-		
+		//If nothing is entered and by making an empty string
 		if (username == null){
 			username = "";
 		}
@@ -81,7 +81,9 @@ public class RegisterServlet extends HttpServlet {
 		
 		//First make sure passwords confirm to be the same
 				if (password.equals(password2)){
+					//Make sure emails match
 					if (email.equals(email2)){
+						//Make double check and make sure email adresse is not already used
 						if (controller.searchUserByEmail(email) == null){
 							user = controller.createAccount(username, password, firstname, lastname, email);
 							if (user != null){
@@ -130,12 +132,8 @@ public class RegisterServlet extends HttpServlet {
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("result", result);
 		
-		// Forward to view to render the result HTML document
-		/*
-		if (login == true){
-		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
-		}
-		*/
+		
+		//If login in failed redirect back to login page
 		if (create == false){
 		req.getRequestDispatcher("/_view/register.jsp").forward(req, resp);
 		}
