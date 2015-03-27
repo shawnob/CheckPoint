@@ -11,7 +11,7 @@ import ycp.cs320.spring15.model.UserList;
 public class logInTest {
 	//User Lists
 	private UserList userList1 = new UserList();
-	private SignIn signIn = new SignIn(userList1);
+	private SignInToBedeleted signIn = new SignInToBedeleted(userList1);
 	
 	//Users
 	private User user1 = new User("ben", "test");

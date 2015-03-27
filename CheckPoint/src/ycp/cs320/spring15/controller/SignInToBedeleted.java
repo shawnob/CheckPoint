@@ -6,11 +6,19 @@ import ycp.cs320.spring15.model.UserList;
 /*
  * SignIn will be called from the controller class to check if a user credentials are valid
  */
-public class SignIn {
+
+
+
+
+/*########Do be deleted!!! All controllers will be in Servlet of web app!!###*/
+/*All methods and data in SignIn in CheckPointWebApp*/
+
+
+public class SignInToBedeleted {
 	
 	private UserList userList;
 	
-	public SignIn (UserList ul)
+	public SignInToBedeleted (UserList ul)
 	{
 		userList = ul;
 	}

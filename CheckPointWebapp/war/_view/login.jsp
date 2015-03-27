@@ -1,40 +1,39 @@
-<!doctype html>
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<html lang="en">
-    <head>
-        <title>Checkpoint Log In</title>
-        <style type="text/css">
-                body {
-                        
-                        background-color: white;
-                }
-                
-                #title {
-                        border-top: 3px solid grey;
-                        border-bottom: 3px solid grey;
-                        text-align: center;
-                        font-size: 200%;
-                        color: #000099;
-                        
-                    
-                }
-                </style>
-    </head>
-    <body>
-        <div id="title">
-        Welcome to Checkpoint
-        </div>
-        
-        <div>
-            Please Log in
-            <form action="demo_form.asp">
-			User Name: <input type="text" name="FirstName" value="zaphod"><br>
-			Password: <input type="text" name="LastName" value="beeblebrox"><br>
-			<input type="submit" value="Submit">
-			</form>
-			<input type="submit" value="Create An Account">
+<html>
+<head>
 
-			<!--Click the "Submit" button and the form-data will be sent to a page on the server called "demo_form.asp".-->
-        </div>
-    </body>
+  <meta charset="UTF-8">
+
+  <title>CheckPoint</title>
+
+	<link href="_view/css/LoginStyle.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+  <div class="login-card">
+    <h1>CheckPoint</h1><br>
+  <form action="${pageContext.servletContext.contextPath}/login" method="post">
+    <input type="text" name="username" placeholder="Username" value="${username}"/>
+    <input type="password" name="password" placeholder="Password" value="${password}"/>
+    <input type="submit" name="login" class="login login-submit" value="login">
+  </form>
+  
+  <div class="login-failed">
+		${result}
+	</div>
+	
+  <div class="login-help">
+    <a href="http://localhost:8081/checkpoint/register">Register</a> - <a href="#">Forgot Password</a>
+  </div>
+</div>
+
+<!-- <div id="error"><img src="https://dl.dropboxusercontent.com/u/23299152/Delete-icon.png" /> Your caps-lock is on.</div> -->
+
+</body>
+
 </html>

@@ -7,18 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ycp.cs320.spring15.controller.SignInToBedeleted;
 import ycp.cs320.spring15.model.User;
+import ycp.cs320.spring15.persist.DatabaseProvider;
+import ycp.cs320.spring15.persist.IDatabase;
 
 
 
 
-public class loginpageServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		req.getRequestDispatcher("/_view/loginpage.jsp").forward(req, resp);
+		
+		System.out.println("doGet called");
+		
+		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		
 	}
 	
@@ -28,9 +34,9 @@ public class loginpageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		User testUser = new User("zaphod", "42");
+		System.out.println("doPost called");
 		
-		
+	
 		// Decode form parameters and dispatch to controller
 		String errorMessage = null;
 		boolean login;
@@ -46,22 +52,28 @@ public class loginpageServlet extends HttpServlet {
 			password = "";
 		}
 		
-		if (username.equals(testUser.getUsername()) && password.equals(testUser.getPassword())){ 
+		SignIn controller = new SignIn();
+		User user =  controller.signIn(username, password);
+		if (user != null) {
+			// successful login
 			login = true;
 			result = "Passed";
 			
-			// User is now logged in
-			User user = new User(username, password);
-			req.getSession().setAttribute("user", user);
+		// User is now logged in
+			User userNew = new User(username, password, null, null, null);
+		   req.getSession().setAttribute("user", userNew);
 			
 			// Redirect to index page
 			resp.sendRedirect(req.getContextPath() + "/index");
 			return;
-		}
-		else{
+		} 
+		else {
+			// invalid username/password
 			login = false;
 			result = "Login Failed";
 		}
+		
+		
 		
 		// Add parameters as request attributes
 		req.setAttribute("username", req.getParameter("username"));
@@ -78,7 +90,7 @@ public class loginpageServlet extends HttpServlet {
 		}
 		*/
 		if (login == false){
-		req.getRequestDispatcher("/_view/loginpage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
 		}
 	}
 }

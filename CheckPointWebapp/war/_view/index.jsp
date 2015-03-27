@@ -1,42 +1,30 @@
-<!doctype html>
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<html lang="en">
-    <head>
-        <title>CheckPoint Welcome</title>
-        <style type="text/css">
-                body {
-                        
-                        background-color: white;
-                }
-                
-                #title {
-                        border-top: 3px solid grey;
-                        border-bottom: 3px solid grey;
-                        text-align: center;
-                        font-size: 200%;
-                        color: #000099;
-                        
-                    
-                }
-                
-                #data {
-                        
-                        text-align: center;
-                        margin-top: 200px;
-                        font-size: 100%;
-                        color: #000000;
-                        
-                    
-                }
-                </style>
-    </head>
-    <body>
-        <div id="title">
-        Welcome to CheckPoint 
-        </div>
-        
-        <div id="data">
-            You successfully logged in!!
-        </div>
-    </body>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>CheckPoint-index</title>
+
+	<link href="_view/css/IndexStyle.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+  <div class="index-card">
+    <h1>CheckPoint</h1><br>
+    <h2>Successful Login!</h2>
+	
+  <div class="index-task">
+    <a href="http://localhost:8081/checkpoint/login">Log Out</a>
+  </div>
+</div>
+
+
+</body>
+
 </html>

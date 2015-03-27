@@ -17,7 +17,7 @@ public class Controller {
 	
 	public void signIn (String uName, String pWord)
 	{
-		SignIn login = new SignIn(model.getUserList());
+		SignInToBedeleted login = new SignInToBedeleted(model.getUserList());
 		curUser = login.signIn(uName, pWord);
 	}
 	
@@ -28,7 +28,7 @@ public class Controller {
 	
 	public User createAccount (String uName, String pWord)
 	{
-		SignIn createacc = new SignIn(model.getUserList());
+		SignInToBedeleted createacc = new SignInToBedeleted(model.getUserList());
 		return createacc.createAccount(uName, pWord);
 	}
 	

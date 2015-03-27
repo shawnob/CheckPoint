@@ -13,9 +13,9 @@ public class Model {
 		return users.getUser(username);
 	}
 	
-	public boolean addUser(String uname, String pword)
+	public boolean addUser(String username, String password, String firstname, String lastname, String email)
 	{
-		return users.CreateUser(uname, pword);
+		return users.CreateUser(username, password, firstname, lastname, email);
 	}
 	
 	public void deleteUser(User deluser)

@@ -18,12 +18,17 @@ public class User {
 
 	private String username;
 	private String password;
-	
+	private String firstname;
+	private String lastname;
+	private String email;
 	
 	//Set username
-	public User(String username, String password){
+	public User(String username, String password, String firstname, String lastname, String email){
 		this.username = username;
 		this.password = password;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
 	}
 	
 	//Get username
@@ -36,10 +41,30 @@ public class User {
 		return password;
 	}
 	
+	//Get Firstname
+	public String getFirstname(){
+		return firstname;
+	}
+	
+	//Get Lastname
+	public String getLastname(){
+		return lastname;
+	}
+	
+	//GetEmail
+	public String getEmail(){
+		return email;
+	}
+	
 	//Allows the password to be changed
 	public void setPassword(String newPassword){
 		this.password = newPassword;
 	}
 	
+	//Allows email adress to be changed
+	public void setEmail(String newEmail){
+		this.email = newEmail;
+		
+	}
 	
 }
