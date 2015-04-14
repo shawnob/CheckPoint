@@ -1,6 +1,8 @@
-package ycp.cs320.spring15.model;
+package ycp.cs320.spring15.persist;
 
 import java.util.ArrayList;
+
+import ycp.cs320.spring15.model.User;
 
 /*Created by Shawn O'Brien 3/10/15
  * 

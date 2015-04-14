@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CourseTest {       //init test variables
+	/*
 	private Course course1;
 	private ArrayList<String> StudentListtest1 = new ArrayList<String>();
 	private ArrayList<String> TeacherListtest1 = new ArrayList<String>();
@@ -57,5 +58,5 @@ public class CourseTest {       //init test variables
 		course1.removeStudent("brad");
 		assertEquals(false, course1.isOnStudentList("brad"));
 	}
-	
+	*/
 }

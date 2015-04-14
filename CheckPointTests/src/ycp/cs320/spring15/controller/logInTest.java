@@ -6,9 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ycp.cs320.spring15.model.User;
-import ycp.cs320.spring15.model.UserList;
+//import ycp.cs320.spring15.model.UserList;
 
 public class logInTest {
+	/*
 	//User Lists
 	private UserList userList1 = new UserList();
 	private SignInToBedeleted signIn = new SignInToBedeleted(userList1);
@@ -61,6 +62,6 @@ public class logInTest {
 //		//TODO
 //	}
 	
-	
+	*/
 
 }

@@ -15,7 +15,7 @@ package ycp.cs320.spring15.model;
 
 
 public class User {
-
+	private int id;
 	private String username;
 	private String password;
 	private String firstname;
@@ -29,6 +29,14 @@ public class User {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
 	}
 	
 	//Get username

@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class UserTest {
+	/*
 	private User user1;
 	private User user2;
 	private User user3;
@@ -45,4 +46,5 @@ public class UserTest {
 		user3.setPassword("slartibartfast");
 		assertEquals("slartibartfast", user3.getPassword());
 	}
+	*/
 }

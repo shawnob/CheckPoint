@@ -5,6 +5,7 @@ import java.util.*;
 
 
 public class CourseList {
+	/*
 	ArrayList<Course> CourseList2;
 	
 	public CourseList(){
@@ -64,5 +65,5 @@ public class CourseList {
 	public ArrayList<Course> getCourseList(){
 		return CourseList2;
 	}
-	
+	*/
 }

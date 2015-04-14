@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class UserListTest {
+	/*
 	//User Lists
 	private UserList userList = new UserList();
 	
@@ -65,5 +66,5 @@ public class UserListTest {
 		userList.deleteUser(user3);
 		assertFalse(userList.containsUser("arthur"));
 	}
-
+	*/
 }
