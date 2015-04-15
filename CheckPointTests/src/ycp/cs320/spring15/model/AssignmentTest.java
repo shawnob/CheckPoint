@@ -14,7 +14,7 @@ public class AssignmentTest {
 	public void setup() {
 		
 		testAssignment = new Assignment();
-		testAssignment.setQuestionType(true);
+//		testAssignment.setQuestionType(true);
 		testAssignment.setNumberOfQuestions(3);
 		testAssignment.setAssignmentName("Meaning of Life");
 	}

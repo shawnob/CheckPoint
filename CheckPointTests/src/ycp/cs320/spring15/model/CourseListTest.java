@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CourseListTest {
-	
+	/*
 	private CourseList CourseListtest1;
 	private ArrayList<Course> CourseListarraytest1 = new ArrayList<Course>();
 	
@@ -80,5 +80,5 @@ public class CourseListTest {
 	
 
 
-
+	*/
 }
