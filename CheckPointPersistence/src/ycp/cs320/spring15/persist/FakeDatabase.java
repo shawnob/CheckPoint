@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ycp.cs320.spring15.model.Course;
+import ycp.cs320.spring15.model.Question;
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.model.UserList;
 
@@ -12,10 +13,12 @@ public class FakeDatabase implements IDatabase {
 	// TODO: fields
 	private UserList userList = new UserList();
 	private List<Course> courseList;
+	private List<Question> quizList;
 	
 	public FakeDatabase() {
 		// create arraylists
 		courseList = new ArrayList<>();
+		quizList = new ArrayList<>();
 		
 		//Users in database
 		userList.addUser(new User("shawn", "obrien", "shawn", "obrien", "shawn@checkpoint.com"));

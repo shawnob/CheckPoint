@@ -20,6 +20,11 @@
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>ycp.cs320.spring15.webapp.servlets.RegisterServlet</servlet-class>
   </servlet>
+  
+  <servlet>
+    <servlet-name>QuizMakerServlet</servlet-name>
+    <servlet-class>ycp.cs320.spring15.webapp.servlets.QuizMakerServlet</servlet-class>
+  </servlet>
 
   <!-- Servlet mappings -->
   <servlet-mapping>
@@ -35,6 +40,11 @@
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>QuizMakerServlet</servlet-name>
+    <url-pattern>/quizmaker</url-pattern>
   </servlet-mapping>
   
   <filter>

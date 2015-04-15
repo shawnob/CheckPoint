@@ -8,6 +8,9 @@ public class Controller {
 
 	//Controller for the WebApp. 
 	//Calls IDatabase whic is linked to the FakeDatabase
+	///////////////////////
+	////////User///////////
+	//////////////////////
 	
 	public User signIn(String username, String password) {
 		IDatabase db = DatabaseProvider.getInstance();
@@ -24,4 +27,9 @@ public class Controller {
 		return db.searchUserByEmail(email);
 	}
 
+	///////////////////////
+	/////Questions/////////
+	//////////////////////
+	
+	
 }
