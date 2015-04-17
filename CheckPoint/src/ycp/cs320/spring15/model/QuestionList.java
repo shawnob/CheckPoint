@@ -12,7 +12,7 @@ public class QuestionList {
 	
 	//returns a question based on the index number of the question in our arraylist
 	public Question getQuestion(int questionIndexNum){
-		if(questionIndexNum > questionList.size())
+		if(questionIndexNum > questionList.size()) 
 			return null;
 		else
 			return questionList.get(questionIndexNum); 

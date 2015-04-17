@@ -42,21 +42,36 @@ public class QuizMakerServlet extends HttpServlet {
 		String errorMessage = null;
 		boolean login;
 		String result = null;
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
+		String question = req.getParameter("question");
+		String choiceA = req.getParameter("choiceA");
+		String choiceB = req.getParameter("choiceB");
+		String choiceC = req.getParameter("choiceC");
+		String CorrectChoice = req.getParameter("correctChoice");
 		
 		//If nothing is entered and by making an empty string
-		if (username == null){
-			username = "";
+		if (question == null){
+			question = "";
 		}
 		
-		if (password == null){
-			password = "";
+		if (choiceA == null){
+			choiceA = "";
+		}
+		if (choiceB == null){
+			choiceB = "";
+		}
+		if (choiceC == null){
+			choiceC = "";
+		}
+		if (CorrectChoice == null){
+			CorrectChoice = "";
 		}
 		
 		//Call Controller which is now in webapp.servlets
+		String[] choices = {choiceA,choiceB,choiceC};
+		System.out.println(CorrectChoice);
 		Controller controller = new Controller();
-		User user =  controller.signIn(username, password);
+		controller.addQuestion(question, choices, CorrectChoice);
+		/*User user =  controller.signIn(username, password);
 		if (user != null) {
 			// successful login
 			login = true;
@@ -90,5 +105,6 @@ public class QuizMakerServlet extends HttpServlet {
 		if (login == false){
 		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 		}
+		*/
 	}
 }

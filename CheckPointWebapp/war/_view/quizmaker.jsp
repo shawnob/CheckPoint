@@ -7,30 +7,35 @@
 
   <meta charset="UTF-8">
 
-  <title>your mother is hot</title>
+  <title>Make a Quiz</title>
 
-	<link href="_view/css/LoginStyle.css" rel="stylesheet" type="text/css">
+	<link href="_view/css/quizmakerStyle.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
 
-  <div class="login-card">
-    <h1>You ma'am</h1><br>
+  <div class="QuizMaker-card">
+    <h1>CheckPoint</h1><br>
+    <h2>Create A Quiz</h2>
   <form action="${pageContext.servletContext.contextPath}/quizmaker" method="post">
-    <input type="text" name="username" placeholder="Username" value="${username}"/>
-    <input type="password" name="password" placeholder="Password" value="${password}"/>
-    <input type="submit" name="login" class="login login-submit" value="login">
+    <input type="text" name="question" placeholder="Question" value="${question}"/>
+    <input type="text" name="choiceA" placeholder="Choice 1" value="${choiceA}"/>
+    <input type="text" name="choiceB" placeholder="Choice 2" value="${choiceB}"/>
+    <input type="text" name="choiceC" placeholder="Choice 3" value="${choiceC}"/>
+    <input type="text" name="choiceD" placeholder="Correct Choice" value="${correctChoice}"/>
+    
+    <input type="submit" name="submit" class="login login-submit" value="Submit">
   </form>
   
-  <div class="login-failed">
+  <div class="QuizMaker-failed">
 		${result}
 	</div>
 	
-  <div class="login-help">
+ <!-- <div class="QuizMaker-help">
     <a href="http://localhost:8081/checkpoint/register">Register</a> - <a href="#">Forgot Password</a>
   </div>
-</div>
+</div>-->
 
 <!-- <div id="error"><img src="https://dl.dropboxusercontent.com/u/23299152/Delete-icon.png" /> Your caps-lock is on.</div> -->
 
