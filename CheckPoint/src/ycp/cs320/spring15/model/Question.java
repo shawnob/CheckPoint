@@ -2,13 +2,14 @@ package ycp.cs320.spring15.model;
 
 public class Question {
 	//correct answers for multiple choice and fill in the blank
-	private int correctAnswerMC;
+	private String correctAnswerMC;
 	private String correctAnswerFIB;
 	private int type;
-	private int numQuestions;
-		public Question(int type, int numQuestions){
+	private String[] choices;
+		public Question(int type,String question,String choices[],String correctAnswer ){
 			this.type = type;
-			this.numQuestions = numQuestions;
+			this.correctAnswerMC = correctAnswer;
+			this.setChoices(choices);
 		}
 	// Multiple Choice and Fill in the Blank respectively.
 
@@ -38,6 +39,14 @@ public class Question {
 	
 	public void setCorrectAnsFIB(String ans) {
 		correctAnswerFIB = ans;
+	}
+
+	public String[] getChoices() {
+		return choices;
+	}
+
+	public void setChoices(String choices[]) {
+		this.choices = choices;
 	}
 
 }
