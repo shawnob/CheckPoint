@@ -6,7 +6,7 @@ public class Question {
 	private String correctAnswerFIB;
 	private int type;
 		
-	//Constructors for MC and FIB respectively
+	//Constructors for MC and FIB respectively 
 	public Question(int type, int correctAnswerMC){
 		this.type = type;
 		this.correctAnswerMC = correctAnswerMC;
