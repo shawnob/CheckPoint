@@ -22,6 +22,11 @@
   <div class="index-task">
     <a href="http://localhost:8081/checkpoint/login">Log Out</a>
   </div>
+  
+  <div class="index-task">
+    <a href="http://localhost:8081/checkpoint/quiztaker">Take Quiz</a>
+  </div>
+  
 </div>
 
 
