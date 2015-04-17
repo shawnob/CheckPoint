@@ -29,6 +29,11 @@
     <servlet-class>ycp.cs320.spring15.webapp.servlets.QuizMakerServlet</servlet-class>
   </servlet>
 
+<servlet>
+    <servlet-name>QuizTakerServlet</servlet-name>
+    <servlet-class>ycp.cs320.spring15.webapp.servlets.QuizTakerServlet</servlet-class>
+  </servlet>
+
   <!-- Servlet mappings -->
   <servlet-mapping>
     <servlet-name>IndexServlet</servlet-name>
@@ -52,6 +57,11 @@
     <servlet-mapping>
     <servlet-name>QuizMakerServlet</servlet-name>
     <url-pattern>/quizmaker</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>QuizTakerServlet</servlet-name>
+    <url-pattern>/quiztaker</url-pattern>
   </servlet-mapping>
   
   <filter>
