@@ -31,6 +31,10 @@ public class User {
 		this.email = email;
 	}
 	
+	public User() {
+		
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -74,5 +78,18 @@ public class User {
 		this.email = newEmail;
 		
 	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	
 	
 }

@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Apr 15 13:42:12 EDT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014c-be2c-88ad-000006cfe438 
+on database directory /Users/shawn/checkpoint.db with class loader sun.misc.Launcher$AppClassLoader@6da21389 
+Loaded from file:/Users/shawn/Google%20Drive/York%20College/Fall%202014/CS201/workspace/CS320_Derby/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_67-b01
+user.dir=/Users/shawn/git/CheckPoint/CheckPointPersistence
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.10.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

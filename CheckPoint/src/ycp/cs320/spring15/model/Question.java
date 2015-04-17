@@ -25,11 +25,11 @@ public class Question {
 			return this.type;
 	}
 	
-	public int getCorrectAnsMC() {
+	public String getCorrectAnsMC() {
 		return correctAnswerMC;
 	}
 	
-	public void setCorrectAnsMC(int ans) {
+	public void setCorrectAnsMC(String ans) {
 		correctAnswerMC = ans;
 	}
 	

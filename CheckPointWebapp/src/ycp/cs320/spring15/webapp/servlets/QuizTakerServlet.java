@@ -15,7 +15,7 @@ import ycp.cs320.spring15.persist.IDatabase;
 
 
 
-public class LoginServlet extends HttpServlet {
+public class QuizTakerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("doGet called");
 		
 		//Calls the login.jsp file containing the html and css
-		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);
 		
 	}
 	
@@ -65,7 +65,6 @@ public class LoginServlet extends HttpServlet {
 		// User is now logged in
 			User userNew = new User(username, password, null, null, null);
 		   req.getSession().setAttribute("user", userNew);
-		   req.getSession().setAttribute("username", userNew.getUsername());
 			
 			// Redirect to index page
 			resp.sendRedirect(req.getContextPath() + "/index");
@@ -78,6 +77,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		
+		
 		// Add parameters as request attributes
 		req.setAttribute("username", req.getParameter("username"));
 		req.setAttribute("password", req.getParameter("password"));
@@ -88,7 +88,7 @@ public class LoginServlet extends HttpServlet {
 		
 		//If login in failed redirect back to login page
 		if (login == false){
-		req.getRequestDispatcher("/_view/login.jsp").forward(req, resp);
+		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);
 		}
 	}
 }

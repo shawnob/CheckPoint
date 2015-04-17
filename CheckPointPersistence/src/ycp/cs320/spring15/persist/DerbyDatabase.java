@@ -26,9 +26,48 @@ public class DerbyDatabase implements IDatabase {
 	private static final int MAX_ATTEMPTS = 10;
 
 	@Override
-	public User findUser(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public User findUser(final String username, final String password) {
+		return executeTransaction(new Transaction<User>() {
+			@Override
+			public User execute(Connection conn) throws SQLException {
+				System.out.println("findUser: looking for " + username + "/" + password);
+				
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"select users.* from users " +
+							" where users.username = ? and users.password = ?"
+					);
+					stmt.setString(1, username);
+					stmt.setString(2, password);
+					
+					resultSet = stmt.executeQuery();
+					
+					if (!resultSet.next()) {
+						// no such username/password
+						System.out.println("No such user?");
+						return null;
+					} else {
+						User user = new User();
+						user.setId(resultSet.getInt(1));
+						user.setUsername(resultSet.getString(2));
+						user.setPassword(resultSet.getString(3));
+						user.setFirstname(resultSet.getString(4));
+						user.setLastname(resultSet.getString(5));
+						user.setEmail(resultSet.getString(6));
+						
+						System.out.println("Found user " + user.getUsername() + " with id=" + user.getId());
+						
+						return user;
+					}
+				} finally {
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(resultSet);
+				}
+			}
+		});
 	}
 
 	@Override

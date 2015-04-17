@@ -17,6 +17,11 @@ public class Course {
 		//TeacherList.add(Teacher);
 	}
 	
+	public String getCourseName ()
+	{
+		return courseName;
+	}
+	
 //	public boolean isOnStudentList(String username){
 //		if (StudentList.contains(username)){
 //			return true;
