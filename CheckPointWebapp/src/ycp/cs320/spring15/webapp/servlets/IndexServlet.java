@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ycp.cs320.spring15.model.User;
+
 public class IndexServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -15,6 +17,19 @@ public class IndexServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("In the Index servlet");
+		
+		
+		if (req.getSession().getAttribute("user") instanceof User && req.getSession().getAttribute("user") != null)
+		{
+			//User usey = (User)(req.getSession().getAttribute("user"));
+			String uname = (String)(req.getSession().getAttribute("username"));
+			req.setAttribute("useyName", uname);
+			System.out.println(uname + " has logged in");
+		}
+		else
+		{
+			req.setAttribute("useyName", "User");
+		}
 		
 		//Calls the index.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
