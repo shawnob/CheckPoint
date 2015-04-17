@@ -21,12 +21,12 @@ public class FakeDatabase implements IDatabase {
 		
 		//Users in database
 		userList.addUser(new User("shawn", "obrien", "shawn", "obrien", "shawn@checkpoint.com"));
-		userList.addUser(new User("benjamin", "newlin", "benjamin", "newlin", "benn@chekpoint.com"));
+		userList.addUser(new User("benjamin", "newlin", "benjamin", "newlin", "benn@checkpoint.com"));
+		userList.addUser(new User("zackeree", "henry", "zackeree", "henry", "zack@checkpoint.com"));
 
 		// TODO: fix these
 //		userList.addUser(new User("benjamin", "langsdale", "firstname", "lastname", "benl@checkpoint.com"));
 //		userList.addUser(new User("matthew", "savoca", "firstname", "lastname", "matt@checkpoint.com"));
-//		userList.addUser(new User("zackeree", "henry", "firstname", "lastname", "zack@checkpoint.com"));
 		userList.addUser(new User("zaphod", "beeblebrox", "firstname", "lastname", "zaphod@checkpoint.com"));
 		userList.addUser(new User("marvin", "42", "firstname", "lastname", "marvin@checkpoint.com"));
 		userList.addUser(new User("ford", "perfect", "firstname", "lastname", "ford@checkpoint.com"));

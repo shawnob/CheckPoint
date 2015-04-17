@@ -5,23 +5,29 @@ public class Question {
 	private int correctAnswerMC;
 	private String correctAnswerFIB;
 	private int type;
-	private int numQuestions;
-		public Question(int type, int numQuestions){
-			this.type = type;
-			this.numQuestions = numQuestions;
-		}
+		
+	//Constructors for MC and FIB respectively
+	public Question(int type, int correctAnswerMC){
+		this.type = type;
+		this.correctAnswerMC = correctAnswerMC;
+	}
+	
+	public Question(int type, String correctAnswerFIB){
+		this.type = type;
+		this.correctAnswerFIB = correctAnswerFIB;
+	}
+	
 	// Multiple Choice and Fill in the Blank respectively.
-
 	public void questionType(int type) {
-			this.type = type;
+		this.type = type;
 	}
 		
 	public void setQuestionType(int type) {
-			this.type = type;
+		this.type = type;
 	}
 		
 	public int getQuestionType() {
-			return this.type;
+		return this.type;
 	}
 	
 	public int getCorrectAnsMC() {
