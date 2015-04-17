@@ -19,6 +19,7 @@
     <h1>CheckPoint</h1><br>
     <h2>Welcome, ${useyName}</h2>
 	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a>
+	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a>
 	
   <div class="index-task">
     <a href="http://localhost:8081/checkpoint/login">Log Out</a>
