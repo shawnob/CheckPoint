@@ -65,6 +65,7 @@ public class LoginServlet extends HttpServlet {
 		// User is now logged in
 			User userNew = new User(username, password, null, null, null);
 		   req.getSession().setAttribute("user", userNew);
+		   req.getSession().setAttribute("username", userNew.getUsername());
 			
 			// Redirect to index page
 			resp.sendRedirect(req.getContextPath() + "/index");
@@ -75,7 +76,6 @@ public class LoginServlet extends HttpServlet {
 			login = false;
 			result = "Login Failed";
 		}
-		
 		
 		
 		// Add parameters as request attributes

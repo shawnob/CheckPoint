@@ -33,6 +33,8 @@ public class FakeDatabase implements IDatabase {
 		userList.addUser(new User("arthur", "dent", "firstname", "lastname", "arthur@checkpoint.com"));
 		userList.addUser(new User("slartibartfast", "42","firstname", "lastname", "slartibartfast@checkpoint.com"));
 		userList.addUser(new User("trillian", "42", "firstname", "lastname", "trillian@checkpoint.com"));
+		
+		courseList.add(new Course("cs320"));
 	}
 
 	/* returns null if none    match
@@ -56,7 +58,14 @@ public class FakeDatabase implements IDatabase {
 
 	@Override
 	public Course findCourse(String courseName) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < courseList.size(); i++)
+		{
+			if (courseList.get(i).getCourseName().equals(courseName))
+			{
+				return courseList.get(i);
+			}
+			
+		}
 		return null;
 	}
 

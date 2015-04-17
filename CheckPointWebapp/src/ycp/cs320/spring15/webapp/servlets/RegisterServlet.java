@@ -89,9 +89,21 @@ public class RegisterServlet extends HttpServlet {
 							if (user != null){
 								create = true;
 								result = "Success!";
+								
+								// Add parameters as request attributes
+								req.getSession().setAttribute("username", req.getParameter("username"));
+								req.getSession().setAttribute("password", req.getParameter("password"));
+								req.getSession().setAttribute("password2", req.getParameter("password2"));
+								req.getSession().setAttribute("firstname", req.getParameter("firstname"));
+								req.getSession().setAttribute("lastname", req.getParameter("lastname"));
+								req.getSession().setAttribute("email", req.getParameter("email"));
+								req.getSession().setAttribute("email2", req.getParameter("email2"));
+								req.getSession().setAttribute("user", user);
+								
 								//Redirect to index page
 								req.setAttribute("result", result);
-								req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+								//req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+								resp.sendRedirect(req.getContextPath() + "/index");
 							}
 							else{
 								//Username already exists 
@@ -106,7 +118,7 @@ public class RegisterServlet extends HttpServlet {
 					}
 					else{
 						create=false;
-						result = "Email adresse don't match";
+						result = "Email addresses don't match";
 					}
 				}
 				else{
@@ -119,14 +131,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		
 		
-		// Add parameters as request attributes
-		req.setAttribute("username", req.getParameter("username"));
-		req.setAttribute("password", req.getParameter("password"));
-		req.setAttribute("password2", req.getParameter("password2"));
-		req.setAttribute("firstname", req.getParameter("firstname"));
-		req.setAttribute("lastname", req.getParameter("lastname"));
-		req.setAttribute("email", req.getParameter("email"));
-		req.setAttribute("email2", req.getParameter("email2"));
+		
 		
 		// Add result objects as request attributes
 		req.setAttribute("errorMessage", errorMessage);
