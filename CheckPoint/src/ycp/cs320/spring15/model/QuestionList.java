@@ -1,21 +1,38 @@
 package ycp.cs320.spring15.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QuestionList {
 	
+	private String quizName;
 	private ArrayList<Question> questionList;
+	
 
 	public QuestionList(){
+		quizName = "";
 		questionList = new ArrayList<Question>();
+	}
+	
+	public void setQuizName(String quizName) {
+		this.quizName = quizName;
+	}
+	
+	public String getQuizName() {
+		return quizName;
+	}
+	
+	public int getNumQuestions() {
+		return questionList.size();
 	}
 	
 	//returns a question based on the index number of the question in our arraylist
 	public Question getQuestion(int questionIndexNum){
-		if(questionIndexNum > questionList.size()) 
-			return null;
-		else
 			return questionList.get(questionIndexNum); 
+	}
+
+	public void addQuestion(Question q) {
+		questionList.add(q);
 	}
 	
 }
