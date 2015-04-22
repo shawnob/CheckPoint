@@ -9,7 +9,7 @@
 
   <title>CheckPoint-index</title>
 
-	<link href="_view/css/IndexStyle.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.servletContext.contextPath}/_view/css/IndexStyle.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -18,8 +18,11 @@
   <div class="index-card">
     <h1>CheckPoint</h1><br>
     <h2>Welcome, ${useyName}</h2>
-	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a>
-	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a>
+    
+    <div class = "quizOptionList">
+	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
+	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a><br>
+	</div>
 	
   <div class="index-task">
     <a href="http://localhost:8081/checkpoint/login">Log Out</a>

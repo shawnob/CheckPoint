@@ -1,5 +1,7 @@
 package ycp.cs320.spring15.persist;
 
+import java.util.ArrayList;
+
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.User;
 
@@ -11,5 +13,6 @@ public interface IDatabase {
 	public User createAccount(String username, String password, String firstname, String lastname, String email);
 	public User searchUserByEmail(String email);
 	public boolean addQuestion(String question, String choices[], String correctAnswer);
+	public ArrayList<String> getCourseList(String username);
 	
 }

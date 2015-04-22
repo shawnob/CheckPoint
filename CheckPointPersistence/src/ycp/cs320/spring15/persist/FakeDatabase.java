@@ -13,6 +13,8 @@ public class FakeDatabase implements IDatabase {
 	UserList userList = new UserList();
 	private List<Course> courseList;
 	private List<Question> quizList;
+	private ArrayList<ArrayList> userCoursesList;
+	private ArrayList<String> userCourses;
 	
 	public FakeDatabase() {
 		// create arraylists
@@ -35,6 +37,10 @@ public class FakeDatabase implements IDatabase {
 		userList.addUser(new User("trillian", "42", "firstname", "lastname", "trillian@checkpoint.com"));
 		
 		courseList.add(new Course("cs320"));
+		courseList.add(new Course("Truffles 101"));
+		courseList.add(new Course("The Spells of Starswirl the Bearded"));
+		courseList.add(new Course("Intro to Statistics In Improbability Space"));
+		courseList.add(new Course("Life, the Universe, and Everything 242"));
 	}
 
 	/* returns null if none    match
