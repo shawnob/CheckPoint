@@ -98,11 +98,12 @@ public class FakeDatabase implements IDatabase {
 	///////////////////////////////
 	////////Question Methods///////
 	///////////////////////////////
-	public boolean addQuestion(String question, String[] choices, String correctAnswer){
+	public boolean addQuestion(String question, String[] choices, int correctAnswer){
 		Question newQuestion = new Question(1,question,choices,correctAnswer);
 		quizList.add(newQuestion);
 		return true;
 	}
+	
 	
 
 }

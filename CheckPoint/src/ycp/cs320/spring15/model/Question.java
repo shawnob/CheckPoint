@@ -2,11 +2,11 @@ package ycp.cs320.spring15.model;
 
 public class Question {
 	//correct answers for multiple choice and fill in the blank
-	private String correctAnswer;
+	private int correctAnswer;
 	private int type;
 	private String[] choices;
 		
-	public Question(int type,String question,String choices[],String correctAnswer ){
+	public Question(int type,String question,String choices[],int correctAnswer ){
 		this.type = type;
 		this.correctAnswer = correctAnswer; 
 		this.setChoices(choices);
@@ -25,11 +25,11 @@ public class Question {
 			return this.type;
 	}
 	
-	public String getCorrectAns() {
+	public int getCorrectAns() {
 		return correctAnswer;
 	}
 	
-	public void setCorrectAns(String ans) {
+	public void setCorrectAns(int ans) {
 		correctAnswer = ans;
 	}
 
