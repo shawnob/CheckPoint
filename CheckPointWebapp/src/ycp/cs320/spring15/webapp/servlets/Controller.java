@@ -37,9 +37,9 @@ public class Controller {
 	///////////////////////
 	/////Questions/////////
 	//////////////////////
-	public boolean addQuestion(String question,String[] choices,int correctAnswer){
+	public boolean addQuestion(int type,String question,String[] choices,int correctAnswer){
 		IDatabase db = DatabaseProvider.getInstance();
-		db.addQuestion(question, choices, correctAnswer);
+		db.addQuestion(type, question, choices, correctAnswer);
 		return true;
 	}
 	

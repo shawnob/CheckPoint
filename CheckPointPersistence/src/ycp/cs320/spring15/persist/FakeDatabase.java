@@ -101,9 +101,9 @@ public class FakeDatabase implements IDatabase {
 	///////////////////////////////
 	////////Question Methods///////
 	///////////////////////////////
-	public Question addQuestion(String question, String[] choices, int correctAnswer){
-		Question newQuestion = new Question(1,question,choices,correctAnswer);
-		
+	public Question addQuestion(int type, String question, String[] choices, int correctAnswer){
+		Question newQuestion = new Question(type,question,choices,correctAnswer);
+		questList1.addQuestion(newQuestion);
 		return newQuestion;
 	}
 	
