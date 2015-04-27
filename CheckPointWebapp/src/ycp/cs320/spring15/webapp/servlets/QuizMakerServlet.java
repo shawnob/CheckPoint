@@ -24,8 +24,6 @@ public class QuizMakerServlet extends HttpServlet {
 		
 		System.out.println("doGet called");
 		
-		
-		
 		//Calls the login.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 		
@@ -39,6 +37,115 @@ public class QuizMakerServlet extends HttpServlet {
 		
 		System.out.println("doPost called");
 		
-
+	
+		// Decode form parameters and dispatch to controller
+		String errorMessage = null;
+		//boolean login;
+		String result = null;
+		
+		boolean[] selected = {true,true,true};
+		int correctAnswer = 4;
+		String question = req.getParameter("question");
+		String choice1 = req.getParameter("choice1");
+		String choice2 = req.getParameter("choice2");
+		String choice3 = req.getParameter("choice3");
+		String select1 = req.getParameter("select1");
+		String select2 = req.getParameter("select2");
+		String select3 = req.getParameter("select3");
+		
+		//If nothing is entered and by making an empty string
+		if (question == null){
+			result = "Please enter a question.";
+			question = "";
+		}
+		if (choice1 == null){
+			choice1 = "";
+		}
+		if (choice2 == null){
+			choice2 = "";
+		}
+		if (choice3 == null){
+			choice3 = "";
+		}
+		if (select1 == null){
+			selected[0] = false;
+		}
+		if (select2 == null){
+			selected[1] = false;
+		}
+		if (select3 == null){
+			selected[2] = false;
+		}
+		int correct = 0;
+		for(int i = 0; i < 3;i++){
+			if(selected[i]){
+				correctAnswer = i+1;
+				correct++;
+			}
+		}
+		if(correct != 1){
+			result = "Please chose one correct answer.";
+		}
+		
+		//Call Controller which is now in webapp.servlets
+		if(result != null){
+			String[] choices = {choice1,choice2,choice3};
+			Controller controller = new Controller();
+			controller.addQuestion(question, choices, correctAnswer);
+		}
+		req.setAttribute("question", req.getParameter("question"));
+		
+		req.setAttribute("choice1", req.getParameter("choice1"));
+		req.setAttribute("choice2", req.getParameter("choice2"));
+		req.setAttribute("choice3", req.getParameter("choice3"));
+		
+		req.setAttribute("select1", req.getParameter("select1"));
+		req.setAttribute("select2", req.getParameter("select2"));
+		req.setAttribute("select3", req.getParameter("select3"));
+		
+		
+		// Add result objects as request attributes
+		if(result == null){
+			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+		}else{
+		req.setAttribute("errorMessage", errorMessage);
+		req.setAttribute("result", result);
+		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+		}
+		/*User user =  controller.signIn(username, password);
+		if (user != null) {
+			// successful login
+			login = true;
+			result = "Passed";
+			
+		// User is now logged in
+			User userNew = new User(username, password, null, null, null);
+		   req.getSession().setAttribute("user", userNew);
+			
+			// Redirect to index page
+			resp.sendRedirect(req.getContextPath() + "/index");
+			return;
+		} 
+		else {
+			// invalid username/password
+			login = false;
+			result = "Login Failed";
+		}
+		
+		
+		
+		// Add parameters as request attributes
+		req.setAttribute("username", req.getParameter("username"));
+		req.setAttribute("password", req.getParameter("password"));
+		
+		// Add result objects as request attributes
+		req.setAttribute("errorMessage", errorMessage);
+		req.setAttribute("result", result);
+		
+		//If login in failed redirect back to login page
+		if (login == false){
+		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+		}
+		*/
 	}
 }

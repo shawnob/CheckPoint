@@ -34,7 +34,8 @@ public class FakeDatabase implements IDatabase {
 		userList.addUser(new User("slartibartfast", "42","firstname", "lastname", "slartibartfast@checkpoint.com"));
 		userList.addUser(new User("trillian", "42", "firstname", "lastname", "trillian@checkpoint.com"));
 		
-		questList1.addQuestion(new Question(0, "quest", null, "ans"));
+		String[] choices = {"this one", "no this one", "Maybe this one"};
+		questList1.addQuestion(new Question(0, "quest", choices, 1));
 		
 		courseList.add(new Course("cs320"));
 	}
@@ -100,10 +101,10 @@ public class FakeDatabase implements IDatabase {
 	///////////////////////////////
 	////////Question Methods///////
 	///////////////////////////////
-	public boolean addQuestion(String question, String[] choices, int correctAnswer){
+	public Question addQuestion(String question, String[] choices, int correctAnswer){
 		Question newQuestion = new Question(1,question,choices,correctAnswer);
-		quizList.add(newQuestion);
-		return true;
+		
+		return newQuestion;
 	}
 	
 	
