@@ -34,7 +34,7 @@ public class FakeDatabase implements IDatabase {
 		userList.addUser(new User("slartibartfast", "42","firstname", "lastname", "slartibartfast@checkpoint.com"));
 		userList.addUser(new User("trillian", "42", "firstname", "lastname", "trillian@checkpoint.com"));
 		
-		questList1.addQuestion(new Question(0, "quest", null, "ans"));
+		//questList1.addQuestion(new Question(0, "quest", null, "ans"));
 		
 		courseList.add(new Course("cs320"));
 	}

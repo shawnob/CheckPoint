@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Wed Apr 15 13:46:52 EDT 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014c-be30-ae9f-00000731af80 
-on database directory /Users/shawn/checkpoint.db with class loader sun.misc.Launcher$AppClassLoader@6da21389 
+Fri Apr 17 13:26:56 EDT 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-014c-c86b-30be-0000072fed20 
+on database directory /Users/shawn/checkpoint.db with class loader sun.misc.Launcher$AppClassLoader@60f32dde 
 Loaded from file:/Users/shawn/Google%20Drive/York%20College/Fall%202014/CS201/workspace/CS320_Derby/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_67-b01
