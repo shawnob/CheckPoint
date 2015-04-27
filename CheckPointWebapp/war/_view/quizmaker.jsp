@@ -13,22 +13,30 @@
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script type="text/javascript">
+		function changeQuestionType() {
+			//alert("Quiz type changed");
+			var quizType = $("#quizTypeChooser").val();
+			//alert("Quiz type is now " + quizType);
+			if (quizType === "MC") {
+				$("#multipleChoiceQuestion").css('display', 'block');
+				$("#fillInTheBlankQuestion").css('display', 'none');
+			} else if (quizType === "FIB") {
+				$("#multipleChoiceQuestion").css('display', 'none');
+				$("#fillInTheBlankQuestion").css('display', 'block');
+			} else {
+				$("#multipleChoiceQuestion").css('display', 'none');
+				$("#fillInTheBlankQuestion").css('display', 'none');
+			}
+		}
+		
 		$(document).ready(function() {
+			// Selectively enable/disable question type
 			$("#quizTypeChooser").change(function() {
-				//alert("Quiz type changed");
-				var quizType = $("#quizTypeChooser").val();
-				//alert("Quiz type is now " + quizType);
-				if (quizType === "MC") {
-					$("#multipleChoiceQuestion").css('display', 'block');
-					$("#fillInTheBlankQuestion").css('display', 'none');
-				} else if (quizType === "FIB") {
-					$("#multipleChoiceQuestion").css('display', 'none');
-					$("#fillInTheBlankQuestion").css('display', 'block');
-				} else {
-					$("#multipleChoiceQuestion").css('display', 'none');
-					$("#fillInTheBlankQuestion").css('display', 'none');
-				}
+				changeQuestionType();
 			});
+			
+			// Set initial quiz type
+			changeQuestionType();
 		});
 	</script>
 	
@@ -45,18 +53,18 @@
   <div class="QuizMaker-card">
     <h1>CheckPoint</h1><br>
     <h2>Create A Quiz</h2>
+  <form action="${pageContext.servletContext.contextPath}/quizmaker" method="post">
     
-    <select id="quizTypeChooser">
-    	<option value="">Chose Type</option>
-  		<option value="MC">Multiple Choice</option>
-  		<option value="FIB">Fill In The Blank</option>
+    <select name = "questionType" id="quizTypeChooser">
+    	<option value="None" ${selectedNone}>Chose Type</option>
+  		<option value="MC" ${selectedMC}>Multiple Choice</option>
+  		<option value="FIB" ${selectedFIB}>Fill In The Blank</option>
 	</select>
     
     
     <!-- form for multiple choice quiz question -->
     <div id="multipleChoiceQuestion">
-  <form action="${pageContext.servletContext.contextPath}/quizmaker" method="post">
-    <input type="text" name="question" placeholder="Question" value="${question}"/>
+    <input type="text" name="question" placeholder="Question" value="${MCquestion}"/>
     <input type="checkbox" name="select1" value="${select1}">
     <input type="text" name="choice1" placeholder="Choice 1" value="${choice1}"/>
     <input type="checkbox" name="select2" value="${select2}">
@@ -64,14 +72,19 @@
     <input type="checkbox" name="select3" value="${select3}">
     <input type="text" name="choice3" placeholder="Choice 3" value="${choice3}"/>
     
-    <input type="submit" name="submit" class="login login-submit" value="Submit">
-  </form>
+    <input type="submit" name="submit" class="login login-submit" value="Add New Question">
+    <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
   </div>
   
   <!-- form for fill in the blank question -->
   <div id="fillInTheBlankQuestion">
-  <p>TODO: something real should go here</p>
+  <input type="text" name="question" placeholder="Question" value="${FIBquestion}"/>
+  <input type="text" name="FIBAnswer" placeholder="Answer" value="${FIBAnswer}"/>
+  
+  <input type="submit" name="submit" class="login login-submit" value="Add New Question">
+  <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
   </div>
+  </form>
   
   <div class="QuizMaker-failed">
 		${result}

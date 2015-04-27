@@ -5,6 +5,7 @@ public class Question {
 	private int correctAnswer;
 	private int type;
 	private String[] choices;
+	private int UniqueID;
 		
 	public Question(int type,String question,String choices[],int correctAnswer ){
 		this.type = type;
@@ -39,6 +40,14 @@ public class Question {
 
 	public void setChoices(String choices[]) {
 		this.choices = choices;
+	}
+
+	public int getUniqueID() {
+		return UniqueID;
+	}
+
+	public void setUniqueID(int uniqueID) {
+		UniqueID = uniqueID;
 	}
 
 }
