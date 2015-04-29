@@ -32,7 +32,7 @@ public class QuizMakerServlet extends HttpServlet {
 		
 		//create quiz
 		Controller controller = new Controller();
-		controller.
+		//controller.
 		
 	}
 	
