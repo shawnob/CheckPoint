@@ -1,5 +1,7 @@
 package ycp.cs320.spring15.webapp.servlets;
 
+import java.util.ArrayList;
+
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
@@ -29,10 +31,26 @@ public class Controller {
 		return db.searchUserByEmail(email);
 	}
 	
+	/////////////////////
+	/////Course/////////
+	///////////////////
+	
 	public Course findCourseByCourseName(String courseName)
 	{
 		IDatabase db = DatabaseProvider.getInstance();
 		return db.findCourse(courseName);
+	}
+	
+	public ArrayList<String> getStudentCourseListByUsername (String username)
+	{
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.getStudentCourseList(username);
+	}
+	
+	public ArrayList<String> getTeacherCourseListByUsername (String username)
+	{
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.getTeacherCourseList(username);
 	}
 
 	///////////////////////

@@ -13,13 +13,16 @@ public class FakeDatabase implements IDatabase {
 	// TODO: fields
 	UserList userList = new UserList();
 	private List<Course> courseList;
+	private List<Question> quizList;
+	private ArrayList<CourseAssociation> userCourses;
 	Quiz questList1 = new Quiz("The Quiz");
 	private int questionListUniqueId = 0;
 
 	public FakeDatabase() {
 		// create arraylists
 		courseList = new ArrayList<>();
-
+		userCourses = new ArrayList<CourseAssociation>();
+		
 		//Users in database
 		userList.addUser(new User("shawn", "obrien", "shawn", "obrien", "shawn@checkpoint.com"));
 		userList.addUser(new User("benjamin", "newlin", "benjamin", "newlin", "benn@checkpoint.com"));
@@ -43,6 +46,14 @@ public class FakeDatabase implements IDatabase {
 
 
 		courseList.add(new Course("cs320"));
+		courseList.add(new Course("Truffles 101"));
+		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
+		courseList.add(new Course("Intro-to-Statistics-In-Improbability-Space"));
+		courseList.add(new Course("Life-the-Universe-and-Everything-242"));
+		
+		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
+		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbablility-Space", "zaphod", false));
+		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
 	}
 
 	/* returns null if none    match
@@ -75,6 +86,36 @@ public class FakeDatabase implements IDatabase {
 
 		}
 		return null;
+	}
+	
+	public ArrayList <String> getTeacherCourseList(String username)
+	{
+		ArrayList<String> clist = new ArrayList<String>();
+		for (int i = 0; i < userCourses.size(); i++)
+		{
+			String b = userCourses.get(i).getCoursenameWithConditions(username, true);
+			
+			if(b != null)
+			{
+				clist.add(b);
+			}
+		}
+		return clist;
+	}
+	
+	public ArrayList <String> getStudentCourseList(String username)
+	{
+		ArrayList<String> clist = new ArrayList<String>();
+		for (int i = 0; i < userCourses.size(); i++)
+		{
+			String b = userCourses.get(i).getCoursenameWithConditions(username, false);
+			
+			if(b != null)
+			{
+				clist.add(b);
+			}
+		}
+		return clist;
 	}
 
 

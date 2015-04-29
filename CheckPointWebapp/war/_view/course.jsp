@@ -9,7 +9,7 @@
 
   <title>${courseName}</title>
 
-	<link href="_view/css/IndexStyle.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.servletContext.contextPath}/_view/css/CourseStyle.css" rel="stylesheet" type="text/css">
 
 </head>
 

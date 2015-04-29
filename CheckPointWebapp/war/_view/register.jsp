@@ -21,8 +21,8 @@
   <form action="${pageContext.servletContext.contextPath}/register" method="post">
     <input type="text" name="firstname" placeholder="Firstname" value="${firstname}"/>
     <input type="text" name="lastname" placeholder="Lastname" value="${lastname}"/>
-    <input type="text" name="email" placeholder="Email Adresse" value="${email}"/>
-    <input type="text" name="email2" placeholder="Confirm Email Adresse" value="${email2}"/>
+    <input type="text" name="email" placeholder="Email Address" value="${email}"/>
+    <input type="text" name="email2" placeholder="Confirm Email Address" value="${email2}"/>
     <input type="text" name="username" placeholder="Username" value="${username}"/>
     <input type="password" name="password" placeholder="Password" value="${password}"/>
     <input type="password" name="password2" placeholder="Confirm Password" value="${password2}"/>

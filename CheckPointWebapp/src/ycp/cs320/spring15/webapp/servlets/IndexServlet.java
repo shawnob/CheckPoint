@@ -1,6 +1,7 @@
 package ycp.cs320.spring15.webapp.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,13 +19,23 @@ public class IndexServlet extends HttpServlet {
 		
 		System.out.println("In the Index servlet");
 		
+		ArrayList <String> cTList;
+		ArrayList <String> cSList;
+		Controller controller = new Controller();
+		
 		
 		if (req.getSession().getAttribute("user") instanceof User && req.getSession().getAttribute("user") != null)
 		{
-			//User usey = (User)(req.getSession().getAttribute("user"));
+			User usey = (User)(req.getSession().getAttribute("user"));
 			String uname = (String)(req.getSession().getAttribute("username"));
 			req.setAttribute("useyName", uname);
 			System.out.println(uname + " has logged in");
+			
+			cTList = controller.getTeacherCourseListByUsername(uname);
+			cSList = controller.getStudentCourseListByUsername(uname);
+			
+			req.setAttribute("TCourses", cTList);
+			req.setAttribute("SCourses", cSList);
 		}
 		else
 		{
