@@ -18,6 +18,8 @@ public interface IDatabase {
 	public QuestionList createQuiz(String quizName, User instructor, Course course);
 	
 	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
+	public String retquest();
+	public int retquestnum();
 
 	// TODO
 	//public Question addQuestion(Quiz quiz, int type, String question, String choices[], int correctAnswer);
