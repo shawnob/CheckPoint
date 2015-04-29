@@ -2,7 +2,7 @@ package ycp.cs320.spring15.persist;
 
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Question;
-import ycp.cs320.spring15.model.QuestionList;
+import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
 
 public interface IDatabase {
@@ -15,7 +15,7 @@ public interface IDatabase {
 	
 	
 	// TODO:
-	public QuestionList createQuiz(String quizName, User instructor, Course course);
+	public Quiz createQuiz(String quizName, User instructor, Course course);
 	
 	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
 

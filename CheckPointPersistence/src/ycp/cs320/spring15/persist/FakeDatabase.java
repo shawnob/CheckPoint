@@ -6,6 +6,7 @@ import java.util.List;
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Question;
 import ycp.cs320.spring15.model.QuestionList;
+import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
 
 public class FakeDatabase implements IDatabase {
@@ -13,7 +14,8 @@ public class FakeDatabase implements IDatabase {
 	// TODO: fields
 	UserList userList = new UserList();
 	private List<Course> courseList;
-	QuestionList questList1 = new QuestionList();
+	Quiz questList1 = new Quiz();
+	private int questionListUniqueId = 0;
 	
 	public FakeDatabase() {
 		// create arraylists
@@ -106,7 +108,6 @@ public class FakeDatabase implements IDatabase {
 		questList1.addQuestion(newQuestion);
 		return newQuestion;
 	}
-	
 	
 
 }
