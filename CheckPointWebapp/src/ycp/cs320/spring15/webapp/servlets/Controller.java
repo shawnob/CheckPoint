@@ -40,10 +40,16 @@ public class Controller {
 		return db.findCourse(courseName);
 	}
 	
-	public ArrayList<String> getUserCourseListByUsername (String username)
+	public ArrayList<String> getStudentCourseListByUsername (String username)
 	{
 		IDatabase db = DatabaseProvider.getInstance();
-		return db.getCourseList(username);
+		return db.getStudentCourseList(username);
+	}
+	
+	public ArrayList<String> getTeacherCourseListByUsername (String username)
+	{
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.getTeacherCourseList(username);
 	}
 
 	///////////////////////

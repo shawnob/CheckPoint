@@ -18,7 +18,6 @@
   <div class="quiztaker-card">
     <h1>QuizTaker</h1><br>
     
-
     <h2>Coming Soon</h2><br>
   
   </div>

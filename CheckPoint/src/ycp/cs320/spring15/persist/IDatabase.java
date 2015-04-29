@@ -13,6 +13,7 @@ public interface IDatabase {
 	public User createAccount(String username, String password, String firstname, String lastname, String email);
 	public User searchUserByEmail(String email);
 	public boolean addQuestion(String question, String choices[], String correctAnswer);
-	public ArrayList<String> getCourseList(String username);
+	public ArrayList<String> getTeacherCourseList(String username);
+	public ArrayList<String> getStudentCourseList(String username);
 	
 }

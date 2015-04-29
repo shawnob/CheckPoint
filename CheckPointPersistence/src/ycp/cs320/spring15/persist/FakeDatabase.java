@@ -5,6 +5,7 @@ import java.util.List;
 
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Question;
+import ycp.cs320.spring15.model.QuestionList;
 import ycp.cs320.spring15.model.User;
 
 public class FakeDatabase implements IDatabase {
@@ -13,13 +14,14 @@ public class FakeDatabase implements IDatabase {
 	UserList userList = new UserList();
 	private List<Course> courseList;
 	private List<Question> quizList;
-	private ArrayList<ArrayList> userCoursesList;
-	private ArrayList<String> userCourses;
+	private ArrayList<CourseAssociation> userCourses;
+	QuestionList questList1 = new QuestionList();
+//>>>>>>> branch 'master' of https://github.com/shawnob/CheckPoint.git
 	
 	public FakeDatabase() {
 		// create arraylists
 		courseList = new ArrayList<>();
-		quizList = new ArrayList<>();
+		userCourses = new ArrayList<CourseAssociation>();
 		
 		//Users in database
 		userList.addUser(new User("shawn", "obrien", "shawn", "obrien", "shawn@checkpoint.com"));
@@ -36,11 +38,17 @@ public class FakeDatabase implements IDatabase {
 		userList.addUser(new User("slartibartfast", "42","firstname", "lastname", "slartibartfast@checkpoint.com"));
 		userList.addUser(new User("trillian", "42", "firstname", "lastname", "trillian@checkpoint.com"));
 		
+		questList1.addQuestion(new Question(0, "quest", null, "ans"));
+		
 		courseList.add(new Course("cs320"));
 		courseList.add(new Course("Truffles 101"));
-		courseList.add(new Course("The Spells of Starswirl the Bearded"));
-		courseList.add(new Course("Intro to Statistics In Improbability Space"));
-		courseList.add(new Course("Life, the Universe, and Everything 242"));
+		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
+		courseList.add(new Course("Intro-to-Statistics-In-Improbability-Space"));
+		courseList.add(new Course("Life-the-Universe-and-Everything-242"));
+		
+		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
+		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbablility-Space", "zaphod", false));
+		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
 	}
 
 	/* returns null if none    match
@@ -73,6 +81,36 @@ public class FakeDatabase implements IDatabase {
 			
 		}
 		return null;
+	}
+	
+	public ArrayList <String> getTeacherCourseList(String username)
+	{
+		ArrayList<String> clist = new ArrayList<String>();
+		for (int i = 0; i < userCourses.size(); i++)
+		{
+			String b = userCourses.get(i).getCoursenameWithConditions(username, true);
+			
+			if(b != null)
+			{
+				clist.add(b);
+			}
+		}
+		return clist;
+	}
+	
+	public ArrayList <String> getStudentCourseList(String username)
+	{
+		ArrayList<String> clist = new ArrayList<String>();
+		for (int i = 0; i < userCourses.size(); i++)
+		{
+			String b = userCourses.get(i).getCoursenameWithConditions(username, false);
+			
+			if(b != null)
+			{
+				clist.add(b);
+			}
+		}
+		return clist;
 	}
 
 	
