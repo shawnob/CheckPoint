@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
+import ycp.cs320.spring15.persist.FakeDatabase;
 import ycp.cs320.spring15.persist.IDatabase;
 
 
@@ -24,41 +26,35 @@ public class QuizTakerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("doGet called");
+		System.out.println("doGetT called");
+		Controller controller = new Controller();
 		
-		//Calls the login.jsp file containing the html and css
-		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);
 		
 		
 		/////////
 		
-		String question = req.getParameter("question");
-		String choiceA = req.getParameter("choiceA");
-		String choiceB = req.getParameter("choiceB");
-		String choiceC = req.getParameter("choiceC");
+		String answer = req.getParameter("answer");
+		String question = controller.retquest();
+		int questionnum = controller.retquestnum();
+		
 		
 		//If nothing is entered and by making an empty string
-		if (question == null){
-			question = "";
+		if (answer == null){
+			answer = "";
 		}
 		
-		if (choiceA == null){
-			choiceA = "";
-		}
-		if (choiceB == null){
-			choiceB = "";
-		}
-		if (choiceC == null){
-			choiceC = "";
-		}
+		req.setAttribute("questionnum", questionnum);
+		req.setAttribute("question", question);
 		
-		Controller controller = new Controller();
+		
+		
 		
 		
 		/////////////////////////////////////////////////////////////////
 		
 		
-		
+		//Calls the login.jsp file containing the html and css
+		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);
 	}
 	
 	
@@ -67,9 +63,8 @@ public class QuizTakerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("doPost called");
-		
-	
+		System.out.println("doPostT called");
+
 		// Decode form parameters and dispatch to controller
 		
 	}
