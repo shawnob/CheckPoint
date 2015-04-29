@@ -3,14 +3,14 @@ package ycp.cs320.spring15.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuestionList {
+public class Quiz {
 	
 	private String quizName;
 	private ArrayList<Question> questionList;
 	
 
-	public QuestionList(){
-		quizName = "";
+	public Quiz(String quizName){
+		this.quizName = quizName;
 		questionList = new ArrayList<Question>();
 	}
 	

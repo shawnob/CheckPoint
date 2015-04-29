@@ -17,8 +17,18 @@
 
   <div class="quiztaker-card">
     <h1>QuizTaker</h1><br>
+                  <h3>${questionnum}</h3>          
+    <h2>${question}</h2>      
     
-    <h2>Coming Soon</h2><br>
+    <form action="${pageContext.servletContext.contextPath}/quiztaker" method="post">
+    
+    <input type="text" name="answer" placeholder="Correct Choice" value="${answer}"/>
+    <input type="submit" name="submit" class="login login-submit" value="Submit">
+  </form>
+  
+  <div class="quiztaker-failed">
+		${result}
+	</div>
   
   </div>
 </div>

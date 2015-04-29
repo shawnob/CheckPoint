@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import ycp.cs320.spring15.model.Course;
+import ycp.cs320.spring15.model.Question;
+import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
 
 public class DerbyDatabase implements IDatabase {
@@ -236,5 +238,30 @@ public class DerbyDatabase implements IDatabase {
 		db.loadInitialData();
 		
 		System.out.println("Success!");
+	}
+
+	@Override
+	public Quiz createQuiz(String quizName, User instructor, Course course) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Question addQuestion(int type, String question, String[] choices,
+			int correctAnswer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String retquest() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int retquestnum() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

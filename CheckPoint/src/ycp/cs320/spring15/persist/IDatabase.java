@@ -3,6 +3,8 @@ package ycp.cs320.spring15.persist;
 import java.util.ArrayList;
 
 import ycp.cs320.spring15.model.Course;
+import ycp.cs320.spring15.model.Question;
+import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
 
 public interface IDatabase {
@@ -15,5 +17,16 @@ public interface IDatabase {
 	public boolean addQuestion(String question, String choices[], String correctAnswer);
 	public ArrayList<String> getTeacherCourseList(String username);
 	public ArrayList<String> getStudentCourseList(String username);
+	
+	
+	// TODO:
+	public Quiz createQuiz(String quizName, User instructor, Course course);
+	
+	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
+	public String retquest();
+	public int retquestnum();
+
+	// TODO
+	//public Question addQuestion(Quiz quiz, int type, String question, String choices[], int correctAnswer);
 	
 }

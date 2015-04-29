@@ -3,6 +3,7 @@ package ycp.cs320.spring15.webapp.servlets;
 import java.util.ArrayList;
 
 import ycp.cs320.spring15.model.Course;
+import ycp.cs320.spring15.model.QuestionList;
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.IDatabase;
@@ -55,10 +56,25 @@ public class Controller {
 	///////////////////////
 	/////Questions/////////
 	//////////////////////
-	public boolean addQuestion(String question,String[] choices,String correctAnswer){
+	public void questionList(User user, Course course){
+		
+	}
+	public boolean addQuestion(int type,String question,String[] choices,int correctAnswer){
 		IDatabase db = DatabaseProvider.getInstance();
-		db.addQuestion(question, choices, correctAnswer);
+		db.addQuestion(type, question, choices, correctAnswer);
 		return true;
+	}
+	
+	public String retquest (){
+		IDatabase db = DatabaseProvider.getInstance();
+		String test = db.retquest();
+		return test;
+	}
+	
+	public int retquestnum (){
+		IDatabase db = DatabaseProvider.getInstance();
+		int qnum = db.retquestnum();
+		return qnum;
 	}
 	
 }
