@@ -155,19 +155,27 @@ public class FakeDatabase implements IDatabase {
 
 	//return questionList
 	public String retquest() {
-		String test = "examplequestion";
+		String test = questList1.getQuestion(0).getQuestion();
 		if (questList1.getNumQuestions() > 0){
 			return test;
 		}
-		return test;
+		return "empty";
 	}
 	
 	public int retquestnum() {
-		int qnum = 1;
+		int qnum = questList1.getNumQuestions();
 		if (questList1.getNumQuestions() > 0){
 			return qnum;
 		}
 		return qnum;
+	}
+	
+	public int retquesttype() {
+		int qnum = questList1.getQuestion(0).getQuestionType();
+		if (questList1.getNumQuestions() > 0){
+			return qnum;
+		}
+		return 100;
 	}
 
 	@Override

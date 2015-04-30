@@ -40,7 +40,6 @@
 		});
 	</script>
 	
-	<style>
 	#multipleChoiceQuestion, #fillInTheBlankQuestion {
 		display: none;
 	}

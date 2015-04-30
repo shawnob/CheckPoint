@@ -35,6 +35,7 @@ public class QuizTakerServlet extends HttpServlet {
 		
 		String answer = req.getParameter("answer");
 		String question = controller.retquest();
+		int type = controller.retquesttype();
 		int questionnum = controller.retquestnum();
 		
 		
@@ -45,6 +46,7 @@ public class QuizTakerServlet extends HttpServlet {
 		
 		req.setAttribute("questionnum", questionnum);
 		req.setAttribute("question", question);
+		req.setAttribute("type", type);
 		
 		
 		
