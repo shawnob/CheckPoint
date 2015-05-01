@@ -6,11 +6,13 @@ public class Question {
 	private int type;
 	private String[] choices;
 	private int UniqueID;
+	private String question;
 		
 	public Question(int type,String question,String choices[],int correctAnswer ){
 		this.type = type;
 		this.correctAnswer = correctAnswer; 
 		this.setChoices(choices);
+		this.question = question;
 	}
 	// Multiple Choice and Fill in the Blank respectively.
 
@@ -48,6 +50,24 @@ public class Question {
 
 	public void setUniqueID(int uniqueID) {
 		UniqueID = uniqueID;
+	}
+
+	public boolean CheckAnswer(String FIBanswer, int MCAnswer) {
+		if(type == 0){
+			return MCAnswer == this.correctAnswer;
+		}else if (type == 1){
+			return FIBanswer == this.choices[0];
+		}else{
+			return false;
+		}
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 
 }

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+
+import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.IDatabase;
@@ -17,7 +19,7 @@ import ycp.cs320.spring15.persist.IDatabase;
 
 public class QuizMakerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private Integer quizID;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -31,7 +33,8 @@ public class QuizMakerServlet extends HttpServlet {
 		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 		
 		//create quiz
-		Controller controller = new Controller();
+		//Controller controller = new Controller();
+		//quizID = controller.addQuiz("Fist Quiz", null, null);
 		
 	}
 	
@@ -50,11 +53,16 @@ public class QuizMakerServlet extends HttpServlet {
 		String result = null;
 		
 		boolean[] selected = {true,true,true};
+		boolean CreateNewQuiz = false;
 		int correctAnswer = 4;
 		Controller controller = new Controller();
+		if(quizID == null){CreateNewQuiz = true;};
 		
 		String questionType = req.getParameter("questionType");
-		
+		String quizName = req.getParameter("quizName");
+		if(CreateNewQuiz){
+			quizID = controller.addQuiz(quizName, controller.signIn("Marvin", "42"), new Course("CS320"));
+		}
 		//If nothing is entered and by making an empty string
 		if(questionType.equals("MC")){
 			String question = req.getParameter("question");
@@ -101,7 +109,7 @@ public class QuizMakerServlet extends HttpServlet {
 			//Call Controller which is now in webapp.servlets
 			if(result != null){
 				String[] choices = {choice1,choice2,choice3};
-				controller.addQuestion(0, question, choices, correctAnswer);
+				controller.addQuestion(quizID,0, question, choices, correctAnswer);
 			}
 			req.setAttribute("question", req.getParameter("question"));
 			
@@ -112,6 +120,8 @@ public class QuizMakerServlet extends HttpServlet {
 			req.setAttribute("select1", req.getParameter("select1"));
 			req.setAttribute("select2", req.getParameter("select2"));
 			req.setAttribute("select3", req.getParameter("select3"));
+			
+			req.setAttribute("quizName",req.getParameter("quizName"));
 			
 			req.setAttribute("selectedMC", "selected"); // make MC the default
 			System.out.println("setting selectedMC=selected");
@@ -124,11 +134,11 @@ public class QuizMakerServlet extends HttpServlet {
 				result = "Please Enter A Question And Answer";
 			}else{
 				
-				controller.addQuestion( 1, FIBquestion,FIBAnswer,0);
+				controller.addQuestion( quizID, 1, FIBquestion,FIBAnswer,0);
 			}
 			req.setAttribute("FIBquestion", req.getParameter("FIBquestion"));
 			req.setAttribute("FIBAnswer", req.getParameter("FIBAnswer"));
-			
+			req.setAttribute("quizName",req.getParameter("quizName"));
 			req.setAttribute("selectedFIB", "selected"); // make FIB the default
 			System.out.println("setting selectedFIB=selected");
 		}

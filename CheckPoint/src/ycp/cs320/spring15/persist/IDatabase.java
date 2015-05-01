@@ -22,6 +22,8 @@ public interface IDatabase {
 	public int retquestnum(int QuizID);
 
 	// TODO
-	public Question addQuestion(Quiz quiz, int type, String question, String choices[], int correctAnswer);
-	
+	public Question addQuestion(int quizID, int type, String question, String choices[], int correctAnswer);
+	public int addQuiz(String quizName, User instructor, Course course);
+	public Quiz getQuiz(int ID);
+	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer);
 }

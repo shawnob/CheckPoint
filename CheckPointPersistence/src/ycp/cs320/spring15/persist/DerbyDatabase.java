@@ -260,9 +260,27 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public Question addQuestion(Quiz quiz, int type, String question,
+	public Question addQuestion(int quizID, int type, String question,
 			String[] choices, int correctAnswer) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int addQuiz(String quizName, User instructor, Course course) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Quiz getQuiz(int ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
