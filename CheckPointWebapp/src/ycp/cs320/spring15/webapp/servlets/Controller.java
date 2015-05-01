@@ -77,4 +77,9 @@ public class Controller {
 		return qnum;
 	}
 	
+	public int retquesttype() {
+		IDatabase db = DatabaseProvider.getInstance();
+		int qnum = db.retquesttype();
+		return qnum;
+	}
 }
