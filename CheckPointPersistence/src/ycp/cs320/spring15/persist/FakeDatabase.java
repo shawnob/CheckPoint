@@ -180,7 +180,10 @@ public class FakeDatabase implements IDatabase {
 
 	@Override
 	public Quiz createQuiz(String quizName, User instructor, Course course) {
-		// TODO Auto-generated method stub
-		return null;
+		Quiz questList2 = new Quiz(quizName);
+		this.userList.addUser(instructor);
+		this.courseList.add(course);
+		
+		return questList2;
 	}
 }
