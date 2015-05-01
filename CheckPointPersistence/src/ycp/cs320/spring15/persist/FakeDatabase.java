@@ -13,8 +13,10 @@ public class FakeDatabase implements IDatabase {
 	// TODO: fields
 	UserList userList = new UserList();
 	private List<Course> courseList;
-	Quiz questList1 = new Quiz("The Quiz");
-	private int questionListUniqueId = 0;
+	private int quizUniqueId = 0;
+	private int questionUniqueId = 0;
+	private List<Quiz> quizList;
+	
 
 	public FakeDatabase() {
 		// create arraylists
@@ -34,15 +36,15 @@ public class FakeDatabase implements IDatabase {
 		userList.addUser(new User("arthur", "dent", "firstname", "lastname", "arthur@checkpoint.com"));
 		userList.addUser(new User("slartibartfast", "42","firstname", "lastname", "slartibartfast@checkpoint.com"));
 		userList.addUser(new User("trillian", "42", "firstname", "lastname", "trillian@checkpoint.com"));
-
+		
 
 		//questList1.addQuestion(new Question(0, "quest", null, "ans"));
 
 		String[] choices = {"this one", "no this one", "Maybe this one"};
-		questList1.addQuestion(new Question(0, "quest", choices, 1));
 
 
 		courseList.add(new Course("cs320"));
+		//quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , null, 666));
 	}
 
 	/* returns null if none    match
@@ -108,30 +110,47 @@ public class FakeDatabase implements IDatabase {
 	///////////////////////////////
 	public Question addQuestion(int type, String question, String[] choices, int correctAnswer){
 		Question newQuestion = new Question(type,question,choices,correctAnswer);
-		questList1.addQuestion(newQuestion);
+		newQuestion.setUniqueID(questionUniqueId);
+		questionUniqueId++;
+		quizList.get(0).addQuestion(newQuestion);
 		return newQuestion;
 	}
 
 	//return questionList
-	public String retquest() {
+	public String retquest(int quizID) {
 		String test = "examplequestion";
-		if (questList1.getNumQuestions() > 0){
+		if (quizList.get(quizID).getNumQuestions() > 0){
 			return test;
 		}
 		return test;
 	}
 	
-	public int retquestnum() {
+	public int retquestnum(int quizID) {
 		int qnum = 1;
-		if (questList1.getNumQuestions() > 0){
+		if (quizList.get(quizID).getNumQuestions() > 0){
 			return qnum;
 		}
 		return qnum;
 	}
 
 	@Override
-	public Quiz createQuiz(String quizName, User instructor, Course course) {
-		// TODO Auto-generated method stub
-		return null;
+	public void createQuiz(String quizName, User instructor, Course course) {
+		
+		Quiz newQuiz = new Quiz("quizName", instructor, course, questionUniqueId);
+		newQuiz.setUniqueID(quizUniqueId);
+		quizList.add(newQuiz);
+		quizUniqueId++;
+	}
+
+	@Override
+	public Question addQuestion(Quiz quiz, int type, String question,
+			String[] choices, int correctAnswer) {
+		Question newQuestion = new Question(type, question, choices, correctAnswer);
+		
+		newQuestion.setUniqueID(questionUniqueId);
+		questionUniqueId++;
+		
+		quiz.addQuestion(newQuestion);
+		return newQuestion;
 	}
 }

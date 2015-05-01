@@ -15,13 +15,13 @@ public interface IDatabase {
 	
 	
 	// TODO:
-	public Quiz createQuiz(String quizName, User instructor, Course course);
+	public void createQuiz(String quizName, User instructor, Course course);
 	
-	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
-	public String retquest();
-	public int retquestnum();
+	//public Question addQuestion(int type, String question, String choices[], int correctAnswer);
+	public String retquest(int QuizID);
+	public int retquestnum(int QuizID);
 
 	// TODO
-	//public Question addQuestion(Quiz quiz, int type, String question, String choices[], int correctAnswer);
+	public Question addQuestion(Quiz quiz, int type, String question, String choices[], int correctAnswer);
 	
 }

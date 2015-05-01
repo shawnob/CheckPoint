@@ -1,7 +1,6 @@
 package ycp.cs320.spring15.webapp.servlets;
 
 import ycp.cs320.spring15.model.Course;
-import ycp.cs320.spring15.model.QuestionList;
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.IDatabase;
