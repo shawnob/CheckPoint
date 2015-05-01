@@ -242,26 +242,28 @@ public class DerbyDatabase implements IDatabase {
 
 	@Override
 	public Quiz createQuiz(String quizName, User instructor, Course course) {
-		// TODO Auto-generated method stub
+		Quiz quiz = new Quiz(quizName);
 		return null;
 	}
 
 	@Override
 	public Question addQuestion(int type, String question, String[] choices,
 			int correctAnswer) {
-		// TODO Auto-generated method stub
+		Question q = new Question(type, question, choices, correctAnswer);
 		return null;
 	}
 
 	@Override
 	public String retquest() {
-		// TODO Auto-generated method stub
-		return null;
+		IDatabase db = DatabaseProvider.getInstance();
+		String test = db.retquest();
+		return test;
 	}
 
 	@Override
 	public int retquestnum() {
-		// TODO Auto-generated method stub
-		return 0;
+		IDatabase db = DatabaseProvider.getInstance();
+		int qnum = db.retquestnum();
+		return qnum;
 	}
 }
