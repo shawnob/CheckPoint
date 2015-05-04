@@ -45,9 +45,7 @@
 		});
 	</script>
 	
-	#multipleChoiceQuestion, #fillInTheBlankQuestion {
-		display: none;
-	}
+	
 	</style>
 
 </head>
