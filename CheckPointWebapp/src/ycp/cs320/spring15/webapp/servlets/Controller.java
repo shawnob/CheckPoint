@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
+import ycp.cs320.spring15.persist.DBUtil;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.IDatabase;
 
@@ -75,6 +76,11 @@ public class Controller {
 		IDatabase db = DatabaseProvider.getInstance();
 		int qnum = db.retquestnum();
 		return qnum;
+	}
+
+	public boolean isUserTeacher(String username, String coursename) {
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.isUserTeacher(username, coursename);
 	}
 	
 }

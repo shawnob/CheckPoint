@@ -25,6 +25,7 @@ public interface IDatabase {
 	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
 	public String retquest();
 	public int retquestnum();
+	public boolean isUserTeacher(String username, String coursename);
 
 	// TODO
 	//public Question addQuestion(Quiz quiz, int type, String question, String choices[], int correctAnswer);
