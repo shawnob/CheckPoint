@@ -33,6 +33,7 @@ public class QuizTakerServlet extends HttpServlet {
 		
 		/////////
 		
+
 		String question = controller.retquest(0);
 		System.out.println("question=" + question);
 		int questionnum = controller.retquestnum(0);
@@ -41,6 +42,7 @@ public class QuizTakerServlet extends HttpServlet {
 		//If nothing is entered and by making an empty string
 		req.setAttribute("questionnum", questionnum);
 		req.setAttribute("question", question);
+		//req.setAttribute("type", type);
 		
 		
 		

@@ -1,5 +1,7 @@
 package ycp.cs320.spring15.webapp.servlets;
 
+import java.util.ArrayList;
+
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
@@ -29,10 +31,26 @@ public class Controller {
 		return db.searchUserByEmail(email);
 	}
 	
+	/////////////////////
+	/////Course/////////
+	///////////////////
+	
 	public Course findCourseByCourseName(String courseName)
 	{
 		IDatabase db = DatabaseProvider.getInstance();
 		return db.findCourse(courseName);
+	}
+	
+	public ArrayList<String> getStudentCourseListByUsername (String username)
+	{
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.getStudentCourseList(username);
+	}
+	
+	public ArrayList<String> getTeacherCourseListByUsername (String username)
+	{
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.getTeacherCourseList(username);
 	}
 
 	///////////////////////
@@ -55,8 +73,8 @@ public class Controller {
 	
 	public int retquestnum (int quizID){
 		IDatabase db = DatabaseProvider.getInstance();
-		int qnum = db.retquestnum(quizID);
-		return qnum;
+		int qnum = db.retquestnum(quizID, 0);//TODO FIX THIS
+		return 0;
 	}
 	public int addQuiz(String quizName, User instructor, Course course){
 		IDatabase db = DatabaseProvider.getInstance();
@@ -67,4 +85,9 @@ public class Controller {
 		return db.getQuiz(ID);
 	}
 	
+	public int retquesttype(int ID, int QuestionNum) {
+		IDatabase db = DatabaseProvider.getInstance();
+		int qnum = db.retquestnum(ID,QuestionNum);
+		return qnum;
+	}
 }

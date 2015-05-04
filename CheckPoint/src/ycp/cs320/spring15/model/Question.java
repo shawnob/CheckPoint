@@ -2,17 +2,17 @@ package ycp.cs320.spring15.model;
 
 public class Question {
 	//correct answers for multiple choice and fill in the blank
-	private int correctAnswer;
 	private int type;
-	private String[] choices;
-	private int UniqueID;
 	private String question;
-		
+	private String[] choices;
+	private int correctAnswer;
+	private int UniqueID;
+	
 	public Question(int type,String question,String choices[],int correctAnswer ){
 		this.type = type;
-		this.correctAnswer = correctAnswer; 
-		this.setChoices(choices);
 		this.question = question;
+		this.setChoices(choices);
+		this.correctAnswer = correctAnswer;
 	}
 	// Multiple Choice and Fill in the Blank respectively.
 

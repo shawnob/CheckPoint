@@ -32,9 +32,6 @@ public class QuizMakerServlet extends HttpServlet {
 		//Calls the login.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 		
-		//create quiz
-		//Controller controller = new Controller();
-		//quizID = controller.addQuiz("Fist Quiz", null, null);
 		
 	}
 	

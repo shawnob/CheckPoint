@@ -45,7 +45,6 @@
 		});
 	</script>
 	
-	<style>
 	#multipleChoiceQuestion, #fillInTheBlankQuestion {
 		display: none;
 	}
@@ -81,7 +80,8 @@
     <input type="checkbox" name="select3" value="${select3}">
     <input type="text" name="choice3" placeholder="Choice 3" value="${choice3}"/>
     
-    <input type="submit" onsubmit="return false" name="submit" class="login login-submit" value="Add New Question">
+    <input type="submit" name="submit" class="login login-submit" onsubmit="return false" value="Add New Question">
+
     <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
   </div>
   
@@ -90,7 +90,8 @@
   <input type="text" name="FIBquestion" placeholder="Question" value="${FIBquestion}"/>
   <input type="text" name="FIBAnswer" placeholder="Answer" value="${FIBAnswer}"/>
   
-  <input type="submit" onsubmit="return false" name="submit" class="login login-submit" value="Add New Question">
+
+  <input type="submit" name="submit" class="login login-submit" onsubmit="return false" value="Add New Question">
   <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
   </div>
   </form>

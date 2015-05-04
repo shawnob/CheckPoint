@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Question;
@@ -252,8 +253,9 @@ public class DerbyDatabase implements IDatabase {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
+
 	public int retquestnum(int quizID) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -282,5 +284,24 @@ public class DerbyDatabase implements IDatabase {
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean addQuestion(String question, String[] choices,
+			String correctAnswer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<String> getTeacherCourseList(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getStudentCourseList(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

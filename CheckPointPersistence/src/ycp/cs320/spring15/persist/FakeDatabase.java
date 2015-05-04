@@ -16,12 +16,14 @@ public class FakeDatabase implements IDatabase {
 	private int quizUniqueId = 0;
 	private int questionUniqueId = 0;
 	private List<Quiz> quizList;
-	
+	private ArrayList<CourseAssociation> userCourses;
+	private int questionListUniqueId = 0;
 
 	public FakeDatabase() {
 		// create arraylists
 		courseList = new ArrayList<>();
-
+		userCourses = new ArrayList<CourseAssociation>();
+		
 		//Users in database
 		userList.addUser(new User("shawn", "obrien", "shawn", "obrien", "shawn@checkpoint.com"));
 		userList.addUser(new User("benjamin", "newlin", "benjamin", "newlin", "benn@checkpoint.com"));
@@ -45,10 +47,21 @@ public class FakeDatabase implements IDatabase {
 		quizList = new ArrayList<Quiz>();
 
 		courseList.add(new Course("cs320"));
+
 		
 		
 		//quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
 		//quizList.get(0).addQuestion(new Question(1, "Whats your name", choices, questionUniqueId));
+
+		courseList.add(new Course("Truffles 101"));
+		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
+		courseList.add(new Course("Intro-to-Statistics-In-Improbability-Space"));
+		courseList.add(new Course("Life-the-Universe-and-Everything-242"));
+		
+		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
+		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbablility-Space", "zaphod", false));
+		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
+
 	}
 
 	/* returns null if none    match
@@ -81,6 +94,36 @@ public class FakeDatabase implements IDatabase {
 
 		}
 		return null;
+	}
+	
+	public ArrayList <String> getTeacherCourseList(String username)
+	{
+		ArrayList<String> clist = new ArrayList<String>();
+		for (int i = 0; i < userCourses.size(); i++)
+		{
+			String b = userCourses.get(i).getCoursenameWithConditions(username, true);
+			
+			if(b != null)
+			{
+				clist.add(b);
+			}
+		}
+		return clist;
+	}
+	
+	public ArrayList <String> getStudentCourseList(String username)
+	{
+		ArrayList<String> clist = new ArrayList<String>();
+		for (int i = 0; i < userCourses.size(); i++)
+		{
+			String b = userCourses.get(i).getCoursenameWithConditions(username, false);
+			
+			if(b != null)
+			{
+				clist.add(b);
+			}
+		}
+		return clist;
 	}
 
 
@@ -122,13 +165,6 @@ public class FakeDatabase implements IDatabase {
 
 	//return questionList
 	public String retquest(int quizID) {
-		/*
-		String test = "examplequestion";
-		if (quizList.get(quizID).getNumQuestions() > 0){
-			return quizList.get(quizID).getQuestion(0).getQuestion();
-		}
-		return test;
-		*/
 		Quiz quiz = getQuiz(quizID);
 		if (quiz == null) {
 			throw new IllegalStateException("No such quiz (id=" + quizID + ")");
@@ -137,20 +173,34 @@ public class FakeDatabase implements IDatabase {
 		return q.getQuestion();
 	}
 	
+
 	public int retquestnum(int quizID) {
 		int qnum = 1;
 		if (quizList.get(quizID).getNumQuestions() > 0){
+
 			return qnum;
 		}
 		return qnum;
 	}
+
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer){
 		
 			return quizList.get(quizID).getQuestion(0).CheckAnswer(FIBanswer, MCanswer);
 	}
 	
+	
+	public int retquesttype(int quizID, int questionNum) {
+		
+		return getQuiz(quizID).getQuestion(questionNum).getQuestionType();
+	}
+	@Override
+	public int retquestnum(int QuizID, int QuestionNum) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	@Override
+
 	public void createQuiz(String quizName, User instructor, Course course) {
 		
 		Quiz newQuiz = new Quiz("quizName", instructor, course, quizUniqueId);
@@ -190,4 +240,14 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
+
+	@Override
+	public boolean addQuestion(String question, String[] choices,
+			String correctAnswer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+
 }
