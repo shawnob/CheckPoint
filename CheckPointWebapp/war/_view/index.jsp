@@ -28,7 +28,7 @@
     <c:forEach  items ="${SCourses}" var="course">
 	<a href="${pageContext.servletContext.contextPath}/course/${course}"><c:out value="${course}"/></a><br>
 	</c:forEach></p>
-    
+
 	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a>
 	
 	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a>

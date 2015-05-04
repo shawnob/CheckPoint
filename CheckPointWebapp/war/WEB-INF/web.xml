@@ -77,7 +77,11 @@
   <filter-mapping>
     <filter-name>RequireLoginFilter</filter-name>
     <url-pattern>/index/*</url-pattern>
+    <url-pattern>/quiztaker/*</url-pattern>
+    <url-pattern>/quizmaker/*</url-pattern>
+    <url-pattern>/course/*</url-pattern>
   </filter-mapping>
+
   
   <listener>
     <listener-class>ycp.cs320.spring15.webapp.servlets.DatabaseInitListener</listener-class>
