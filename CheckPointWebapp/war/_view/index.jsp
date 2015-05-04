@@ -33,9 +33,6 @@
 	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
 	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a><br>
 	</div>
-	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a>
-	
-	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a>
 	
   <div class="index-task">
     <a href="http://localhost:8081/checkpoint/login">Log Out</a>
