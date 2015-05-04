@@ -96,4 +96,10 @@ public class Controller {
 		int qnum = db.retquestnum(ID,QuestionNum);
 		return qnum;
 	}
+
+	public String[] retquestchoices(int quizID, int questionNum) {
+		// TODO Auto-generated method stub
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.retquestchoices(quizID, questionNum);
+	}
 }

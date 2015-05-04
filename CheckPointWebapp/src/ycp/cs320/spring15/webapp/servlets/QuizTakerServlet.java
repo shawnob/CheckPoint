@@ -33,17 +33,18 @@ public class QuizTakerServlet extends HttpServlet {
 
 
 		String question = controller.retquest(questionID);
-		//System.out.println("question=" + question);
 		int questionnum = controller.retquestnum(questionID);
-		//System.out.println("questionnum=" + questionnum);
-		int type = controller.retquestnum(questionID);
+		int type = controller.retquesttype(questionID, questionnum);
+		String[] choices = controller.retquestchoices(questionID, questionnum);
 
 
-		//If nothing is entered and by making an empty string
+		req.setAttribute("choice1", choices[0]);
+		req.setAttribute("choice2", choices[1]);
+		req.setAttribute("choice3", choices[2]);
 		req.setAttribute("questionnum", questionnum);
 		req.setAttribute("question", question);
 		req.setAttribute("type", type);
-
+		
 
 
 		//Calls the login.jsp file containing the html and css

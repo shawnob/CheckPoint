@@ -172,16 +172,6 @@ public class FakeDatabase implements IDatabase {
 		Question q = quiz.getQuestion(0);
 		return q.getQuestion();
 	}
-	
-
-	public int retquestnum(int quizID) {
-		int qnum = 1;
-		if (quizList.get(quizID).getNumQuestions() > 0){
-
-			return qnum;
-		}
-		return qnum;
-	}
 
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer){
 		
@@ -193,6 +183,13 @@ public class FakeDatabase implements IDatabase {
 		
 		return getQuiz(quizID).getQuestion(questionNum).getQuestionType();
 	}
+	
+	public String[] retquestchoices(int quizID, int questionNum) {
+		
+		return getQuiz(quizID).getQuestion(questionNum).getChoices();
+	}
+	
+	
 	@Override
 	public int retquestnum(int QuizID, int QuestionNum) {
 		// TODO Auto-generated method stub
@@ -200,7 +197,6 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-
 	public void createQuiz(String quizName, User instructor, Course course) {
 		
 		Quiz newQuiz = new Quiz("quizName", instructor, course, quizUniqueId);
@@ -232,6 +228,7 @@ public class FakeDatabase implements IDatabase {
 		quizUniqueId++;
 		return quizUniqueId - 1;
 	}
+	
 	public Quiz getQuiz(int ID){
 		for (Quiz q : quizList) {
 			if (q.getUniqueID() == ID) {
