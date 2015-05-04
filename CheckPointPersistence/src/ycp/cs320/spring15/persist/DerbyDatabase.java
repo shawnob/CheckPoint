@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Question;
@@ -241,27 +242,66 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public Quiz createQuiz(String quizName, User instructor, Course course) {
+	public void createQuiz(String quizName, User instructor, Course course) {
+		// TODO Auto-generated method stub
+		return;
+	}
+
+
+	@Override
+	public String retquest(int quizID) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
-	public Question addQuestion(int type, String question, String[] choices,
-			int correctAnswer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public String retquest() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int retquestnum() {
+	public int retquestnum(int quizID) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public Question addQuestion(int quizID, int type, String question,
+			String[] choices, int correctAnswer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int addQuiz(String quizName, User instructor, Course course) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Quiz getQuiz(int ID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean addQuestion(String question, String[] choices,
+			String correctAnswer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<String> getTeacherCourseList(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getStudentCourseList(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

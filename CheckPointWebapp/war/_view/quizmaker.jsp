@@ -20,12 +20,17 @@
 			if (quizType === "MC") {
 				$("#multipleChoiceQuestion").css('display', 'block');
 				$("#fillInTheBlankQuestion").css('display', 'none');
+				
 			} else if (quizType === "FIB") {
 				$("#multipleChoiceQuestion").css('display', 'none');
 				$("#fillInTheBlankQuestion").css('display', 'block');
+				
+				
 			} else {
 				$("#multipleChoiceQuestion").css('display', 'none');
 				$("#fillInTheBlankQuestion").css('display', 'none');
+				
+				
 			}
 		}
 		
@@ -40,10 +45,7 @@
 		});
 	</script>
 	
-	<style>
-	#multipleChoiceQuestion, #fillInTheBlankQuestion {
-		display: none;
-	}
+	
 	</style>
 
 </head>
@@ -54,9 +56,13 @@
     <h1>CheckPoint</h1><br>
     <h2>Create A Quiz</h2>
   <form action="${pageContext.servletContext.contextPath}/quizmaker" method="post">
+  
+  	<div>
+  	<input type="text" name="quizName" placeholder="Name The Quiz" value="${QuizName}"/>
+  	</div>
     
     <select name = "questionType" id="quizTypeChooser">
-    	<option value="None" ${selectedNone}>Chose Type</option>
+    	<option value="None" ${selectedNone}>Chose Question Type</option>
   		<option value="MC" ${selectedMC}>Multiple Choice</option>
   		<option value="FIB" ${selectedFIB}>Fill In The Blank</option>
 	</select>
@@ -72,16 +78,18 @@
     <input type="checkbox" name="select3" value="${select3}">
     <input type="text" name="choice3" placeholder="Choice 3" value="${choice3}"/>
     
-    <input type="submit" name="submit" class="login login-submit" value="Add New Question">
+    <input type="submit" name="submit" class="login login-submit" onsubmit="return false" value="Add New Question">
+
     <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
   </div>
   
   <!-- form for fill in the blank question -->
   <div id="fillInTheBlankQuestion">
-  <input type="text" name="question" placeholder="Question" value="${FIBquestion}"/>
+  <input type="text" name="FIBquestion" placeholder="Question" value="${FIBquestion}"/>
   <input type="text" name="FIBAnswer" placeholder="Answer" value="${FIBAnswer}"/>
   
-  <input type="submit" name="submit" class="login login-submit" value="Add New Question">
+
+  <input type="submit" name="submit" class="login login-submit" onsubmit="return false" value="Add New Question">
   <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
   </div>
   </form>

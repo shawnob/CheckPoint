@@ -60,22 +60,30 @@ public class Controller {
 	public void questionList(User user, Course course){
 		
 	}
-	public boolean addQuestion(int type,String question,String[] choices,int correctAnswer){
+	public boolean addQuestion(int quizID, int type,String question,String[] choices,int correctAnswer){
 		IDatabase db = DatabaseProvider.getInstance();
-		db.addQuestion(type, question, choices, correctAnswer);
+		db.addQuestion(quizID, type, question, choices, correctAnswer);
 		return true;
 	}
 	
-	public String retquest (){
+	public String retquest (int quizID){
 		IDatabase db = DatabaseProvider.getInstance();
-		String test = db.retquest();
+		String test = db.retquest(quizID);
 		return test;
 	}
 	
-	public int retquestnum (){
+	public int retquestnum (int quizID){
 		IDatabase db = DatabaseProvider.getInstance();
-		int qnum = db.retquestnum();
-		return qnum;
+		int qnum = db.retquestnum(quizID, 0);//TODO FIX THIS
+		return 0;
+	}
+	public int addQuiz(String quizName, User instructor, Course course){
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.addQuiz(quizName, instructor, course);
+	}
+	public Quiz getQuiz(int ID){
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.getQuiz(ID);
 	}
 
 	public boolean isUserTeacher(String username, String coursename) {
@@ -83,4 +91,9 @@ public class Controller {
 		return db.isUserTeacher(username, coursename);
 	}
 	
+	public int retquesttype(int ID, int QuestionNum) {
+		IDatabase db = DatabaseProvider.getInstance();
+		int qnum = db.retquestnum(ID,QuestionNum);
+		return qnum;
+	}
 }

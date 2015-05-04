@@ -13,9 +13,10 @@ public class FakeDatabase implements IDatabase {
 	// TODO: fields
 	UserList userList = new UserList();
 	private List<Course> courseList;
-	private List<Question> quizList;
+	private int quizUniqueId = 0;
+	private int questionUniqueId = 0;
+	private List<Quiz> quizList;
 	private ArrayList<CourseAssociation> userCourses;
-	Quiz questList1 = new Quiz("The Quiz");
 	private int questionListUniqueId = 0;
 
 	public FakeDatabase() {
@@ -37,15 +38,21 @@ public class FakeDatabase implements IDatabase {
 		userList.addUser(new User("arthur", "dent", "firstname", "lastname", "arthur@checkpoint.com"));
 		userList.addUser(new User("slartibartfast", "42","firstname", "lastname", "slartibartfast@checkpoint.com"));
 		userList.addUser(new User("trillian", "42", "firstname", "lastname", "trillian@checkpoint.com"));
-
+		
 
 		//questList1.addQuestion(new Question(0, "quest", null, "ans"));
 
-		String[] choices = {"this one", "no this one", "Maybe this one"};
-		questList1.addQuestion(new Question(0, "quest", choices, 1));
+		//String[] choices = {"Marvin", "no this one", "Maybe this one"};
 
+		quizList = new ArrayList<Quiz>();
 
 		courseList.add(new Course("cs320"));
+
+		
+		
+		//quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
+		//quizList.get(0).addQuestion(new Question(1, "Whats your name", choices, questionUniqueId));
+
 		courseList.add(new Course("Truffles 101"));
 		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
 		courseList.add(new Course("Intro-to-Statistics-In-Improbability-Space"));
@@ -54,6 +61,7 @@ public class FakeDatabase implements IDatabase {
 		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
 		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbability-Space", "zaphod", false));
 		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
+
 	}
 
 	/* returns null if none    match
@@ -149,30 +157,87 @@ public class FakeDatabase implements IDatabase {
 	///////////////////////////////
 	public Question addQuestion(int type, String question, String[] choices, int correctAnswer){
 		Question newQuestion = new Question(type,question,choices,correctAnswer);
-		questList1.addQuestion(newQuestion);
+		newQuestion.setUniqueID(questionUniqueId);
+		questionUniqueId++;
+		quizList.get(0).addQuestion(newQuestion);
 		return newQuestion;
 	}
 
 	//return questionList
-	public String retquest() {
-		String test = "examplequestion";
-		if (questList1.getNumQuestions() > 0){
-			return test;
+	public String retquest(int quizID) {
+		Quiz quiz = getQuiz(quizID);
+		if (quiz == null) {
+			throw new IllegalStateException("No such quiz (id=" + quizID + ")");
 		}
-		return test;
+		Question q = quiz.getQuestion(0);
+		return q.getQuestion();
 	}
 	
-	public int retquestnum() {
+
+	public int retquestnum(int quizID) {
 		int qnum = 1;
-		if (questList1.getNumQuestions() > 0){
+		if (quizList.get(quizID).getNumQuestions() > 0){
+
 			return qnum;
 		}
 		return qnum;
 	}
 
+	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer){
+		
+			return quizList.get(quizID).getQuestion(0).CheckAnswer(FIBanswer, MCanswer);
+	}
+	
+	
+	public int retquesttype(int quizID, int questionNum) {
+		
+		return getQuiz(quizID).getQuestion(questionNum).getQuestionType();
+	}
 	@Override
-	public Quiz createQuiz(String quizName, User instructor, Course course) {
+	public int retquestnum(int QuizID, int QuestionNum) {
 		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+
+	public void createQuiz(String quizName, User instructor, Course course) {
+		
+		Quiz newQuiz = new Quiz("quizName", instructor, course, quizUniqueId);
+		newQuiz.setUniqueID(quizUniqueId);
+		quizList.add(newQuiz);
+		quizUniqueId++;
+	}
+
+	@Override
+	public Question addQuestion(int quizID, int type, String question,
+			String[] choices, int correctAnswer) {
+		Question newQuestion = new Question(type, question, choices, correctAnswer);
+		
+		newQuestion.setUniqueID(questionUniqueId);
+		questionUniqueId++;
+		//quizList.get(quizID).addQuestion(newQuestion);
+		
+		Quiz quiz = getQuiz(quizID);
+		quiz.addQuestion(newQuestion);
+		
+		return newQuestion;
+	}
+
+	@Override
+	public int addQuiz(String quizName, User instructor, Course course) {
+		Quiz newQuiz = new Quiz(quizName, instructor, course, quizUniqueId);
+		quizList.add(newQuiz);
+		System.out.printf("Added quiz %s with id=%d\n", newQuiz.getQuizName(), newQuiz.getUniqueID());
+		quizUniqueId++;
+		return quizUniqueId - 1;
+	}
+	public Quiz getQuiz(int ID){
+		for (Quiz q : quizList) {
+			if (q.getUniqueID() == ID) {
+				return q;
+			}
+		}
 		return null;
 	}
 

@@ -33,18 +33,16 @@ public class QuizTakerServlet extends HttpServlet {
 		
 		/////////
 		
-		String answer = req.getParameter("answer");
-		String question = controller.retquest();
-		int questionnum = controller.retquestnum();
-		
+
+		String question = controller.retquest(0);
+		System.out.println("question=" + question);
+		int questionnum = controller.retquestnum(0);
+		System.out.println("questionnum=" + questionnum);
 		
 		//If nothing is entered and by making an empty string
-		if (answer == null){
-			answer = "";
-		}
-		
 		req.setAttribute("questionnum", questionnum);
 		req.setAttribute("question", question);
+		//req.setAttribute("type", type);
 		
 		
 		
@@ -62,9 +60,20 @@ public class QuizTakerServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+		Controller controller = new Controller();
 		
 		System.out.println("doPostT called");
-
+		String answer = req.getParameter("answer");
+		System.out.println("answer=" + answer);
+		if(controller.getQuiz(0).getQuestion(0).CheckAnswer(answer, 0)){
+			req.setAttribute("result", "Correct!");
+		}else{
+			req.setAttribute("result", "Incorrect!");
+		}
+		
+		//req.setAttribute("errorMessage", errorMessage);
+		//req.setAttribute("result", result);
+		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);
 		// Decode form parameters and dispatch to controller
 		
 	}

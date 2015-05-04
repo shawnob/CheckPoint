@@ -2,15 +2,17 @@ package ycp.cs320.spring15.model;
 
 public class Question {
 	//correct answers for multiple choice and fill in the blank
-	private int correctAnswer;
 	private int type;
+	private String question;
 	private String[] choices;
+	private int correctAnswer;
 	private int UniqueID;
-		
+	
 	public Question(int type,String question,String choices[],int correctAnswer ){
 		this.type = type;
-		this.correctAnswer = correctAnswer; 
+		this.question = question;
 		this.setChoices(choices);
+		this.correctAnswer = correctAnswer;
 	}
 	// Multiple Choice and Fill in the Blank respectively.
 
@@ -48,6 +50,24 @@ public class Question {
 
 	public void setUniqueID(int uniqueID) {
 		UniqueID = uniqueID;
+	}
+
+	public boolean CheckAnswer(String FIBanswer, int MCAnswer) {
+		if(type == 0){
+			return MCAnswer == this.correctAnswer;
+		}else if (type == 1){
+			return FIBanswer == this.choices[0];
+		}else{
+			return false;
+		}
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 
 }
