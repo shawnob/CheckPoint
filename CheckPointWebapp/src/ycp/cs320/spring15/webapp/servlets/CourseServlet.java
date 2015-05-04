@@ -41,6 +41,10 @@ public class CourseServlet extends HttpServlet {
 		
 		req.setAttribute("courseName", coursePath);
 		
+		req.setAttribute("userIsTeacher", controller.isUserTeacher((String)req.getSession().getAttribute("username"), coursePath));
+		
+		req.getSession().setAttribute("CourseName", coursePath);
+		
 		//Calls the index.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/course.jsp").forward(req, resp);
 	}

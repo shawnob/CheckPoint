@@ -59,7 +59,7 @@ public class FakeDatabase implements IDatabase {
 		courseList.add(new Course("Life-the-Universe-and-Everything-242"));
 		
 		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
-		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbablility-Space", "zaphod", false));
+		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbability-Space", "zaphod", false));
 		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
 
 	}
@@ -248,6 +248,18 @@ public class FakeDatabase implements IDatabase {
 		return false;
 	}
 
-
-
+	@Override
+	public boolean isUserTeacher(String username, String coursename) {
+		
+		ArrayList<String> cList = getTeacherCourseList(username);
+		
+		for (int i = 0; i < cList.size(); i++)
+		{
+			if(cList.get(i).equals(coursename))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }

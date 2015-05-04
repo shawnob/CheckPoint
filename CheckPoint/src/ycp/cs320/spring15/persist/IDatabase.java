@@ -18,7 +18,13 @@ public interface IDatabase {
 	public ArrayList<String> getTeacherCourseList(String username);
 	public ArrayList<String> getStudentCourseList(String username);
 	
+	// TODO:
+	public Quiz createQuiz(String quizName, User instructor, Course course);
 	
+	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
+	public String retquest();
+	public int retquestnum();
+	public boolean isUserTeacher(String username, String coursename);
 
 	public void createQuiz(String quizName, User instructor, Course course);
 	
