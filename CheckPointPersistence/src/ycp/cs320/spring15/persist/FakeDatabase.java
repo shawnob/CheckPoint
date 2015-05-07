@@ -42,7 +42,7 @@ public class FakeDatabase implements IDatabase {
 
 		//questList1.addQuestion(new Question(0, "quest", null, "ans"));
 
-		//String[] choices = {"Marvin", "no this one", "Maybe this one"};
+		String[] choices = {"Marvin", "no this one", "Maybe this one"};
 
 		quizList = new ArrayList<Quiz>();
 
@@ -50,8 +50,8 @@ public class FakeDatabase implements IDatabase {
 
 		
 		
-		//quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
-		//quizList.get(0).addQuestion(new Question(1, "Whats your name", choices, questionUniqueId));
+		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
+		quizList.get(0).addQuestion(new Question(1, "Whats your name", choices, questionUniqueId));
 
 		courseList.add(new Course("Truffles 101"));
 		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
@@ -59,7 +59,7 @@ public class FakeDatabase implements IDatabase {
 		courseList.add(new Course("Life-the-Universe-and-Everything-242"));
 		
 		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
-		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbablility-Space", "zaphod", false));
+		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbability-Space", "zaphod", false));
 		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
 
 	}
@@ -172,16 +172,6 @@ public class FakeDatabase implements IDatabase {
 		Question q = quiz.getQuestion(0);
 		return q.getQuestion();
 	}
-	
-
-	public int retquestnum(int quizID) {
-		int qnum = 1;
-		if (quizList.get(quizID).getNumQuestions() > 0){
-
-			return qnum;
-		}
-		return qnum;
-	}
 
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer){
 		
@@ -193,6 +183,13 @@ public class FakeDatabase implements IDatabase {
 		
 		return getQuiz(quizID).getQuestion(questionNum).getQuestionType();
 	}
+	
+	public String[] retquestchoices(int quizID, int questionNum) {
+		
+		return getQuiz(quizID).getQuestion(questionNum).getChoices();
+	}
+	
+	
 	@Override
 	public int retquestnum(int QuizID, int QuestionNum) {
 		// TODO Auto-generated method stub
@@ -200,7 +197,6 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-
 	public void createQuiz(String quizName, User instructor, Course course) {
 		
 		Quiz newQuiz = new Quiz("quizName", instructor, course, quizUniqueId);
@@ -232,6 +228,7 @@ public class FakeDatabase implements IDatabase {
 		quizUniqueId++;
 		return quizUniqueId - 1;
 	}
+	
 	public Quiz getQuiz(int ID){
 		for (Quiz q : quizList) {
 			if (q.getUniqueID() == ID) {
@@ -248,6 +245,18 @@ public class FakeDatabase implements IDatabase {
 		return false;
 	}
 
-
-
+	@Override
+	public boolean isUserTeacher(String username, String coursename) {
+		
+		ArrayList<String> cList = getTeacherCourseList(username);
+		
+		for (int i = 0; i < cList.size(); i++)
+		{
+			if(cList.get(i).equals(coursename))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
 }
