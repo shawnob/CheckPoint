@@ -29,7 +29,7 @@
 	<a href="${pageContext.servletContext.contextPath}/course/${course}"><c:out value="${course}"/></a><br>
 	</c:forEach></p>
     
-    <div class = "quizOptionList">
+    <div class = "index-quizOptionList">
 	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
 	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a><br>
 	</div>

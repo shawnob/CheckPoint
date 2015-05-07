@@ -104,10 +104,19 @@ body {
   opacity: 1;
 }
 
-.quizOptionList {
+.index-quizOptionList {
 width: 70%;
+color: #fff;
 text-align: center;
 font-size: 20px;
+}
+
+.index-quizOptionList:hover {
+   /* border: 1px solid #939AA4; */
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #939AA4;
+  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#FF0000)); */
 }
 
 .index-task {
