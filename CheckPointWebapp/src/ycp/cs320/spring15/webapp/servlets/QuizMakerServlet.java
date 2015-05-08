@@ -30,7 +30,7 @@ public class QuizMakerServlet extends HttpServlet {
 		controller = new Controller();
 		// force user to choose the question type
 		req.setAttribute("selectedNone", "selected");
-		
+		req.setAttribute("questionNum",questionNum);
 		//Calls the login.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 		
@@ -146,8 +146,11 @@ public class QuizMakerServlet extends HttpServlet {
 		if(submitType.equals("Add New Question")){
 			
 			if(result == null){
-				req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 				questionNum++;
+				req.setAttribute("quizName",quizName);
+				req.setAttribute("questionNum",questionNum);
+				req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+				
 			}else{
 			req.setAttribute("errorMessage", errorMessage);
 			req.setAttribute("result", result);
