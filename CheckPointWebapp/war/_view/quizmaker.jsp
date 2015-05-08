@@ -56,7 +56,10 @@
     <h1>CheckPoint</h1><br>
     <h2>Create A Quiz</h2>
   <form action="${pageContext.servletContext.contextPath}/quizmaker" method="post">
-  
+  	<div>
+  	<h2>Quiz Name:${quizName}</h2>
+  	<h2>Quiz number:${questionNum}</h2>
+  	</div>
   	<div>
   	<input type="text" name="quizName" placeholder="Name The Quiz" value="${QuizName}"/>
   	</div>

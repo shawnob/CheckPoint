@@ -242,28 +242,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public void createQuiz(String quizName, User instructor, Course course) {
-		// TODO Auto-generated method stub
-		return;
-	}
-
-
-	@Override
-	public String retquest(int quizID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
-
-	public int retquestnum(int quizID) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Question addQuestion(int quizID, int type, String question,
-			String[] choices, int correctAnswer) {
+	public Quiz createQuiz(String quizName, User instructor, Course course) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -301,6 +280,44 @@ public class DerbyDatabase implements IDatabase {
 
 	@Override
 	public ArrayList<String> getStudentCourseList(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Question addQuestion(int type, String question, String[] choices,
+			int correctAnswer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isUserTeacher(String username, String coursename) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public String[] retquestchoices(int quizID, int questionNum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String retquest(int QuizID, int questionnum) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int retquestnum(int QuizID, int QuestionNum) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Question addQuestion(int quizID, int questionNum, int type,
+			String question, String[] choices, int correctAnswer) {
 		// TODO Auto-generated method stub
 		return null;
 	}
