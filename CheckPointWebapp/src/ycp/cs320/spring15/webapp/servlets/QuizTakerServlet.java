@@ -79,6 +79,7 @@ public class QuizTakerServlet extends HttpServlet {
 		System.out.println("3=" + select3);
 		
 		
+		
 		if(controller.getQuiz(0).getQuestion(0).CheckAnswer(answer, 0)){
 			req.setAttribute("result", "Correct!");
 		}else{
