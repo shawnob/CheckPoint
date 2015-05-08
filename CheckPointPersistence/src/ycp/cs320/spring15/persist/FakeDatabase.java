@@ -155,14 +155,14 @@ public class FakeDatabase implements IDatabase {
 	///////////////////////////////
 	////////Question Methods///////
 	///////////////////////////////
-	public Question addQuestion(int type,int questionNum, String question, String[] choices, int correctAnswer){
+	public Question addQuestion(int quizID,int type,int questionNum, String question, String[] choices, int correctAnswer){
 		Question newQuestion = new Question(type,questionNum,question,choices,correctAnswer);
 		newQuestion.setUniqueID(questionUniqueId);
 		questionUniqueId++;
-		quizList.get(questionUniqueId).addQuestion(newQuestion);
+		this.getQuiz(quizID).addQuestion(newQuestion);
 		return newQuestion;
 	}
-
+	
 	//return questionList
 	public String retquest(int quizID, int questionnum) {
 		Quiz quiz = getQuiz(quizID);
@@ -207,21 +207,6 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public Question addQuestion(int quizID, int type, String question,
-			String[] choices, int correctAnswer) {
-		Question newQuestion = new Question(type, question, choices, correctAnswer);
-		
-		newQuestion.setUniqueID(questionUniqueId);
-		questionUniqueId++;
-		//quizList.get(quizID).addQuestion(newQuestion);
-		
-		Quiz quiz = getQuiz(quizID);
-		quiz.addQuestion(newQuestion);
-		
-		return newQuestion;
-	}
-
-	@Override
 	public int addQuiz(String quizName, User instructor, Course course) {
 		Quiz newQuiz = new Quiz(quizName, instructor, course, quizUniqueId);
 		quizList.add(newQuiz);
@@ -258,6 +243,21 @@ public class FakeDatabase implements IDatabase {
 				return true;
 			}
 		}
+		return false;
+	}
+
+	@Override
+	public Question addQuestion(int type, String question, String[] choices,
+			int correctAnswer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }
