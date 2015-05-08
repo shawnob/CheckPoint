@@ -51,6 +51,7 @@ public class FakeDatabase implements IDatabase {
 		
 		
 		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
+
 		this.getQuiz(666).addQuestion(new Question(1,0, "Whats your name", choices, 0));
 
 		courseList.add(new Course("Truffles 101"));
