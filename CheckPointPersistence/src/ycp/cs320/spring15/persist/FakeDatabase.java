@@ -164,12 +164,12 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	//return questionList
-	public String retquest(int quizID) {
+	public String retquest(int quizID, int questionnum) {
 		Quiz quiz = getQuiz(quizID);
 		if (quiz == null) {
 			throw new IllegalStateException("No such quiz (id=" + quizID + ")");
 		}
-		Question q = quiz.getQuestion(0);
+		Question q = quiz.getQuestion(questionnum);
 		return q.getQuestion();
 	}
 
