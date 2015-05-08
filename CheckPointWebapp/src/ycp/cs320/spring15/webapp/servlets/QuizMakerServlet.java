@@ -20,12 +20,14 @@ import ycp.cs320.spring15.persist.IDatabase;
 public class QuizMakerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Integer quizID;
+	int questionNum = 0;
+	Controller controller;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
 		System.out.println("doGet called");
-		
+		controller = new Controller();
 		// force user to choose the question type
 		req.setAttribute("selectedNone", "selected");
 		
@@ -52,11 +54,12 @@ public class QuizMakerServlet extends HttpServlet {
 		boolean[] selected = {true,true,true};
 		boolean CreateNewQuiz = false;
 		int correctAnswer = 4;
-		Controller controller = new Controller();
+		
 		if(quizID == null){CreateNewQuiz = true;};
 		
 		String questionType = req.getParameter("questionType");
 		String quizName = req.getParameter("quizName");
+		String submitType = req.getParameter("submit");
 		if(CreateNewQuiz){
 			quizID = controller.addQuiz(quizName, controller.signIn("Marvin", "42"), new Course("CS320"));
 		}
@@ -106,7 +109,7 @@ public class QuizMakerServlet extends HttpServlet {
 			//Call Controller which is now in webapp.servlets
 			if(result != null){
 				String[] choices = {choice1,choice2,choice3};
-				controller.addQuestion(quizID,0, question, choices, correctAnswer);
+				controller.addQuestion(quizID,questionNum, 0, question, choices, correctAnswer);
 			}
 			req.setAttribute("question", req.getParameter("question"));
 			
@@ -131,7 +134,7 @@ public class QuizMakerServlet extends HttpServlet {
 				result = "Please Enter A Question And Answer";
 			}else{
 				
-				controller.addQuestion( quizID, 1, FIBquestion,FIBAnswer,0);
+				controller.addQuestion( quizID,questionNum, 1, FIBquestion,FIBAnswer,0);
 			}
 			req.setAttribute("FIBquestion", req.getParameter("FIBquestion"));
 			req.setAttribute("FIBAnswer", req.getParameter("FIBAnswer"));
@@ -139,14 +142,32 @@ public class QuizMakerServlet extends HttpServlet {
 			req.setAttribute("selectedFIB", "selected"); // make FIB the default
 			System.out.println("setting selectedFIB=selected");
 		}
-		// Add result objects as request attributes
-		if(result == null){
-			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
-		}else{
-		req.setAttribute("errorMessage", errorMessage);
-		req.setAttribute("result", result);
-		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+		
+		if(submitType.equals("Add New Question")){
+			
+			if(result == null){
+				req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+				questionNum++;
+			}else{
+			req.setAttribute("errorMessage", errorMessage);
+			req.setAttribute("result", result);
+			req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+			}
+			
+		}else if (submitType.equals("Finish Quiz")){
+			
+			if(result == null){
+				req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+				questionNum = 0;
+			}else{
+			req.setAttribute("errorMessage", errorMessage);
+			req.setAttribute("result", result);
+			req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+			}
+			
 		}
+		// Add result objects as request attributes
+		
 		/*User user =  controller.signIn(username, password);
 		if (user != null) {
 			// successful login
