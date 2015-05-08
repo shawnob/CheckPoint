@@ -30,11 +30,15 @@
 	</c:forEach></p>
 
     
-    <div class = "index-quizOptionList">
+    <div class = "index index-submit">
 	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
 	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a><br>
 	</div>
-
+	
+	<div class = "index index-submit">
+	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
+	</div>
+	
 
 	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a>
 	
