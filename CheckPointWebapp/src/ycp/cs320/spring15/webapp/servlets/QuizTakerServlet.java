@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.FakeDatabase;
@@ -39,6 +41,7 @@ public class QuizTakerServlet extends HttpServlet {
 		String question = controller.retquest(quizID, questionnum);
 		int type = controller.retquesttype(quizID, questionnum);
 		String[] choices = controller.retquestchoices(quizID, questionnum);
+		
 
 
 		req.setAttribute("choice1", choices[0]);
@@ -47,6 +50,9 @@ public class QuizTakerServlet extends HttpServlet {
 		req.setAttribute("questionnum", questionnum);
 		req.setAttribute("question", question);
 		req.setAttribute("type", type);
+		
+		
+		//req.setAttribute("answer", answer);
 		
 		questionnum++;
 
@@ -63,7 +69,16 @@ public class QuizTakerServlet extends HttpServlet {
 
 		System.out.println("doPostT called");
 		String answer = req.getParameter("answer");
+		String select1 = req.getParameter("select1");
+		String select2 = req.getParameter("select2");
+		String select3 = req.getParameter("select3");
+		
 		System.out.println("answer=" + answer);
+		System.out.println("1=" + select1);
+		System.out.println("2=" + select2);
+		System.out.println("3=" + select3);
+		
+		
 		if(controller.getQuiz(0).getQuestion(0).CheckAnswer(answer, 0)){
 			req.setAttribute("result", "Correct!");
 		}else{
