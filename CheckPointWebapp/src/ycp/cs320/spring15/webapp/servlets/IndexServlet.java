@@ -26,7 +26,7 @@ public class IndexServlet extends HttpServlet {
 		
 		if (req.getSession().getAttribute("user") instanceof User && req.getSession().getAttribute("user") != null)
 		{
-			User usey = (User)(req.getSession().getAttribute("user"));
+			User user = (User)(req.getSession().getAttribute("user"));
 			String uname = (String)(req.getSession().getAttribute("username"));
 			req.setAttribute("useyName", uname);
 			System.out.println(uname + " has logged in");
