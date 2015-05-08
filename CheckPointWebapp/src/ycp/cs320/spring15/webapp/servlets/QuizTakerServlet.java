@@ -21,21 +21,24 @@ import ycp.cs320.spring15.persist.IDatabase;
 
 public class QuizTakerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private int questionnum = 0;
 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
 		System.out.println("doGetT called");
+		System.out.println(questionnum);
 		Controller controller = new Controller();
 
-		int questionID = 666;
+		int quizID = 666;
 
-
-		String question = controller.retquest(questionID);
-		int questionnum = controller.retquestnum(questionID);
-		int type = controller.retquesttype(questionID, questionnum);
-		String[] choices = controller.retquestchoices(questionID, questionnum);
+		//int questionnum = controller.retquestnum(quizID);
+		String question = controller.retquest(quizID, questionnum);
+		int type = controller.retquesttype(quizID, questionnum);
+		String[] choices = controller.retquestchoices(quizID, questionnum);
 
 
 		req.setAttribute("choice1", choices[0]);
@@ -45,7 +48,7 @@ public class QuizTakerServlet extends HttpServlet {
 		req.setAttribute("question", question);
 		req.setAttribute("type", type);
 		
-
+		questionnum++;
 
 		//Calls the login.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);

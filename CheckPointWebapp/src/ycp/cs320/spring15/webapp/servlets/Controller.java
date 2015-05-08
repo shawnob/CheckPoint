@@ -66,9 +66,9 @@ public class Controller {
 		return true;
 	}
 	
-	public String retquest (int quizID){
+	public String retquest (int quizID, int questionnum){
 		IDatabase db = DatabaseProvider.getInstance();
-		String test = db.retquest(quizID);
+		String test = db.retquest(quizID, questionnum);
 		return test;
 	}
 	

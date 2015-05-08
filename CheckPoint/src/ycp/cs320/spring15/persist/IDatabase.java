@@ -27,7 +27,7 @@ public interface IDatabase {
 
 	
 	//public Question addQuestion(int type, String question, String choices[], int correctAnswer);
-	public String retquest(int QuizID);
+	public String retquest(int QuizID, int questionnum);
 	public int retquestnum(int QuizID, int QuestionNum);
 
 	public Question addQuestion(int quizID,int questionNum, int type, String question, String choices[], int correctAnswer);
