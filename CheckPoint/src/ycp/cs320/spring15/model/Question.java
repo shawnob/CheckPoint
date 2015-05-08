@@ -7,12 +7,14 @@ public class Question {
 	private String[] choices;
 	private int correctAnswer;
 	private int UniqueID;
+	private int index;
 	
-	public Question(int type,String question,String choices[],int correctAnswer ){
+	public Question(int type,int questionNum,String question,String choices[],int correctAnswer){
 		this.type = type;
 		this.question = question;
 		this.setChoices(choices);
 		this.correctAnswer = correctAnswer;
+		this.index = questionNum;
 	}
 	// Multiple Choice and Fill in the Blank respectively.
 
@@ -68,6 +70,14 @@ public class Question {
 
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 }

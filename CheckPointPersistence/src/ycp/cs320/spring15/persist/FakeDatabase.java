@@ -51,7 +51,8 @@ public class FakeDatabase implements IDatabase {
 		
 		
 		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
-		this.getQuiz(666).addQuestion(new Question(1, "Whats your name", choices, 0));
+
+		this.getQuiz(666).addQuestion(new Question(1,0, "Whats your name", choices, 0));
 
 		courseList.add(new Course("Truffles 101"));
 		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
@@ -155,11 +156,11 @@ public class FakeDatabase implements IDatabase {
 	///////////////////////////////
 	////////Question Methods///////
 	///////////////////////////////
-	public Question addQuestion(int type, String question, String[] choices, int correctAnswer){
-		Question newQuestion = new Question(type,question,choices,correctAnswer);
+	public Question addQuestion(int type,int questionNum, String question, String[] choices, int correctAnswer){
+		Question newQuestion = new Question(type,questionNum,question,choices,correctAnswer);
 		newQuestion.setUniqueID(questionUniqueId);
 		questionUniqueId++;
-		quizList.get(0).addQuestion(newQuestion);
+		quizList.get(questionUniqueId).addQuestion(newQuestion);
 		return newQuestion;
 	}
 
@@ -173,9 +174,9 @@ public class FakeDatabase implements IDatabase {
 		return q.getQuestion();
 	}
 
-	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer){
+	public boolean checkAnswer(int quizID,int questionNum, String FIBanswer, int MCanswer){
 		
-			return quizList.get(quizID).getQuestion(0).CheckAnswer(FIBanswer, MCanswer);
+			return this.getQuiz(quizID).getQuestion(questionNum).CheckAnswer(FIBanswer, MCanswer);
 	}
 	
 	
@@ -197,12 +198,13 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public void createQuiz(String quizName, User instructor, Course course) {
+	public Quiz createQuiz(String quizName, User instructor, Course course) {
 		
 		Quiz newQuiz = new Quiz("quizName", instructor, course, quizUniqueId);
 		newQuiz.setUniqueID(quizUniqueId);
 		quizList.add(newQuiz);
 		quizUniqueId++;
+		return newQuiz;
 	}
 
 	@Override
