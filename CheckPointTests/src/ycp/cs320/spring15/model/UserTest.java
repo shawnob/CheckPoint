@@ -6,21 +6,20 @@ package ycp.cs320.spring15.model;
 
 
 import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 
 public class UserTest {
-	/*
+	
 	private User user1;
 	private User user2;
 	private User user3;
 	
 	@Before
 	public void setUp() {
-		user1 = new User("testuser", "mypassword");
-		user2 = new User("zaphod", "beeblebrox");
-		user3 = new User("arthur", "dent");
+		user1 = new User("testuser", "mypassword", "bob", "dylan", "yes@ycp.edu");
+		user2 = new User("zaphod", "beeblebrox", "noname", "mcgee", "ceo@google.com");
+		user3 = new User("arthur", "dent", "arthur", "dent", "dogsleepingonmyfloor@zackshouse.com");
 	}
 	
 	@Test
@@ -46,5 +45,5 @@ public class UserTest {
 		user3.setPassword("slartibartfast");
 		assertEquals("slartibartfast", user3.getPassword());
 	}
-	*/
+	
 }
