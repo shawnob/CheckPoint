@@ -8,7 +8,7 @@ import ycp.cs320.spring15.model.Question;
 import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
 
-public class FakeDatabase implements IDatabase {
+public abstract class FakeDatabase implements IDatabase {
 
 	// TODO: fields
 	UserList userList = new UserList();

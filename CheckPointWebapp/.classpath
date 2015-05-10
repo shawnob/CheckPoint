@@ -3,9 +3,14 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" output="bin" path="main"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/CS320_Jetty"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CheckPoint"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CheckPointPersistence"/>
+	<classpathentry kind="lib" path="C:/Users/Zack/Downloads/CS320_Derby/lib/derby.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Zack/Downloads/CS320_Derby/lib/derbyclient.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Zack/Downloads/CS320_Derby/lib/derbynet.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Zack/Downloads/CS320_Derby/lib/derbyrun.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Zack/Downloads/CS320_Derby/lib/derbytools.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Zack/Downloads/javax.servlet-api-3.1.0.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
