@@ -1,4 +1,4 @@
-//Note to self: Eclemma
+//Finished//
 
 package ycp.cs320.spring15.model;
 
@@ -68,7 +68,57 @@ public class QuizTest {
 	}
 	
 	@Test
-	public void test() {
-		
+	public void testSetQuizName() {
+		quiz1.setQuizName("favorite songs");
+		assertEquals("favorite songs",quiz1.getQuizName());
+		quiz2.setQuizName("how to train your dragon");
+		assertEquals("how to train your dragon",quiz2.getQuizName());
+		quiz3.setQuizName("no");
+		assertEquals("no",quiz3.getQuizName());
+	}
+	
+	@Test
+	public void testGetQuizName() {
+		assertEquals("UML mult. choice",quiz1.getQuizName());
+		assertEquals("Meaning of Life: Fill in the Blank",quiz2.getQuizName());
+		assertEquals("Index error test",quiz3.getQuizName());
+	}
+	
+	@Test
+	public void testGetNumQuestions() {
+		assertEquals(2, quiz1.getNumQuestions());
+		assertEquals(1, quiz2.getNumQuestions());
+		assertEquals(1, quiz3.getNumQuestions());
+	}
+	
+	@Test
+	public void testGetTeacher() {
+		assertEquals(teacher, quiz1.getTeacher());
+		assertEquals(teacher, quiz2.getTeacher());
+		assertEquals(teacher, quiz3.getTeacher());
+	}
+	
+	@Test
+	public void getUniqueID() {
+		assertEquals(0, quiz1.getUniqueID());
+		assertEquals(1, quiz2.getUniqueID());
+		assertEquals(2, quiz3.getUniqueID());
+	}
+	
+	@Test
+	public void setUniqueID() {
+		quiz1.setUniqueID(62);
+		assertEquals(62, quiz1.getUniqueID());
+		quiz2.setUniqueID(3);
+		assertEquals(3, quiz2.getUniqueID());
+		quiz3.setUniqueID(98);
+		assertEquals(98, quiz3.getUniqueID());
+	}
+	
+	@Test
+	public void testGetCourse() {
+		assertEquals(CS320, quiz1.getCourse());
+		assertEquals(CS320, quiz2.getCourse());
+		assertEquals(CS320, quiz3.getCourse());
 	}
 }
