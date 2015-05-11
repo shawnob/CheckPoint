@@ -31,4 +31,8 @@ public interface IDatabase {
 	public Quiz getQuiz(int ID);
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer);
 	int addQuiz(String quizName, User instructor, String course);
+	public void addCourseAssociation(String username, String coursename, boolean isTeacher);
+	public boolean userExists(String username);
+	public boolean isStudentInClass(String username, String coursename);
+
 }

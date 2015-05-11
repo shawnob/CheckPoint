@@ -53,6 +53,30 @@ public class Controller {
 		IDatabase db = DatabaseProvider.getInstance();
 		return db.getTeacherCourseList(username);
 	}
+	
+	public int addStudentToCourse(String cName, String student)
+	{
+		//returns 0 as generic failure, 1 as success, 2 as student already added and 3 as student does not exist
+		IDatabase db = DatabaseProvider.getInstance();
+		
+		if(!db.userExists(student))
+		{
+			return 3;
+		}
+		
+		if (db.isUserTeacher(student, cName) || db.isStudentInClass(student, cName))
+		{
+			return 2;
+		}
+		
+		db.addCourseAssociation(student, cName, false);
+		
+		if(db.isStudentInClass(student, cName))
+		{
+			return 1;
+		}
+		return 0;
+	}
 
 	///////////////////////
 	/////Questions/////////

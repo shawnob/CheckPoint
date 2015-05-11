@@ -27,19 +27,27 @@
   <servlet>
     <servlet-name>QuizMakerServlet</servlet-name>
     <servlet-class>ycp.cs320.spring15.webapp.servlets.QuizMakerServlet</servlet-class>
-  </servlet>
+  </servlet><servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
   
   <servlet>
     <servlet-name>QuizTakerServlet</servlet-name>
     <servlet-class>ycp.cs320.spring15.webapp.servlets.QuizTakerServlet</servlet-class>
   </servlet>
+  
+<servlet>
+    <servlet-name>QuizTakerServlet</servlet-name>
+    <servlet-class>ycp.cs320.spring15.webapp.servlets.QuizTakerServlet</servlet-class>
+  </servlet>
+	<servlet>
+		<servlet-name>courseSettingsServlet</servlet-name>
+		<servlet-class>ycp.cs320.spring15.webapp.servlets.CourseSettingsServlet</servlet-class>
+	</servlet>
 
-
-  <!-- Servlet mappings -->
-  <servlet-mapping>
-    <servlet-name>IndexServlet</servlet-name>
-    <url-pattern>/index</url-pattern>
-  </servlet-mapping>
+	<!-- Servlet mappings -->
+  
   <servlet-mapping>
   	<servlet-name>CourseServlet</servlet-name>
   	<url-pattern>/course/*</url-pattern>
@@ -64,7 +72,11 @@
     <servlet-name>QuizTakerServlet</servlet-name>
     <url-pattern>/quiztaker</url-pattern>
   </servlet-mapping>
-  
+  <servlet-mapping>
+  	<servlet-name>courseSettingsServlet</servlet-name>
+  	<url-pattern>/courseSettings/*</url-pattern>
+  </servlet-mapping>
+
   <filter>
     <filter-name>RequireLoginFilter</filter-name>
     <filter-class>ycp.cs320.spring15.webapp.servlets.RequireLoginFilter</filter-class>

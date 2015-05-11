@@ -321,4 +321,23 @@ public class DerbyDatabase implements IDatabase {
 		return null;
 
 	}
+
+	@Override
+	public void addCourseAssociation(String username, String coursename,
+			boolean isTeacher) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean userExists(String username) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isStudentInClass(String username, String coursename) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
