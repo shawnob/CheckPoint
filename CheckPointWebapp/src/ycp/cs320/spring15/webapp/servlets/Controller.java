@@ -77,7 +77,7 @@ public class Controller {
 		int qnum = db.retquestnum(quizID, 0);//TODO FIX THIS
 		return 0;
 	}
-	public int addQuiz(String quizName, User instructor, Course course){
+	public int addQuiz(String quizName, User instructor, String course){
 		IDatabase db = DatabaseProvider.getInstance();
 		return db.addQuiz(quizName, instructor, course);
 	}

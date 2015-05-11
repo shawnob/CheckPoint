@@ -26,14 +26,14 @@ public class ControllerTest {
 	
 	private User userTest;
 	
-	private Course course;
+	private String course;
 	
 	@Before
 	public void setUp() {
 		listTest = new UserList();
 		contTest = new Controller();
 		userTest = new User("username","password","firstname","lastname","email");
-		course = new Course("Calculus 3");
+		course =  "Calculus 3";
 		
 		listTest.addUser(userTest);
 

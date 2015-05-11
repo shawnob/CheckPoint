@@ -241,11 +241,6 @@ public class DerbyDatabase implements IDatabase {
 		System.out.println("Success!");
 	}
 
-	@Override
-	public Quiz createQuiz(String quizName, User instructor, Course course) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public int retquestnum(int quizID) {
 		// TODO Auto-generated method stub
@@ -253,7 +248,7 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public int addQuiz(String quizName, User instructor, Course course) {
+	public int addQuiz(String quizName, User instructor, String course) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

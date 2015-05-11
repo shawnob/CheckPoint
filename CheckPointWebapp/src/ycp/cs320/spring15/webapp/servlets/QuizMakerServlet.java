@@ -23,6 +23,8 @@ public class QuizMakerServlet extends HttpServlet {
 	private Integer quizID;
 	int questionNum = 0;
 	Controller controller;
+	User teacher;
+	String course;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -32,8 +34,13 @@ public class QuizMakerServlet extends HttpServlet {
 		// force user to choose the question type
 		req.setAttribute("selectedNone", "selected");
 		req.setAttribute("questionNum",questionNum);
+		
+		teacher = (User)req.getSession().getAttribute("User");
+		course = (String)req.getSession().getAttribute("CourseName");
+		
 		//Calls the login.jsp file containing the html and css
 		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+		
 		
 		
 	}
@@ -63,7 +70,7 @@ public class QuizMakerServlet extends HttpServlet {
 		String submitType = req.getParameter("submit");
 		
 		if(CreateNewQuiz){
-			quizID = controller.addQuiz(quizName, controller.signIn("Marvin", "42"), new Course("CS320"));
+			quizID = controller.addQuiz(quizName, this.teacher, this.course);
 		}
 		//If nothing is entered and by making an empty string
 		if(questionType.equals("MC")){

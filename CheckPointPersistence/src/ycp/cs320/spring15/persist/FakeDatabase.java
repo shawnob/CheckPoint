@@ -50,7 +50,7 @@ public class FakeDatabase implements IDatabase {
 
 		
 		
-		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
+		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") ,"cs320" , 666));
 		
 		//short answer questions
 		this.getQuiz(666).addQuestion(new Question(0,0, "Whats your name", null, 5));
@@ -205,17 +205,7 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public Quiz createQuiz(String quizName, User instructor, Course course) {
-		
-		Quiz newQuiz = new Quiz("quizName", instructor, course, quizUniqueId);
-		newQuiz.setUniqueID(quizUniqueId);
-		quizList.add(newQuiz);
-		quizUniqueId++;
-		return newQuiz;
-	}
-
-	@Override
-	public int addQuiz(String quizName, User instructor, Course course) {
+	public int addQuiz(String quizName, User instructor, String course) {
 		Quiz newQuiz = new Quiz(quizName, instructor, course, quizUniqueId);
 		quizList.add(newQuiz);
 		System.out.printf("Added quiz %s with id=%d\n", newQuiz.getQuizName(), newQuiz.getUniqueID());
@@ -259,22 +249,11 @@ public class FakeDatabase implements IDatabase {
 			int correctAnswer) {
 		return null;
 	}
-//
-//	@Override
-//	public String retquest() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	@Override
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-//	@Override
-//	public int retquestnum() {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
+
 }
