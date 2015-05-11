@@ -7,16 +7,16 @@ public class Quiz {
 	private String quizName;
 	private ArrayList<Question> questionList;
 	private User Teacher;
-	private Course course;
+	private String course;
 	private int UniqueID;
 	
 	
 
-	public Quiz(String quizName, User Teacher, Course course, int UniqueID ){
+	public Quiz(String quizName, User Teacher, String course, int UniqueID ){
 		this.quizName = quizName;
 		questionList = new ArrayList<Question>();
-		this.setTeacher(Teacher);
-		this.setCourse(course);
+		this.Teacher = Teacher;
+		this.course = course;
 		this.UniqueID = UniqueID;
 		
 	}
@@ -50,11 +50,11 @@ public class Quiz {
 		Teacher = teacher;
 	}
 
-	public Course getCourse() {
+	public String getCourse() {
 		return course;
 	}
 
-	public void setCourse(Course course) {
+	public void setCourse(String course) {
 		this.course = course;
 	}
 

@@ -1,5 +1,7 @@
 package ycp.cs320.spring15.model;
 
+//Finished//
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -7,8 +9,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CourseTest {       //init test variables
-	/*
+public class CourseTest {
+	
 	private Course course1;
 	private ArrayList<String> StudentListtest1 = new ArrayList<String>();
 	private ArrayList<String> TeacherListtest1 = new ArrayList<String>();
@@ -21,12 +23,15 @@ public class CourseTest {       //init test variables
 		
 		course1 = new Course(null);
 		course1.courseName = "math";
-		course1.StudentList = StudentListtest1;
-		course1.TeacherList = TeacherListtest1;
 		
 	}
 	
+	@Test
 	
+	public void testGetCourseName() {
+		assertEquals("math", course1.getCourseName());
+	}
+	/*
 	@Test
 	public void testisOnStudentList() {        //test if students are on the list
 		assertEquals(true, course1.isOnStudentList("brad"));

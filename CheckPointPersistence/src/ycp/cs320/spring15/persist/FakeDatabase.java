@@ -50,7 +50,7 @@ public class FakeDatabase implements IDatabase {
 
 		
 		
-		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
+		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") ,"cs320" , 666));
 		
 		//short answer questions
 		this.getQuiz(666).addQuestion(new Question(0,0, "Whats your name", null, 5));
@@ -69,6 +69,7 @@ public class FakeDatabase implements IDatabase {
 		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
 		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbability-Space", "zaphod", false));
 		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
+		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "marvin", true));
 
 	}
 
@@ -205,17 +206,7 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public Quiz createQuiz(String quizName, User instructor, Course course) {
-		
-		Quiz newQuiz = new Quiz("quizName", instructor, course, quizUniqueId);
-		newQuiz.setUniqueID(quizUniqueId);
-		quizList.add(newQuiz);
-		quizUniqueId++;
-		return newQuiz;
-	}
-
-	@Override
-	public int addQuiz(String quizName, User instructor, Course course) {
+	public int addQuiz(String quizName, User instructor, String course) {
 		Quiz newQuiz = new Quiz(quizName, instructor, course, quizUniqueId);
 		quizList.add(newQuiz);
 		System.out.printf("Added quiz %s with id=%d\n", newQuiz.getQuizName(), newQuiz.getUniqueID());
@@ -253,19 +244,42 @@ public class FakeDatabase implements IDatabase {
 		}
 		return false;
 	}
+	
+	public void addCourseAssociation(String username, String coursename, boolean isTeacher)
+	{
+		userCourses.add(new CourseAssociation(coursename, username, isTeacher));
+	}
+	
+	public boolean userExists(String username)
+	{
+		return userList.containsUser(username);
+	}
+	
+	public boolean isStudentInClass(String username, String coursename)
+	{
+		ArrayList<String> studentCList = getStudentCourseList(username);
+		
+		for (int i = 0; i < studentCList.size(); i++)
+		{
+			if(studentCList.get(i).equals(coursename))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 	@Override
 	public Question addQuestion(int type, String question, String[] choices,
 			int correctAnswer) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 	@Override
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 }

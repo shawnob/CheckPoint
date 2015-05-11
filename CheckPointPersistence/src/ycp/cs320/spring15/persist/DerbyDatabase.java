@@ -241,14 +241,14 @@ public class DerbyDatabase implements IDatabase {
 		System.out.println("Success!");
 	}
 
-	@Override
-	public Quiz createQuiz(String quizName, User instructor, Course course) {
+	
+	public int retquestnum(int quizID) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public int addQuiz(String quizName, User instructor, Course course) {
+	public int addQuiz(String quizName, User instructor, String course) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -284,7 +284,6 @@ public class DerbyDatabase implements IDatabase {
 		return null;
 	}
 
-	@Override
 	public Question addQuestion(int type, String question, String[] choices,
 			int correctAnswer) {
 		// TODO Auto-generated method stub
@@ -320,5 +319,25 @@ public class DerbyDatabase implements IDatabase {
 			String question, String[] choices, int correctAnswer) {
 		// TODO Auto-generated method stub
 		return null;
+
+	}
+
+	@Override
+	public void addCourseAssociation(String username, String coursename,
+			boolean isTeacher) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean userExists(String username) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isStudentInClass(String username, String coursename) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

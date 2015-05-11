@@ -18,9 +18,6 @@ public interface IDatabase {
 	public ArrayList<String> getTeacherCourseList(String username);
 	public ArrayList<String> getStudentCourseList(String username);
 	
-	// TODO:
-	public Quiz createQuiz(String quizName, User instructor, Course course);
-	
 	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
 	public boolean isUserTeacher(String username, String coursename);
 	public String[] retquestchoices(int quizID, int questionNum);
@@ -31,7 +28,11 @@ public interface IDatabase {
 	public int retquestnum(int QuizID, int QuestionNum);
 
 	public Question addQuestion(int quizID,int questionNum, int type, String question, String choices[], int correctAnswer);
-	public int addQuiz(String quizName, User instructor, Course course);
 	public Quiz getQuiz(int ID);
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer);
+	int addQuiz(String quizName, User instructor, String course);
+	public void addCourseAssociation(String username, String coursename, boolean isTeacher);
+	public boolean userExists(String username);
+	public boolean isStudentInClass(String username, String coursename);
+
 }
