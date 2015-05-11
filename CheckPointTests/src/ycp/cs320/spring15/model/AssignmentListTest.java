@@ -11,19 +11,17 @@ import org.junit.Test;
 
 public class AssignmentListTest {
 	
-	private AssignmentList aList1;
-	private AssignmentList aList2;
-	private AssignmentList aList3;
+	private AssignmentList aList;
+	
+	ArrayList<Assignment> assignmentList = new ArrayList<Assignment>();
 	
 	private Assignment testAssignment1;
 	private Assignment testAssignment2;
 	private Assignment testAssignment3;
 	
 	@Before
-	public void setUp() {
-		aList1 = new AssignmentList();
-		aList2 = new AssignmentList();
-		aList3 = new AssignmentList();
+	public void setUp() {		
+		aList = new AssignmentList();
 		
 		testAssignment1 = new Assignment();
 		testAssignment1.setNumberOfQuestions(3);
@@ -36,12 +34,16 @@ public class AssignmentListTest {
 		testAssignment3 = new Assignment();
 		testAssignment3.setNumberOfQuestions(4);
 		testAssignment3.setAssignmentName("How to sleep");
+		
+		assignmentList.add(testAssignment1);
+		assignmentList.add(testAssignment2);
+		assignmentList.add(testAssignment3);
 	}
 	
 	
 	//There were no ways to add to AssignmentList
 	@Test
 	public void testGetAssignment() {
-
+		assertEquals(null, aList.getAssignment("Meaning of Life"));
 	}
 }
