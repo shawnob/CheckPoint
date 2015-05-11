@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
+import ycp.cs320.spring15.persist.DBUtil;
 import ycp.cs320.spring15.persist.DatabaseProvider;
 import ycp.cs320.spring15.persist.IDatabase;
 
@@ -59,15 +60,15 @@ public class Controller {
 	public void questionList(User user, Course course){
 		
 	}
-	public boolean addQuestion(int quizID, int type,String question,String[] choices,int correctAnswer){
+	public boolean addQuestion(int quizID,int questionNum, int type,String question,String[] choices,int correctAnswer){
 		IDatabase db = DatabaseProvider.getInstance();
-		db.addQuestion(quizID, type, question, choices, correctAnswer);
+		db.addQuestion(quizID,questionNum, type, question, choices, correctAnswer);
 		return true;
 	}
 	
-	public String retquest (int quizID){
+	public String retquest (int quizID, int questionnum){
 		IDatabase db = DatabaseProvider.getInstance();
-		String test = db.retquest(quizID);
+		String test = db.retquest(quizID, questionnum);
 		return test;
 	}
 	
@@ -84,10 +85,21 @@ public class Controller {
 		IDatabase db = DatabaseProvider.getInstance();
 		return db.getQuiz(ID);
 	}
+
+	public boolean isUserTeacher(String username, String coursename) {
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.isUserTeacher(username, coursename);
+	}
 	
 	public int retquesttype(int ID, int QuestionNum) {
 		IDatabase db = DatabaseProvider.getInstance();
 		int qnum = db.retquestnum(ID,QuestionNum);
 		return qnum;
+	}
+
+	public String[] retquestchoices(int quizID, int questionNum) {
+		// TODO Auto-generated method stub
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.retquestchoices(quizID, questionNum);
 	}
 }

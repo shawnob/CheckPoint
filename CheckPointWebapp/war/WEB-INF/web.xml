@@ -34,10 +34,6 @@
     <servlet-class>ycp.cs320.spring15.webapp.servlets.QuizTakerServlet</servlet-class>
   </servlet>
 
-<servlet>
-    <servlet-name>QuizTakerServlet</servlet-name>
-    <servlet-class>ycp.cs320.spring15.webapp.servlets.QuizTakerServlet</servlet-class>
-  </servlet>
 
   <!-- Servlet mappings -->
   <servlet-mapping>
