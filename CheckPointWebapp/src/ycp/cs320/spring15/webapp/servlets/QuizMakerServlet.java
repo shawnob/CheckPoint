@@ -25,6 +25,7 @@ public class QuizMakerServlet extends HttpServlet {
 	Controller controller;
 	User teacher;
 	String course;
+	int showQuizNameBox = 1; 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -34,6 +35,8 @@ public class QuizMakerServlet extends HttpServlet {
 		// force user to choose the question type
 		req.setAttribute("selectedNone", "selected");
 		req.setAttribute("questionNum",questionNum);
+		req.setAttribute("showQuizNameBox",showQuizNameBox);
+		
 		
 		teacher = (User)req.getSession().getAttribute("User");
 		course = (String)req.getSession().getAttribute("CourseName");
@@ -60,18 +63,18 @@ public class QuizMakerServlet extends HttpServlet {
 		String result = null;
 		
 		boolean[] selected = {true,true,true};
-		boolean CreateNewQuiz = false;
+		int CreateNewQuiz = 0;
 		int correctAnswer = 4;
-		
-		if(quizID == null){CreateNewQuiz = true;};
-		
+	
 		String questionType = req.getParameter("questionType");
 		String quizName = req.getParameter("quizName");
 		String submitType = req.getParameter("submit");
 		
-		if(CreateNewQuiz){
+		if(quizID == null){
 			quizID = controller.addQuiz(quizName, this.teacher, this.course);
-		}
+			showQuizNameBox = 0; 
+		};
+
 		//If nothing is entered and by making an empty string
 		if(questionType.equals("MC")){
 			String question = req.getParameter("question");
@@ -135,19 +138,34 @@ public class QuizMakerServlet extends HttpServlet {
 			
 			System.out.println("setting selectedFIB=selected");
 		}
+	
 		
 		if(submitType.equals("Add New Question")){
 			
 			if(result == null){
 				questionNum++;
-				req.setAttribute("quizName",quizName);
+				req.setAttribute("quizName",controller.getQuiz(quizID).getQuizName());
 				req.setAttribute("questionNum",questionNum);
+				req.setAttribute("showQuizNameBox",showQuizNameBox);
 				req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 				
 			}else{
-			req.setAttribute("errorMessage", errorMessage);
-			req.setAttribute("result", result);
-			req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+				req.setAttribute("errorMessage", errorMessage);
+				req.setAttribute("result", result);
+				req.setAttribute("question", req.getParameter("question"));
+				req.setAttribute("choice1", req.getParameter("choice1"));
+				req.setAttribute("choice2", req.getParameter("choice2"));
+				req.setAttribute("choice3", req.getParameter("choice3"));
+				req.setAttribute("select1", req.getParameter("select1"));
+				req.setAttribute("select2", req.getParameter("select2"));
+				req.setAttribute("select3", req.getParameter("select3"));
+				req.setAttribute("FIBquestion", req.getParameter("FIBquestion"));
+				req.setAttribute("FIBAnswer", req.getParameter("FIBAnswer"));
+				req.setAttribute("showQuizNameBox",showQuizNameBox);
+				if(questionNum == 0){
+					showQuizNameBox = 1; 
+				}
+				req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 			}
 			
 		}else if (submitType.equals("Finish Quiz")){
