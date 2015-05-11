@@ -53,33 +53,40 @@
 <body>
 
   <div class="QuizMaker-card">
-    <h1>CheckPoint</h1><br>
+    <h1 align=>CheckPoint</h1><br>
     <h2>Create A Quiz</h2>
-  <form action="${pageContext.servletContext.contextPath}/quizmaker" method="post">
-  	<div>
-  	<h2>Quiz Name:${quizName}</h2>
-  	<h2>Quiz number:${questionNum}</h2>
-  	</div>
-  	<div>
-  	<input type="text" name="quizName" placeholder="Name The Quiz" value="${QuizName}"/>
-  	</div>
     
+  	<form action="${pageContext.servletContext.contextPath}/quizmaker" method="post">
+
+  	<c:if test="${showQuizNameBox == 0}">
+  		<h2>Quiz Name:${quizName}</h2>
+  	</c:if>
+  	
+  	
+  	<c:if test="${showQuizNameBox == 1}">
+  		
+  		<input type="text" name="quizName" placeholder="Name The Quiz" value="${QuizName}"/>
+  	
+  	</c:if>
+    <div style="text-align:center">
     <select name = "questionType" id="quizTypeChooser">
     	<option value="None" ${selectedNone}>Chose Question Type</option>
   		<option value="MC" ${selectedMC}>Multiple Choice</option>
   		<option value="FIB" ${selectedFIB}>Fill In The Blank</option>
 	</select>
-    
+	</div>
+   
     
     <!-- form for multiple choice quiz question -->
     <div id="multipleChoiceQuestion">
-    <input type="text" name="question" placeholder="Question" value="${MCquestion}"/>
+    
+    <input type="text" name="question" placeholder="Question" value="${MCquestion}"/><BR>
     <input type="checkbox" name="select1" value="${select1}">
-    <input type="text" name="choice1" placeholder="Choice 1" value="${choice1}"/>
+    <input type="text" name="choice1" placeholder="Choice 1" value="${choice1}"/><BR>
     <input type="checkbox" name="select2" value="${select2}">
-    <input type="text" name="choice2" placeholder="Choice 2" value="${choice2}"/>
+    <input type="text" name="choice2" placeholder="Choice 2" value="${choice2}"/><BR>
     <input type="checkbox" name="select3" value="${select3}">
-    <input type="text" name="choice3" placeholder="Choice 3" value="${choice3}"/>
+    <input type="text" name="choice3" placeholder="Choice 3" value="${choice3}"/><BR>
     
     <input type="submit" name="submit" class="login login-submit" onsubmit="return false" value="Add New Question">
 
@@ -96,7 +103,9 @@
   <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
   </div>
   </form>
-  
+  <div>
+  <h3>Question number:${questionNum}</h3>
+  </div>
   <div class="QuizMaker-failed">
 		${result}
 	</div>

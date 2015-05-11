@@ -24,6 +24,16 @@ body {
   text-align: center;
   font-size: 3.5em;
 }
+.QuizMaker-card h2 {
+  font-weight: 100;
+  text-align: center;
+
+}
+.QuizMaker-card h3 {
+  font-weight: 50;
+  text-align: center;
+  font-size: x-small;
+}
 
 .QuizMaker-card input[type= ] {
   width: 100%;
@@ -33,7 +43,7 @@ body {
 }
 .QuizMaker-card input[type=checkbox] {
   width: 100%;
-  display: block;
+  display:inline-block;
   margin-bottom: 10px;
   position: center;
   align: right;
