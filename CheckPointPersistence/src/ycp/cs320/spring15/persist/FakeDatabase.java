@@ -8,7 +8,7 @@ import ycp.cs320.spring15.model.Question;
 import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
 
-public abstract class FakeDatabase implements IDatabase {
+public class FakeDatabase implements IDatabase {
 
 	// TODO: fields
 	UserList userList = new UserList();
@@ -261,5 +261,17 @@ public abstract class FakeDatabase implements IDatabase {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public String retquest() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int retquestnum() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
