@@ -65,11 +65,21 @@ public class FakeDatabase implements IDatabase {
 		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
 		courseList.add(new Course("Intro-to-Statistics-In-Improbability-Space"));
 		courseList.add(new Course("Life-the-Universe-and-Everything-242"));
+		courseList.add(new Course("The-Teachings-of-Zarquon"));
+		courseList.add(new Course("Wumbology 304"));
+		courseList.add(new Course("Pokey Oaks Kindergarten"));
 		
-		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
+		userCourses.add(new CourseAssociation("cs320", "marvin", true));
 		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbability-Space", "zaphod", false));
-		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
-		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "marvin", true));
+		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "marvin", false));
+		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", true));
+		userCourses.add(new CourseAssociation("cs320", "zaphod", false));
+		userCourses.add(new CourseAssociation("The-Teachings-of-Zarquon", "trillian", true));
+		userCourses.add(new CourseAssociation("Wumbology 304", "ford", false));
+		userCourses.add(new CourseAssociation("Wumbology 304", "shawn", true));
+		userCourses.add(new CourseAssociation("cs320", "shawn", false));
+		userCourses.add(new CourseAssociation("cs320", "benjamin", false));
+		userCourses.add(new CourseAssociation("Pokey Oaks Kindergarten", "benjamin", true));
 
 	}
 
