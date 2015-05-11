@@ -38,7 +38,6 @@ public class QuizTakerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		
 		//System.out.println(questionnum);
 		Controller controller = new Controller();
 
@@ -81,7 +80,6 @@ public class QuizTakerServlet extends HttpServlet {
 			
 		}
 		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);
-		System.out.println("hi");
 	}
 
 
@@ -138,7 +136,12 @@ public class QuizTakerServlet extends HttpServlet {
 			other = 1;
 			doGet(req, resp);
 		}else if (other == 1){
-			System.out.println("ind");
+			
+			questionnum = 0;
+			rcount = 0;
+			check = 0;
+			other = 0;
+			
 			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		}else{
 			doGet(req, resp);

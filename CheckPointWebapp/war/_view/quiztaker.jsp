@@ -58,9 +58,11 @@
     	<input type="text" name="submited" placeholder="Correct Choice" value="${submited}"/>
     	<input type="submit" name="submit" class="login login-submit" value="Submit">
 	</c:if>
+    </form>  
       
-      
-    </c:if>  
+    </c:if>
+    
+     <form action="${pageContext.servletContext.contextPath}/quiztaker" method="post">
     
      <c:if test="${type == 3}">
      
