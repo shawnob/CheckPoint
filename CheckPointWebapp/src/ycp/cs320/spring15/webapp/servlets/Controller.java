@@ -84,15 +84,15 @@ public class Controller {
 	public void questionList(User user, Course course){
 		
 	}
-	public boolean addQuestion(int quizID, int type,String question,String[] choices,int correctAnswer){
+	public boolean addQuestion(int quizID,int questionNum, int type,String question,String[] choices,int correctAnswer){
 		IDatabase db = DatabaseProvider.getInstance();
-		db.addQuestion(quizID, type, question, choices, correctAnswer);
+		db.addQuestion(quizID,questionNum, type, question, choices, correctAnswer);
 		return true;
 	}
 	
-	public String retquest (int quizID){
+	public String retquest (int quizID, int questionnum){
 		IDatabase db = DatabaseProvider.getInstance();
-		String test = db.retquest(quizID);
+		String test = db.retquest(quizID, questionnum);
 		return test;
 	}
 	

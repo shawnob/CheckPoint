@@ -51,7 +51,15 @@ public class FakeDatabase implements IDatabase {
 		
 		
 		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") , new Course("cs320") , 666));
-		quizList.get(0).addQuestion(new Question(1, "Whats your name", choices, questionUniqueId));
+		
+		//short answer questions
+		this.getQuiz(666).addQuestion(new Question(0,0, "Whats your name", null, 5));
+		this.getQuiz(666).addQuestion(new Question(0,0, "Whats", null, 6));
+		
+		//multiple cloice questions
+//		this.getQuiz(666).addQuestion(new Question(1,0, "Whats your name", choices, 0));
+//		this.getQuiz(666).addQuestion(new Question(1,1, "n2", choices, 1));
+//		this.getQuiz(666).addQuestion(new Question(1,2, "n3", choices, 2));
 
 		courseList.add(new Course("Truffles 101"));
 		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
@@ -155,27 +163,27 @@ public class FakeDatabase implements IDatabase {
 	///////////////////////////////
 	////////Question Methods///////
 	///////////////////////////////
-	public Question addQuestion(int type, String question, String[] choices, int correctAnswer){
-		Question newQuestion = new Question(type,question,choices,correctAnswer);
+	public Question addQuestion(int quizID,int type,int questionNum, String question, String[] choices, int correctAnswer){
+		Question newQuestion = new Question(type,questionNum,question,choices,correctAnswer);
 		newQuestion.setUniqueID(questionUniqueId);
 		questionUniqueId++;
-		quizList.get(0).addQuestion(newQuestion);
+		this.getQuiz(quizID).addQuestion(newQuestion);
 		return newQuestion;
 	}
-
+	
 	//return questionList
-	public String retquest(int quizID) {
+	public String retquest(int quizID, int questionnum) {
 		Quiz quiz = getQuiz(quizID);
 		if (quiz == null) {
 			throw new IllegalStateException("No such quiz (id=" + quizID + ")");
 		}
-		Question q = quiz.getQuestion(0);
+		Question q = quiz.getQuestion(questionnum);
 		return q.getQuestion();
 	}
 
-	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer){
+	public boolean checkAnswer(int quizID,int questionNum, String FIBanswer, int MCanswer){
 		
-			return quizList.get(quizID).getQuestion(0).CheckAnswer(FIBanswer, MCanswer);
+			return this.getQuiz(quizID).getQuestion(questionNum).CheckAnswer(FIBanswer, MCanswer);
 	}
 	
 	
@@ -197,27 +205,13 @@ public class FakeDatabase implements IDatabase {
 	}
 
 	@Override
-	public void createQuiz(String quizName, User instructor, Course course) {
+	public Quiz createQuiz(String quizName, User instructor, Course course) {
 		
 		Quiz newQuiz = new Quiz("quizName", instructor, course, quizUniqueId);
 		newQuiz.setUniqueID(quizUniqueId);
 		quizList.add(newQuiz);
 		quizUniqueId++;
-	}
-
-	@Override
-	public Question addQuestion(int quizID, int type, String question,
-			String[] choices, int correctAnswer) {
-		Question newQuestion = new Question(type, question, choices, correctAnswer);
-		
-		newQuestion.setUniqueID(questionUniqueId);
-		questionUniqueId++;
-		//quizList.get(quizID).addQuestion(newQuestion);
-		
-		Quiz quiz = getQuiz(quizID);
-		quiz.addQuestion(newQuestion);
-		
-		return newQuestion;
+		return newQuiz;
 	}
 
 	@Override
@@ -282,6 +276,21 @@ public class FakeDatabase implements IDatabase {
 			}
 		}
 		
+		return false;
+	}
+
+	@Override
+	public Question addQuestion(int type, String question, String[] choices,
+			int correctAnswer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }
