@@ -19,7 +19,10 @@
     <h1>${courseName}</h1><br>
     
     <c:if test="${userIsTeacher}">
-		<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
+    
+    <a href="${pageContext.servletContext.contextPath}/courseSettings/${courseName}">Course Settings</a>
+    
+	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
 	</c:if>
     
     <div class = "index-task">

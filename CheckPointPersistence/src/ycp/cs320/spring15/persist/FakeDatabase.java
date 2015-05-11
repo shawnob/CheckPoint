@@ -259,4 +259,29 @@ public class FakeDatabase implements IDatabase {
 		}
 		return false;
 	}
+	
+	public void addCourseAssociation(String username, String coursename, boolean isTeacher)
+	{
+		userCourses.add(new CourseAssociation(coursename, username, isTeacher));
+	}
+	
+	public boolean userExists(String username)
+	{
+		return userList.containsUser(username);
+	}
+	
+	public boolean isStudentInClass(String username, String coursename)
+	{
+		ArrayList<String> studentCList = getStudentCourseList(username);
+		
+		for (int i = 0; i < studentCList.size(); i++)
+		{
+			if(studentCList.get(i).equals(coursename))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }
