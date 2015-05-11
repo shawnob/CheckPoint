@@ -13,31 +13,39 @@
 	<link href="_view/css/quiztakerStyle.css" rel="stylesheet" type="text/css">
 	
 
-	
-	
-
 </head>
 
 <body>
 
   <div class="quiztaker-card">
     <h1>QuizTaker</h1><br>
+    
+    <c:if test="${type != 3}">
+    
     <h3>Question Number: ${questionnum}</h3>
-    <h3>Correct Number: ${rcount}</h3>
-    <h3>Question Type: ${type}</h3>       
+    <h3>Total Correct: ${rcount}</h3>
+    
+    <c:if test="${check == 1}">
+    	<h3>Last question: Correct</h3>
+    </c:if>
+    
+    <c:if test="${check == 2}">
+    	<h3>Last question: Incorrect</h3>
+    </c:if>
+         
     <h2>Question: ${question}</h2>    
     
-     <form action="${pageContext.servletContext.contextPath}/quiztaker" method="post">
+    <form action="${pageContext.servletContext.contextPath}/quiztaker" method="post">
     <c:if test="${type == 1}">
 		<h3>Multiple Choice</h3>
     	
-    		<input type="submit" name="submit" class="login login-submit" value="${choice1}">
+    		<input type="submit" name="submited" class="login login-submit" value="${choice1}">
     		<br><br>
     		
-    		<input type="submit" name="submit" class="login login-submit" value="${choice2}">
+    		<input type="submit" name="submited" class="login login-submit" value="${choice2}">
     		<br><br>
     		
-    		<input type="submit" name="submit" class="login login-submit" value="${choice3}">
+    		<input type="submit" name="submited" class="login login-submit" value="${choice3}">
     		<br><br>
     		
     	
@@ -50,15 +58,29 @@
     	<input type="text" name="submited" placeholder="Correct Choice" value="${submited}"/>
     	<input type="submit" name="submit" class="login login-submit" value="Submit">
 	</c:if>
-      </form>
+    </form>  
+      
+    </c:if>
+    
+     <form action="${pageContext.servletContext.contextPath}/quiztaker" method="post">
+    
+     <c:if test="${type == 3}">
+     
+     	<h2>Total Correct: ${rcount}</h2>
+     	<h2>Total Questions: ${questionnum}</h2>
+     	<input type="submit" name="submit" class="login login-submit" value="Submit">
+     	
+     </c:if>   
+     </form>
+      
 
-  <div class="quiztaker-failed">
+  <!--<div class="quiztaker-failed">
 		${result}
 	</div>
 	
 	  <div class="quiztaker-failed">
 		${result}
-	</div>
+	</div>--!>
   
   </div>
 </div>
