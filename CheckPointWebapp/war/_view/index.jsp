@@ -30,8 +30,8 @@
 	</c:forEach></p>
 
     
-    <div class = "index index-submit">
-	<a href="${pageContext.servletContext.contextPath}/coursemaker">Create A Course</a>
+    <div class="index-submit">
+	 <a href="${pageContext.servletContext.contextPath}/coursemaker">Create A Course</a>
 	</div>
 
 	
