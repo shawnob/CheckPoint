@@ -254,8 +254,6 @@ public class DerbyDatabase implements IDatabase {
 		return null;
 	}
 	
-	@Override
-
 	public int retquestnum(int quizID) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -303,5 +301,11 @@ public class DerbyDatabase implements IDatabase {
 	public ArrayList<String> getStudentCourseList(String username) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int retquestnum(int QuizID, int QuestionNum) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
