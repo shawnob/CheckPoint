@@ -83,9 +83,6 @@ public class Controller {
 	///////////////////////
 	/////Questions/////////
 	//////////////////////
-	public void questionList(User user, Course course){
-		
-	}
 	public boolean addQuestion(int quizID,int questionNum, int type,String question,String[] choices,int correctAnswer){
 		IDatabase db = DatabaseProvider.getInstance();
 		db.addQuestion(quizID,questionNum, type, question, choices, correctAnswer);
@@ -124,7 +121,7 @@ public class Controller {
 	}
 
 	public String[] retquestchoices(int quizID, int questionNum) {
-		// TODO Auto-generated method stub
+		
 		IDatabase db = DatabaseProvider.getInstance();
 		return db.retquestchoices(quizID, questionNum);
 	}
