@@ -6,16 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-
-
-
-
-
-
-
-
 import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
@@ -32,6 +22,7 @@ public class QuizTakerServlet extends HttpServlet {
 	private int rcount = 0;
 	private int check = 0;
 	private int other = 0;
+	private int quizID = 0;
 
 
 	@Override
@@ -41,10 +32,10 @@ public class QuizTakerServlet extends HttpServlet {
 		//System.out.println(questionnum);
 		Controller controller = new Controller();
 
+		quizID = 666;      //change this
+
 		if (other == 0){
 			System.out.println("doGetT called");
-			int quizID = 666;
-			//int questionnum = controller.retquestnum(quizID);
 			String question = controller.retquest(quizID, questionnum);
 			int type = controller.getQuiz(quizID).getQuestion(questionnum).getQuestionType();
 			String[] choices = controller.retquestchoices(quizID, questionnum);
@@ -70,14 +61,13 @@ public class QuizTakerServlet extends HttpServlet {
 
 		}else{
 			System.out.println("doGetT2 called");
-			//System.out.println(questionnum);
-			Quiz theQuiz = controller.getQuiz(666);
+			Quiz theQuiz = controller.getQuiz(quizID);
 
 			int type = 3;
 			req.setAttribute("type", type);
 			req.setAttribute("rcount", rcount);
 			req.setAttribute("questionnum", theQuiz.getNumQuestions());
-			
+
 		}
 		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);
 	}
@@ -88,16 +78,17 @@ public class QuizTakerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		Controller controller = new Controller();
-		Quiz theQuiz = controller.getQuiz(666);
-		System.out.println("doPostT called");
 
+		Quiz theQuiz = controller.getQuiz(quizID);
+
+		System.out.println("doPostT called");
 
 		if (other != 1){
 			String answer = req.getParameter("submited");
 			System.out.println("A=" + answer);
 
 			if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 1){                  //multiple choice
-				String[] choices = controller.retquestchoices(666, questionnum-1);
+				String[] choices = controller.retquestchoices(quizID, questionnum-1);
 				int checked = 0;	
 				if (answer.equals(choices[0])){
 					checked = 0;
@@ -109,7 +100,7 @@ public class QuizTakerServlet extends HttpServlet {
 					checked = 2;
 				}
 
-				if (controller.getQuiz(666).getQuestion(questionnum-1).getCorrectAns() == checked){
+				if (controller.getQuiz(quizID).getQuestion(questionnum-1).getCorrectAns() == checked){
 					rcount++;
 					check = 1;
 				}else{
@@ -136,12 +127,12 @@ public class QuizTakerServlet extends HttpServlet {
 			other = 1;
 			doGet(req, resp);
 		}else if (other == 1){
-			
+
 			questionnum = 0;
 			rcount = 0;
 			check = 0;
 			other = 0;
-			
+
 			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		}else{
 			doGet(req, resp);

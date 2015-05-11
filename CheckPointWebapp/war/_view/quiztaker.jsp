@@ -39,13 +39,13 @@
     <c:if test="${type == 1}">
 		<h3>Multiple Choice</h3>
     	
-    		<input type="submit" name="submit" class="login login-submit" value="${choice1}">
+    		<input type="submit" name="submited" class="login login-submit" value="${choice1}">
     		<br><br>
     		
-    		<input type="submit" name="submit" class="login login-submit" value="${choice2}">
+    		<input type="submit" name="submited" class="login login-submit" value="${choice2}">
     		<br><br>
     		
-    		<input type="submit" name="submit" class="login login-submit" value="${choice3}">
+    		<input type="submit" name="submited" class="login login-submit" value="${choice3}">
     		<br><br>
     		
     	
