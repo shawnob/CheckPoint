@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
@@ -72,7 +73,6 @@ public class QuizMakerServlet extends HttpServlet {
 			String select1 = req.getParameter("select1");
 			String select2 = req.getParameter("select2");
 			String select3 = req.getParameter("select3");
-			
 			if (question == null){
 				result = "Please enter a question.";
 				question = "";

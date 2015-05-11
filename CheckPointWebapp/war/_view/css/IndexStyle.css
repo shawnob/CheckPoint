@@ -34,7 +34,7 @@ body {
 .index-card input[type=submit] {
   width: 100%;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   position: relative;
 }
 
@@ -77,6 +77,14 @@ body {
   /* border: 1px solid #3079ed; */
   border: 1px;
   color: #fff;
+  
+  display: block;
+  margin: 0 auto 10px;
+  tect-align: center;
+  
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
   background-color: #939AA4;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
@@ -86,7 +94,7 @@ body {
   /* border: 1px solid #939AA4; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #939AA4;
+  background-color: #3385FF;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
