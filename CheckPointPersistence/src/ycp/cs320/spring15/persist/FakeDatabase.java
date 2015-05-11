@@ -57,19 +57,29 @@ public class FakeDatabase implements IDatabase {
 		this.getQuiz(666).addQuestion(new Question(0,0, "Whats", null, 6));
 		
 		//multiple cloice questions
-//		this.getQuiz(666).addQuestion(new Question(1,0, "Whats your name", choices, 0));
-//		this.getQuiz(666).addQuestion(new Question(1,1, "n2", choices, 1));
-//		this.getQuiz(666).addQuestion(new Question(1,2, "n3", choices, 2));
+		this.getQuiz(666).addQuestion(new Question(1,0, "Whats your name", choices, 0));
+		this.getQuiz(666).addQuestion(new Question(1,1, "n2", choices, 1));
+		this.getQuiz(666).addQuestion(new Question(1,2, "n3", choices, 2));
 
 		courseList.add(new Course("Truffles 101"));
 		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
 		courseList.add(new Course("Intro-to-Statistics-In-Improbability-Space"));
 		courseList.add(new Course("Life-the-Universe-and-Everything-242"));
+		courseList.add(new Course("The-Teachings-of-Zarquon"));
+		courseList.add(new Course("Wumbology 304"));
+		courseList.add(new Course("Pokey Oaks Kindergarten"));
 		
-		userCourses.add(new CourseAssociation("cs320", "zaphod", true));
+		userCourses.add(new CourseAssociation("cs320", "marvin", true));
 		userCourses.add(new CourseAssociation("Intro-to-Statistics-In-Improbability-Space", "zaphod", false));
-		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", false));
-		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "marvin", true));
+		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "marvin", false));
+		userCourses.add(new CourseAssociation("Life-the-Universe-and-Everything-242", "zaphod", true));
+		userCourses.add(new CourseAssociation("cs320", "zaphod", false));
+		userCourses.add(new CourseAssociation("The-Teachings-of-Zarquon", "trillian", true));
+		userCourses.add(new CourseAssociation("Wumbology 304", "ford", false));
+		userCourses.add(new CourseAssociation("Wumbology 304", "shawn", true));
+		userCourses.add(new CourseAssociation("cs320", "shawn", false));
+		userCourses.add(new CourseAssociation("cs320", "benjamin", false));
+		userCourses.add(new CourseAssociation("Pokey Oaks Kindergarten", "benjamin", true));
 
 	}
 

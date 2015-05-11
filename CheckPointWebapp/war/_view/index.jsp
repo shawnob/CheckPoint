@@ -31,11 +31,7 @@
 
     
     <div class = "index index-submit">
-	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a>
-	</div>
-	
-	<div class = "index index-submit">
-	<a href="http://localhost:8081/checkpoint/quiztaker">Take A Quiz</a><br>
+	<a href="${pageContext.servletContext.contextPath}/coursemaker">Create A Course</a>
 	</div>
 
 	
