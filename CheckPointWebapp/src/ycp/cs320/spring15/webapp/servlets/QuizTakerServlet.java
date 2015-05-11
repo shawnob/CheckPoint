@@ -30,43 +30,58 @@ public class QuizTakerServlet extends HttpServlet {
 
 	private int questionnum = 0;
 	private int rcount = 0;
+	private int check = 0;
+	private int other = 0;
 
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		System.out.println("doGetT called");
+		
 		//System.out.println(questionnum);
 		Controller controller = new Controller();
 
-		int quizID = 666;
+		if (other == 0){
+			System.out.println("doGetT called");
+			int quizID = 666;
+			//int questionnum = controller.retquestnum(quizID);
+			String question = controller.retquest(quizID, questionnum);
+			int type = controller.getQuiz(quizID).getQuestion(questionnum).getQuestionType();
+			String[] choices = controller.retquestchoices(quizID, questionnum);
+			Quiz theQuiz = controller.getQuiz(quizID);
 
-		//int questionnum = controller.retquestnum(quizID);
-		String question = controller.retquest(quizID, questionnum);
-		int type = controller.getQuiz(quizID).getQuestion(questionnum).getQuestionType();
-		String[] choices = controller.retquestchoices(quizID, questionnum);
-		Quiz theQuiz = controller.getQuiz(quizID);
+			if (questionnum == 0){
+				check = 0;
+				rcount = 0;
+			}
 
-		req.setAttribute("rcount", rcount);
-		System.out.println(theQuiz.getQuestion(questionnum).getQuestionType());
-		if (theQuiz.getQuestion(questionnum).getQuestionType() == 1){
-			req.setAttribute("choice1", choices[0]);
-			req.setAttribute("choice2", choices[1]);
-			req.setAttribute("choice3", choices[2]);
+			req.setAttribute("rcount", rcount);
+			req.setAttribute("check", check);
+
+			if (theQuiz.getQuestion(questionnum).getQuestionType() == 1){
+				req.setAttribute("choice1", choices[0]);
+				req.setAttribute("choice2", choices[1]);
+				req.setAttribute("choice3", choices[2]);
+			}
+			req.setAttribute("questionnum", questionnum);
+			req.setAttribute("question", question);
+			req.setAttribute("type", type);
+			questionnum++;
+
+		}else{
+			System.out.println("doGetT2 called");
+			//System.out.println(questionnum);
+			Quiz theQuiz = controller.getQuiz(666);
+
+			int type = 3;
+			req.setAttribute("type", type);
+			req.setAttribute("rcount", rcount);
+			req.setAttribute("questionnum", theQuiz.getNumQuestions());
+			
 		}
-		req.setAttribute("questionnum", questionnum);
-		req.setAttribute("question", question);
-		req.setAttribute("type", type);
-
-
-		//req.setAttribute("answer", answer);
-
-		questionnum++;
-
-		//Calls the login.jsp file containing the html and css
-		//doPost(req, resp);
 		req.getRequestDispatcher("/_view/quiztaker.jsp").forward(req, resp);
+		System.out.println("hi");
 	}
 
 
@@ -78,49 +93,59 @@ public class QuizTakerServlet extends HttpServlet {
 		Quiz theQuiz = controller.getQuiz(666);
 		System.out.println("doPostT called");
 
-		String answer = req.getParameter("submited");
 
-		System.out.println("A=" + answer);
+		if (other != 1){
+			String answer = req.getParameter("submited");
+			System.out.println("A=" + answer);
 
-		if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 1){
-			String[] choices = controller.retquestchoices(666, questionnum-1);
-			int checked = 0;	
-			if (answer.equals(choices[0])){
-				checked = 0;
-			}
-			if (answer.equals(choices[1])){
-				checked = 1;
-			}
-			if (answer.equals(choices[2])){
-				checked = 2;
+			if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 1){                  //multiple choice
+				String[] choices = controller.retquestchoices(666, questionnum-1);
+				int checked = 0;	
+				if (answer.equals(choices[0])){
+					checked = 0;
+				}
+				if (answer.equals(choices[1])){
+					checked = 1;
+				}
+				if (answer.equals(choices[2])){
+					checked = 2;
+				}
+
+				if (controller.getQuiz(666).getQuestion(questionnum-1).getCorrectAns() == checked){
+					rcount++;
+					check = 1;
+				}else{
+					check = 2;
+				}
 			}
 
-			if (controller.getQuiz(666).getQuestion(questionnum-1).getCorrectAns() == checked){
-				//req.setAttribute("result", "Correct!");
-				rcount++;
-			}else{
-				//req.setAttribute("result", "Incorrect!");
+			if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 0){                  //short answer
+
+				int answer2 = Integer.parseInt(answer);
+
+				if (controller.getQuiz(666).getQuestion(questionnum-1).getCorrectAns() == answer2){
+					rcount++;
+					check = 1;
+				}else{
+					check = 2;
+				}
 			}
+
 		}
 
-		if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 0){
-			
-			int answer2 = Integer.parseInt(answer);
-			
-			if (controller.getQuiz(666).getQuestion(questionnum-1).getCorrectAns() == answer2){
-				//req.setAttribute("result", "Correct!");
-				rcount++;
-			}else{
-				//req.setAttribute("result", "Incorrect!");
-			}
-		}
-		
-		if (theQuiz.getNumQuestions() == questionnum) {
+		if ((theQuiz.getNumQuestions() == questionnum) && (other == 0)) {                         //no more questions
 			questionnum = 0;
+			other = 1;
+			doGet(req, resp);
+		}else if (other == 1){
+			System.out.println("ind");
 			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		}else{
 			doGet(req, resp);
 		}
 
 	}
+
+
+
 }
