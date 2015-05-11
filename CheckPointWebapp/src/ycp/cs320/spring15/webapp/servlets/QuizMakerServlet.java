@@ -57,6 +57,11 @@ public class QuizMakerServlet extends HttpServlet {
 		
 		String questionType = req.getParameter("questionType");
 		String quizName = req.getParameter("quizName");
+		String submitType = req.getParameter("submit");
+		
+		System.out.print("submitType = " + submitType +"\n" );
+		
+		
 		if(CreateNewQuiz){
 			quizID = controller.addQuiz(quizName, controller.signIn("Marvin", "42"), new Course("CS320"));
 		}
@@ -108,19 +113,7 @@ public class QuizMakerServlet extends HttpServlet {
 				String[] choices = {choice1,choice2,choice3};
 				controller.addQuestion(quizID,0, question, choices, correctAnswer);
 			}
-			req.setAttribute("question", req.getParameter("question"));
 			
-			req.setAttribute("choice1", req.getParameter("choice1"));
-			req.setAttribute("choice2", req.getParameter("choice2"));
-			req.setAttribute("choice3", req.getParameter("choice3"));
-			
-			req.setAttribute("select1", req.getParameter("select1"));
-			req.setAttribute("select2", req.getParameter("select2"));
-			req.setAttribute("select3", req.getParameter("select3"));
-			
-			req.setAttribute("quizName",req.getParameter("quizName"));
-			
-			req.setAttribute("selectedMC", "selected"); // make MC the default
 			System.out.println("setting selectedMC=selected");
 			
 		}else if (questionType.equals("FIB")) {
@@ -133,54 +126,44 @@ public class QuizMakerServlet extends HttpServlet {
 				
 				controller.addQuestion( quizID, 1, FIBquestion,FIBAnswer,0);
 			}
-			req.setAttribute("FIBquestion", req.getParameter("FIBquestion"));
-			req.setAttribute("FIBAnswer", req.getParameter("FIBAnswer"));
-			req.setAttribute("quizName",req.getParameter("quizName"));
-			req.setAttribute("selectedFIB", "selected"); // make FIB the default
+			
 			System.out.println("setting selectedFIB=selected");
 		}
 		// Add result objects as request attributes
 		if(result == null){
-			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+			if(submitType.equals("Add New Question")){
+				req.setAttribute("quizName",req.getParameter("quizName"));
+				req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
+			}else{//finish quiz
+				req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+			}
 		}else{
 		req.setAttribute("errorMessage", errorMessage);
 		req.setAttribute("result", result);
+		
+			//Set values back
+			if(questionType.equals("MC")){
+				req.setAttribute("question", req.getParameter("question"));
+				
+				req.setAttribute("choice1", req.getParameter("choice1"));
+				req.setAttribute("choice2", req.getParameter("choice2"));
+				req.setAttribute("choice3", req.getParameter("choice3"));
+				
+				req.setAttribute("select1", req.getParameter("select1"));
+				req.setAttribute("select2", req.getParameter("select2"));
+				req.setAttribute("select3", req.getParameter("select3"));
+				
+				req.setAttribute("quizName",req.getParameter("quizName"));
+				
+				req.setAttribute("selectedMC", "selected"); // make MC the default
+			}else{
+				req.setAttribute("FIBquestion", req.getParameter("FIBquestion"));
+				req.setAttribute("FIBAnswer", req.getParameter("FIBAnswer"));
+				req.setAttribute("quizName",req.getParameter("quizName"));
+				req.setAttribute("selectedFIB", "selected"); // make FIB the default
+			}
+			
 		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
 		}
-		/*User user =  controller.signIn(username, password);
-		if (user != null) {
-			// successful login
-			login = true;
-			result = "Passed";
-			
-		// User is now logged in
-			User userNew = new User(username, password, null, null, null);
-		   req.getSession().setAttribute("user", userNew);
-			
-			// Redirect to index page
-			resp.sendRedirect(req.getContextPath() + "/index");
-			return;
-		} 
-		else {
-			// invalid username/password
-			login = false;
-			result = "Login Failed";
-		}
-		
-		
-		
-		// Add parameters as request attributes
-		req.setAttribute("username", req.getParameter("username"));
-		req.setAttribute("password", req.getParameter("password"));
-		
-		// Add result objects as request attributes
-		req.setAttribute("errorMessage", errorMessage);
-		req.setAttribute("result", result);
-		
-		//If login in failed redirect back to login page
-		if (login == false){
-		req.getRequestDispatcher("/_view/quizmaker.jsp").forward(req, resp);
-		}
-		*/
 	}
 }
