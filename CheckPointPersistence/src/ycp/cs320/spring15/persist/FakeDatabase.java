@@ -282,15 +282,24 @@ public class FakeDatabase implements IDatabase {
 	@Override
 	public Question addQuestion(int type, String question, String[] choices,
 			int correctAnswer) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-
+//
+//	@Override
+//	public String retquest() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+//	@Override
+//	public int retquestnum() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 }
