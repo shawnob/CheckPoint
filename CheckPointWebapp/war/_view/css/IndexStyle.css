@@ -50,17 +50,19 @@ body {
   font-weight: 700;
   height: 36px;
   padding: 0 8px;
-/* border-radius: 3px; */
-/* -webkit-user-select: none;
-  user-select: none; */
+
+  
 }
 
 .index-submit {
   padding: 40px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #666;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
   text-align: center;
+  border-width: 1px;
+  border-top-style: solid;
+  border-top-color: #00C5A8;
   
  
 }
