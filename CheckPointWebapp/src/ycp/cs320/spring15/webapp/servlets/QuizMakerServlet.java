@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import ycp.cs320.spring15.model.Course;
 import ycp.cs320.spring15.model.User;
 import ycp.cs320.spring15.persist.DatabaseProvider;
@@ -63,7 +64,6 @@ public class QuizMakerServlet extends HttpServlet {
 		String result = null;
 		
 		boolean[] selected = {true,true,true};
-		int CreateNewQuiz = 0;
 		int correctAnswer = 4;
 	
 		String questionType = req.getParameter("questionType");
@@ -118,9 +118,10 @@ public class QuizMakerServlet extends HttpServlet {
 			}
 			
 			//Call Controller which is now in webapp.servlets
-			if(result != null){
+			if(result == null){
 				String[] choices = {choice1,choice2,choice3};
 				controller.addQuestion(quizID,questionNum, 0, question, choices, correctAnswer);
+				System.out.println("quest{"+questionNum+"]"+controller.getQuiz(quizID).getQuestion(questionNum));
 			}
 			
 			System.out.println("setting selectedMC=selected");
