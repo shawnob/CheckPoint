@@ -80,7 +80,7 @@ public class FakeDatabase implements IDatabase {
 		userCourses.add(new CourseAssociation("cs320", "shawn", false));
 		userCourses.add(new CourseAssociation("cs320", "benjamin", false));
 		userCourses.add(new CourseAssociation("Pokey Oaks Kindergarten", "benjamin", true));
-
+		
 	}
 
 	/* returns null if none    match
@@ -232,7 +232,17 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
-
+	/* just in case we need to get all the quizzes in a course
+	public ArrayList<Integer> getQuizzes(String Course){
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		for (Quiz q : quizList) {
+			if(q.getCourse().equals(Course)){
+				result.add(q.getUniqueID());
+			}
+		}
+		return result;
+	}
+	*/
 //	@Override
 //	public boolean addQuestion(String question, String[] choices,
 //			String correctAnswer) {
@@ -290,6 +300,21 @@ public class FakeDatabase implements IDatabase {
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public ArrayList<Quiz> getQuizList(String coursename) {
+		ArrayList<Quiz> qList = new ArrayList<Quiz>();
+		
+		for (int i = 0; i < quizList.size(); i++)
+		{
+			if(quizList.get(i).getCourse().equals(coursename))
+			{
+				qList.add(quizList.get(i));
+			}
+		}
+		
+		return qList;
 	}
 
 }

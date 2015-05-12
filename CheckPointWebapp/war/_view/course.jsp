@@ -28,6 +28,11 @@
 	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
 	 </div>
 	</c:if>
+	
+	<p>List of Quizzes:<br>
+    <c:forEach var="quiz" items="${quizlist}">
+	<a href = "${pageContext.servletContext.contextPath}/quiztaker/${quiz.strID}"><c:out value="${quiz.quizName}"/></a><br>
+	</c:forEach></p>
     
     <div class = "course-task">
     <a href="${pageContext.servletContext.contextPath}/index">Return to Index</a>

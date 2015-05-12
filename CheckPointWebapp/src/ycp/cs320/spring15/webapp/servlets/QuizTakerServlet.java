@@ -31,8 +31,19 @@ public class QuizTakerServlet extends HttpServlet {
 
 		//System.out.println(questionnum);
 		Controller controller = new Controller();
+		
+		String quizPath = req.getPathInfo();
+		
+		if (quizPath == null || quizPath.equals("/"))
+		{
+			resp.sendRedirect(req.getContextPath() + "/index");
+		}
+		else
+		{
+			quizPath = quizPath.substring(1);
+		}
 
-		quizID = 666;      //change this
+		quizID = Integer.parseInt(quizPath);
 
 		if (other == 0){
 			System.out.println("doGetT called");

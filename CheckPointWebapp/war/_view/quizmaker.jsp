@@ -68,7 +68,7 @@
   		<input type="text" name="quizName" placeholder="Name The Quiz" value="${QuizName}"/>
   	
   	</c:if>
-    <div style="text-align:center">
+    <div style="text-align:center" margin-bottom="20px">
     <select name = "questionType" id="quizTypeChooser">
     	<option value="None" ${selectedNone}>Chose Question Type</option>
   		<option value="MC" ${selectedMC}>Multiple Choice</option>
@@ -81,16 +81,20 @@
     <div id="multipleChoiceQuestion">
     
     <input type="text" name="question" placeholder="Question" value="${MCquestion}"/><BR>
-    <input type="checkbox" name="select1" value="${select1}">
-    <input type="text" name="choice1" placeholder="Choice 1" value="${choice1}"/><BR>
+    <div>
+     <input overflow="hidden" type="checkbox" name="select1" value="${select1}">
+     <input type="text" name="choice1" placeholder="Choice 1" value="${choice1}"/>
+    </div>
     <input type="checkbox" name="select2" value="${select2}">
     <input type="text" name="choice2" placeholder="Choice 2" value="${choice2}"/><BR>
     <input type="checkbox" name="select3" value="${select3}">
     <input type="text" name="choice3" placeholder="Choice 3" value="${choice3}"/><BR>
     
+    <div align="center">
     <input type="submit" name="submit" class="login login-submit" onsubmit="return false" value="Add New Question">
 
     <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
+    </div>
   </div>
   
   <!-- form for fill in the blank question -->
@@ -98,9 +102,10 @@
   <input type="text" name="FIBquestion" placeholder="Question" value="${FIBquestion}"/>
   <input type="text" name="FIBAnswer" placeholder="Answer" value="${FIBAnswer}"/>
   
-
+   <div align="center">
   <input type="submit" name="submit" class="login login-submit" onsubmit="return false" value="Add New Question">
   <input type="submit" name="submit" class="login login-submit" value="Finish Quiz">
+   </div>
   </div>
   </form>
   <div>

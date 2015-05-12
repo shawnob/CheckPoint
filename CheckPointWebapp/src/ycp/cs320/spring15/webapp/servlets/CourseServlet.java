@@ -1,6 +1,7 @@
 package ycp.cs320.spring15.webapp.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ycp.cs320.spring15.model.Course;
+import ycp.cs320.spring15.model.Quiz;
 import ycp.cs320.spring15.model.User;
 
 public class CourseServlet extends HttpServlet {
@@ -38,6 +40,10 @@ public class CourseServlet extends HttpServlet {
 		{
 			resp.sendRedirect(req.getContextPath() + "/index");
 		}
+		
+		ArrayList<Quiz> qList = controller.getQuizList(coursePath);
+		
+		req.setAttribute("quizlist", qList);
 		
 		req.setAttribute("courseName", coursePath);
 		
