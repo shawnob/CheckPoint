@@ -23,7 +23,6 @@ public class QuizTakerServlet extends HttpServlet {
 	private int check = 0;
 	private int other = 0;
 	private int quizID = 0;
-	private int other2 = 0;
 
 
 	@Override
@@ -32,25 +31,19 @@ public class QuizTakerServlet extends HttpServlet {
 
 		//System.out.println(questionnum);
 		Controller controller = new Controller();
-
-		if (other2 == 0){
-
-
-			String quizPath = req.getPathInfo();
-
-//			if (quizPath == null || quizPath.equals("/"))
-//			{
-//				resp.sendRedirect(req.getContextPath() + "/index");
-//			}
-//			else
-			{
-				quizPath = quizPath.substring(1);
-			}
-
-			quizID = Integer.parseInt(quizPath);
-			other2++;
-
+		
+		String quizPath = req.getPathInfo();
+		
+		if (quizPath == null || quizPath.equals("/"))
+		{
+			resp.sendRedirect(req.getContextPath() + "/index");
 		}
+		else
+		{
+			quizPath = quizPath.substring(1);
+		}
+
+		quizID = Integer.parseInt(quizPath);
 
 		if (other == 0){
 			System.out.println("doGetT called");
@@ -67,7 +60,7 @@ public class QuizTakerServlet extends HttpServlet {
 			req.setAttribute("rcount", rcount);
 			req.setAttribute("check", check);
 
-			if (theQuiz.getQuestion(questionnum).getQuestionType() == 0){
+			if (theQuiz.getQuestion(questionnum).getQuestionType() == 1){
 				req.setAttribute("choice1", choices[0]);
 				req.setAttribute("choice2", choices[1]);
 				req.setAttribute("choice3", choices[2]);
@@ -105,7 +98,7 @@ public class QuizTakerServlet extends HttpServlet {
 			String answer = req.getParameter("submited");
 			System.out.println("A=" + answer);
 
-			if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 0){                  //multiple choice
+			if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 1){                  //multiple choice
 				String[] choices = controller.retquestchoices(quizID, questionnum-1);
 				int checked = 0;	
 				if (answer.equals(choices[0])){
@@ -126,7 +119,7 @@ public class QuizTakerServlet extends HttpServlet {
 				}
 			}
 
-			if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 1){                  //short answer
+			if (theQuiz.getQuestion(questionnum-1).getQuestionType() == 0){                  //short answer
 
 				int answer2 = Integer.parseInt(answer);
 
