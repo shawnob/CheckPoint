@@ -415,8 +415,7 @@ public class DerbyDatabase implements IDatabase {
 
 	@Override
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
-		// TODO Auto-generated method stub
-		return false;
+		throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 //	@Override
