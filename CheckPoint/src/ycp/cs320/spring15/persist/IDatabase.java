@@ -14,11 +14,11 @@ public interface IDatabase {
 	public Course findCourse(String courseName);
 	public User createAccount(String username, String password, String firstname, String lastname, String email);
 	public User searchUserByEmail(String email);
-	public boolean addQuestion(String question, String choices[], String correctAnswer);
+//	public boolean addQuestion(String question, String choices[], String correctAnswer);
 	public ArrayList<String> getTeacherCourseList(String username);
 	public ArrayList<String> getStudentCourseList(String username);
 	
-	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
+//	public Question addQuestion(int type, String question, String choices[], int correctAnswer);
 	public boolean isUserTeacher(String username, String coursename);
 	public String[] retquestchoices(int quizID, int questionNum);
 
@@ -35,5 +35,7 @@ public interface IDatabase {
 	public boolean userExists(String username);
 	public boolean isStudentInClass(String username, String coursename);
 	public ArrayList<Quiz> getQuizList(String coursename);
+	
+	//public ArrayList<Integer> getQuizzes(String Course);
 
 }

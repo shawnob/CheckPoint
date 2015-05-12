@@ -17,7 +17,7 @@
 
   <div class="register-card">
     <h1>CheckPoint</h1><br>
-    <h2>Create Account</h2>
+    <h2>Create Account</h2><br>
   <form action="${pageContext.servletContext.contextPath}/register" method="post">
     <input type="text" name="firstname" placeholder="Firstname" value="${firstname}"/>
     <input type="text" name="lastname" placeholder="Lastname" value="${lastname}"/>

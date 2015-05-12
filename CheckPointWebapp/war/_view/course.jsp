@@ -15,14 +15,18 @@
 
 <body>
 
-  <div class="index-card">
+  <div class="course-card">
     <h1>${courseName}</h1><br>
     
     <c:if test="${userIsTeacher}">
     
+    <div class = "course-submit">
     <a href="${pageContext.servletContext.contextPath}/courseSettings/${courseName}">Course Settings</a>
+    </div>
     
+    <div class = "course-submit">
 	<a href="http://localhost:8081/checkpoint/quizmaker">Create A Quiz</a><br>
+	 </div>
 	</c:if>
 	
 	<p>List of Quizzes:<br>
@@ -30,7 +34,7 @@
 	<a href = "${pageContext.servletContext.contextPath}/quiztaker/${quiz.strID}"><c:out value="${quiz.quizName}"/></a><br>
 	</c:forEach></p>
     
-    <div class = "index-task">
+    <div class = "course-task">
     <a href="${pageContext.servletContext.contextPath}/index">Return to Index</a>
     </div>
   

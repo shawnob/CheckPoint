@@ -15,15 +15,15 @@
 
 <body>
 
-  <div class="index-card">
+  <div class="course-card">
     <h1>${courseName}- Settings</h1><br>
     
     <form action="${pageContext.servletContext.contextPath}/courseSettings" method="post">
-    <input type="text" name="StudentName" placeholder="Student Name" value="${StudentName}"/>
+    <input  type="text" name="StudentName" placeholder="Student Name" value="${StudentName}"/>
     <input type="submit" name="AS" value="Add Student">
   	</form>
     
-    <div class = "index-task">
+    <div class = "course-task">
     <a href="${pageContext.servletContext.contextPath}/course/${CourseName}">Return to course page</a>
     </div>
   

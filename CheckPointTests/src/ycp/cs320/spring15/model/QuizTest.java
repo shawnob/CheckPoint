@@ -49,9 +49,9 @@ public class QuizTest {
 		question2 = new Question(1, 2, "What is the meaning of life?", question2Strings, 0);
 		question3 = new Question(2, 3, "How now brown cow?", question3Strings, 0);
 		
-		quiz1 = new Quiz("UML mult. choice", teacher, CS320, 0);
-		quiz2 = new Quiz("Meaning of Life: Fill in the Blank", teacher, CS320, 1);
-		quiz3 = new Quiz("Index error test", teacher, CS320, 2);
+		quiz1 = new Quiz("UML mult. choice", teacher, CS320.getCourseName(), 0);
+		quiz2 = new Quiz("Meaning of Life: Fill in the Blank", teacher, CS320.getCourseName(), 1);
+		quiz3 = new Quiz("Index error test", teacher, CS320.getCourseName(), 2);
 		
 		quiz1.addQuestion(question1);
 		quiz1.addQuestion(question2);

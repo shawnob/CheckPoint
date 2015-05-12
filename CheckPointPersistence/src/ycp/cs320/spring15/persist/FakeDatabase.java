@@ -80,7 +80,7 @@ public class FakeDatabase implements IDatabase {
 		userCourses.add(new CourseAssociation("cs320", "shawn", false));
 		userCourses.add(new CourseAssociation("cs320", "benjamin", false));
 		userCourses.add(new CourseAssociation("Pokey Oaks Kindergarten", "benjamin", true));
-
+		
 	}
 
 	/* returns null if none    match
@@ -232,13 +232,23 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
-
-	@Override
-	public boolean addQuestion(String question, String[] choices,
-			String correctAnswer) {
-		// TODO Auto-generated method stub
-		return false;
+	/* just in case we need to get all the quizzes in a course
+	public ArrayList<Integer> getQuizzes(String Course){
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		for (Quiz q : quizList) {
+			if(q.getCourse().equals(Course)){
+				result.add(q.getUniqueID());
+			}
+		}
+		return result;
 	}
+	*/
+//	@Override
+//	public boolean addQuestion(String question, String[] choices,
+//			String correctAnswer) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 	@Override
 	public boolean isUserTeacher(String username, String coursename) {
@@ -280,11 +290,11 @@ public class FakeDatabase implements IDatabase {
 		return false;
 	}
 
-	@Override
-	public Question addQuestion(int type, String question, String[] choices,
-			int correctAnswer) {
-		return null;
-	}
+//	@Override
+//	public Question addQuestion(int type, String question, String[] choices,
+//			int correctAnswer) {
+//		return null;
+//	}
 
 	@Override
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {

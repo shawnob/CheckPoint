@@ -8,6 +8,7 @@ public class Question {
 	private int correctAnswer;
 	private int UniqueID;
 	private int index;
+	private int quizId;
 	
 	public Question(int type,int questionNum,String question,String choices[],int correctAnswer){
 		this.type = type;
@@ -55,6 +56,8 @@ public class Question {
 	}
 
 	public boolean CheckAnswer(String FIBanswer, int MCAnswer) {
+		// FIXME: this method should not be comparing strings using ==
+		// (use the equals method)
 		if(type == 0){
 			return MCAnswer == this.correctAnswer;
 		}else if (type == 1){
@@ -78,6 +81,14 @@ public class Question {
 
 	public void setIndex(int index) {
 		this.index = index;
+	}
+	
+	public int getQuizId() {
+		return quizId;
+	}
+
+	public void setQuizId(int quizId) {
+		this.quizId = quizId;
 	}
 
 }
