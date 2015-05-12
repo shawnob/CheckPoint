@@ -232,7 +232,17 @@ public class FakeDatabase implements IDatabase {
 		}
 		return null;
 	}
-
+	/* just in case we need to get all the quizzes in a course
+	public ArrayList<Integer> getQuizzes(String Course){
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		for (Quiz q : quizList) {
+			if(q.getCourse().equals(Course)){
+				result.add(q.getUniqueID());
+			}
+		}
+		return result;
+	}
+	*/
 //	@Override
 //	public boolean addQuestion(String question, String[] choices,
 //			String correctAnswer) {
