@@ -233,12 +233,12 @@ public class FakeDatabase implements IDatabase {
 		return null;
 	}
 
-	@Override
-	public boolean addQuestion(String question, String[] choices,
-			String correctAnswer) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean addQuestion(String question, String[] choices,
+//			String correctAnswer) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 	@Override
 	public boolean isUserTeacher(String username, String coursename) {
@@ -280,11 +280,11 @@ public class FakeDatabase implements IDatabase {
 		return false;
 	}
 
-	@Override
-	public Question addQuestion(int type, String question, String[] choices,
-			int correctAnswer) {
-		return null;
-	}
+//	@Override
+//	public Question addQuestion(int type, String question, String[] choices,
+//			int correctAnswer) {
+//		return null;
+//	}
 
 	@Override
 	public boolean checkAnswer(int quizID, String FIBanswer, int MCanswer) {
