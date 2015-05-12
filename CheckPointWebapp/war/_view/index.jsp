@@ -36,7 +36,7 @@
 
 	
   <div class="index-task">
-    <a href="http://localhost:8081/checkpoint/login">Log Out</a>
+    <a href="http://localhost:8081/checkpoint/logout">Log Out</a>
     
   </div>
 </div>
