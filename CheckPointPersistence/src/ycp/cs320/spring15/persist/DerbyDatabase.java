@@ -158,6 +158,8 @@ public class DerbyDatabase implements IDatabase {
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
 				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
+				PreparedStatement stmt4 = null;
 				
 				try {
 					stmt1 = conn.prepareStatement(
@@ -173,15 +175,40 @@ public class DerbyDatabase implements IDatabase {
 					
 					stmt2 = conn.prepareStatement(
 							"create table courses (" +
-							"    id integer primary key," +
+							"    id integer not null generated always as identity (start with 1, increment by 1)," +
 							"    coursename varchar(120)" +
 							")");
 					stmt2.executeUpdate();
+					
+					stmt3 = conn.prepareStatement(
+							"create table quiz (" +
+							"	id integer not null generated always as identity (start with 1, increment by 1)," +
+							"   quizname varchar(80) unique, " +
+							"	teacher varchar(80)," +
+							"   course varchar(80)," +
+							"   uniqueID varchar(80) unique" +
+							")");
+					stmt3.executeUpdate();
+					
+					stmt4 = conn.prepareStatement(
+							"create table question (" +
+							"	id integer not null generated always as identity (start with 1, increment by 1)," +
+							"   type varchar(80) , " +
+							"	question varchar(80)," +
+							"   choices varchar(80)," +
+							"   correctAnswer varChar(80)," +
+							"   uniqueID varchar(80)," +
+							"   index varchar(80)" +
+							")");
+					stmt4.executeUpdate();
+					
 					
 					return true;
 				} finally {
 					DBUtil.closeQuietly(stmt1);
 					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(stmt3);
+					DBUtil.closeQuietly(stmt4);
 				}
 			}
 		});
