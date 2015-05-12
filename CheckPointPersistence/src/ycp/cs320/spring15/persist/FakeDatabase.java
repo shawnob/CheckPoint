@@ -53,13 +53,13 @@ public class FakeDatabase implements IDatabase {
 		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") ,"cs320" , 666));
 		
 		//short answer questions
-		this.getQuiz(666).addQuestion(new Question(0,0, "Whats your name", null, 5));
-		this.getQuiz(666).addQuestion(new Question(0,0, "Whats", null, 6));
+		this.getQuiz(666).addQuestion(new Question(0,0, "What is 2+3?", null, 5));
+		this.getQuiz(666).addQuestion(new Question(0,0, "What is 2+0?", null, 0));
 		
 		//multiple cloice questions
-		this.getQuiz(666).addQuestion(new Question(1,0, "Whats your name", choices, 0));
-		this.getQuiz(666).addQuestion(new Question(1,1, "n2", choices, 1));
-		this.getQuiz(666).addQuestion(new Question(1,2, "n3", choices, 2));
+		this.getQuiz(666).addQuestion(new Question(1,0, "Whats your name?", choices, 0));
+		//this.getQuiz(666).addQuestion(new Question(1,1, "n2", choices, 1));
+		//this.getQuiz(666).addQuestion(new Question(1,2, "n3", choices, 2));
 
 		courseList.add(new Course("Truffles 101"));
 		courseList.add(new Course("The-Spells-of-Starswirl-the-Bearded"));
