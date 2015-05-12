@@ -11,11 +11,11 @@ body {
 
 .QuizMaker-card {
   padding: 40px;
-  width: 274px;
+  width: 500px;
   background-color: #F7F7F7;
   margin: 0 auto 10px;
-  border-radius: 2px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
@@ -23,10 +23,16 @@ body {
   font-weight: 100;
   text-align: center;
   font-size: 3.5em;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #00C5A8;
 }
 .QuizMaker-card h2 {
   font-weight: 100;
   text-align: center;
+  border-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #00C5A8;
 
 }
 .QuizMaker-card h3 {
@@ -63,7 +69,6 @@ body {
   background: #fff;
   border: 1px solid #d9d9d9;
   border-top: 1px solid #c0c0c0;
-  /* border-radius: 2px; */
   padding: 0 8px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -84,29 +89,23 @@ body {
   font-weight: 700;
   height: 36px;
   padding: 0 8px;
-/* border-radius: 3px; */
-/* -webkit-user-select: none;
-  user-select: none; */
 }
 
 .QuizMaker-submit {
-  /* border: 1px solid #3079ed; */
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
   background-color: #939AA4;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+  
 }
 
 .QuizMaker-submit:hover {
-  /* border: 1px solid #939AA4; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
   background-color: #3385FF;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
-}
+  }
 
-.QuizMaker-card a {
+.login-card a {
   text-decoration: none;
   color: #666;
   font-weight: 400;
@@ -116,8 +115,9 @@ body {
   transition: opacity ease 0.5s;
 }
 
-.QuizMaker-card a:hover {
+.login-card a:hover {
   opacity: 1;
+  color: #3385FF;
 }
 
 .QuizMaker-help {

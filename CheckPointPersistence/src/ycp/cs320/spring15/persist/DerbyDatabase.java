@@ -158,6 +158,8 @@ public class DerbyDatabase implements IDatabase {
 			public Boolean execute(Connection conn) throws SQLException {
 				PreparedStatement stmt1 = null;
 				PreparedStatement stmt2 = null;
+				PreparedStatement stmt3 = null;
+				PreparedStatement stmt4 = null;
 				
 				try {
 					stmt1 = conn.prepareStatement(
@@ -173,15 +175,39 @@ public class DerbyDatabase implements IDatabase {
 					
 					stmt2 = conn.prepareStatement(
 							"create table courses (" +
-							"    id integer primary key," +
+							"    id integer not null generated always as identity (start with 1, increment by 1)," +
 							"    coursename varchar(120)" +
 							")");
 					stmt2.executeUpdate();
+					
+					stmt3 = conn.prepareStatement(
+							"create table quiz (" +
+							"	id integer not null generated always as identity (start with 1, increment by 1)," +
+							"   quizname varchar(80) unique, " +
+							"	teacher_id integer," +
+							"   course varchar(80)" +
+							")");
+					stmt3.executeUpdate();
+					
+					stmt4 = conn.prepareStatement(
+							"create table question (" +
+							"	id integer not null generated always as identity (start with 1, increment by 1)," +
+							"   type integer , " +
+							"	question varchar(80)," +
+							"   choices varchar(80)," +
+							"   correctAnswer integer," +
+							"   index varchar(80)," +
+							"   quiz_id integer" +
+							")");
+					stmt4.executeUpdate();
+					
 					
 					return true;
 				} finally {
 					DBUtil.closeQuietly(stmt1);
 					DBUtil.closeQuietly(stmt2);
+					DBUtil.closeQuietly(stmt3);
+					DBUtil.closeQuietly(stmt4);
 				}
 			}
 		});
@@ -248,15 +274,143 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public int addQuiz(String quizName, User instructor, String course) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int addQuiz(final String quizName, final User instructor, final String course) {
+		return executeTransaction(new Transaction<Integer>() {
+			@Override
+			public Integer execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet genKeys = null;
+				
+				try {
+					stmt = conn.prepareStatement(
+							"insert into quiz (quizname, teacher_id, course) values (?, ?, ?)",
+							PreparedStatement.RETURN_GENERATED_KEYS
+					);
+					stmt.setString(1, quizName);
+					stmt.setInt(2, instructor.getId());
+					stmt.setString(3, course);
+					
+					stmt.executeUpdate();
+					
+					genKeys = stmt.getGeneratedKeys();
+					if (!genKeys.next()) {
+						throw new SQLException("Couldn't get generated id for quiz");
+					}
+					int quizId = genKeys.getInt(1);
+					
+					return quizId;
+					
+				} finally {
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(genKeys);
+				}
+			}
+		});
 	}
 
 	@Override
-	public Quiz getQuiz(int ID) {
-		// TODO Auto-generated method stub
-		return null;
+	public Quiz getQuiz(final int ID) {
+		return executeTransaction(new Transaction<Quiz>() {
+			@Override
+			public Quiz execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet resultSet = null;
+				
+				try {
+					stmt = conn.prepareStatement("select quiz.* from quiz where quiz.id = ?");
+					stmt.setInt(1, ID);
+					
+					resultSet = stmt.executeQuery();
+					if (!resultSet.next()) {
+						// No such quiz
+						return null;
+					}
+					
+					int id = resultSet.getInt(1);
+					String quizName = resultSet.getString(1);
+					int teacherId = resultSet.getInt(3);
+					String courseName = resultSet.getString(4);
+					
+					// Find the teacher for this quiz
+					User teacher = loadUserForUserId(conn, teacherId);
+					
+					Quiz result = new Quiz(quizName, teacher, courseName, id);
+					
+					// Load questions
+					loadQuestionsForQuiz(conn, result);
+					
+					return result;
+				} finally {
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(resultSet);
+				}
+			}
+		});
+	}
+
+	protected User loadUserForUserId(Connection conn, int userId) throws SQLException {
+		PreparedStatement stmt = null;
+		ResultSet resultSet = null;
+		
+		try {
+			stmt = conn.prepareStatement("select users.* from users where users.id = ?");
+			stmt.setInt(1, userId);
+			
+			resultSet = stmt.executeQuery();
+			if (!resultSet.next()) {
+				// no such User
+				return null;
+			}
+			
+			int id = resultSet.getInt(1);
+			String username = resultSet.getString(2);
+			String password = resultSet.getString(3);
+			String firstname = resultSet.getString(4);
+			String lastname = resultSet.getString(5);
+			String email = resultSet.getString(6);
+			
+			User user = new User(username, password, firstname, lastname, email);
+			user.setId(id);
+			
+			return user;
+		} finally {
+			DBUtil.closeQuietly(stmt);
+			DBUtil.closeQuietly(resultSet);
+		}
+	}
+
+	protected void loadQuestionsForQuiz(Connection conn, Quiz quiz) throws SQLException {
+		PreparedStatement stmt = null;
+		ResultSet resultSet = null;
+		
+		try {
+			stmt = conn.prepareStatement(
+					"select question.* from question where question.quiz_id = ?"
+			);
+			stmt.setInt(1, quiz.getUniqueID());
+			
+			resultSet = stmt.executeQuery();
+			while (!resultSet.next()) {
+				int id = resultSet.getInt(1);
+				int type = resultSet.getInt(2);
+				String question = resultSet.getString(3);
+				String choices = resultSet.getString(4);
+				int correctAnswer = resultSet.getInt(5);
+				int index = resultSet.getInt(6);
+				int quizId = resultSet.getInt(7);
+				
+				String[] choicesArr = choices.split(",");
+				
+				Question q = new Question(type, index, question, choicesArr, correctAnswer);
+				q.setUniqueID(id);
+				q.setQuizId(quizId);
+				
+				quiz.addQuestion(q);
+			}
+		} finally {
+			DBUtil.closeQuietly(stmt);
+			DBUtil.closeQuietly(resultSet);
+		}
 	}
 
 	@Override
@@ -265,12 +419,12 @@ public class DerbyDatabase implements IDatabase {
 		return false;
 	}
 
-	@Override
-	public boolean addQuestion(String question, String[] choices,
-			String correctAnswer) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+//	@Override
+//	public boolean addQuestion(String question, String[] choices,
+//			String correctAnswer) {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
 
 	@Override
 	public ArrayList<String> getTeacherCourseList(String username) {
@@ -284,16 +438,16 @@ public class DerbyDatabase implements IDatabase {
 		return null;
 	}
 
-	public Question addQuestion(int type, String question, String[] choices,
-			int correctAnswer) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public Question addQuestion(int type, String question, String[] choices,
+//			int correctAnswer) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public boolean isUserTeacher(String username, String coursename) {
-		// TODO Auto-generated method stub
-		return false;
+		// FIXME: DerbyDatabase makes all users teachers
+		return true;
 	}
 
 	@Override
@@ -315,11 +469,57 @@ public class DerbyDatabase implements IDatabase {
 	}
 
 	@Override
-	public Question addQuestion(int quizID, int questionNum, int type,
-			String question, String[] choices, int correctAnswer) {
-		// TODO Auto-generated method stub
-		return null;
+	public Question addQuestion(final int quizID, final int questionNum, final int type,
+			final String question, final String[] choices, final int correctAnswer) {
+		return executeTransaction(new Transaction<Question>() {
+			@Override
+			public Question execute(Connection conn) throws SQLException {
+				PreparedStatement stmt = null;
+				ResultSet genKeys = null;
+				try {
+					stmt = conn.prepareStatement(
+							"insert into question (type, question, choices, correctAnswer, index, quiz_id) " +
+							" values (?, ?, ?, ?, ?, ?)",
+							PreparedStatement.RETURN_GENERATED_KEYS
+					);
+					stmt.setInt(1, type);
+					stmt.setString(2, question);
+					stmt.setString(3, join(choices, ","));
+					stmt.setInt(4, correctAnswer);
+					stmt.setInt(5,  questionNum);
+					stmt.setInt(6, quizID);
+					
+					stmt.executeUpdate();
+					
+					genKeys = stmt.getGeneratedKeys();
+					if (!genKeys.next()) {
+						throw new SQLException("Couldn't get generated id for question");
+					}
+					int id = genKeys.getInt(1);
+					
+					Question q = new Question(type, questionNum, question, choices, correctAnswer);
+					q.setUniqueID(id);
+					
+					return q;
+					
+				} finally {
+					DBUtil.closeQuietly(stmt);
+					DBUtil.closeQuietly(genKeys);
+				}
+			}
+		});
 
+	}
+
+	protected String join(String[] choices, String sep) {
+		StringBuilder buf = new StringBuilder();
+		for (int i = 0; i < choices.length; i++) {
+			if (i > 0) {
+				buf.append(sep);
+			}
+			buf.append(choices[i]);
+		}
+		return buf.toString();
 	}
 
 	@Override
