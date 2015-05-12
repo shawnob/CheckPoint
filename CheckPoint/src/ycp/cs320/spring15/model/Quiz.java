@@ -37,7 +37,14 @@ public class Quiz {
 	
 	//returns a question based on the index number of the question in our arraylist
 	public Question getQuestion(int questionIndexNum){
-			return questionList.get(questionIndexNum); 
+			//return questionList.get(questionIndexNum); 
+		for (Question q : questionList) {
+			if(q.getIndex() == questionIndexNum){
+				return q;
+			}
+		}
+		throw new IllegalStateException("No such question (num=" + questionIndexNum + ")");
+		
 	}
 
 	public void addQuestion(Question q) {
