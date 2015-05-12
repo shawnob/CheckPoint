@@ -80,7 +80,7 @@ public class FakeDatabase implements IDatabase {
 		userCourses.add(new CourseAssociation("cs320", "shawn", false));
 		userCourses.add(new CourseAssociation("cs320", "benjamin", false));
 		userCourses.add(new CourseAssociation("Pokey Oaks Kindergarten", "benjamin", true));
-
+		
 	}
 
 	/* returns null if none    match
