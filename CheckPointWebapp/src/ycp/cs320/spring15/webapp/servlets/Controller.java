@@ -128,4 +128,10 @@ public class Controller {
 		IDatabase db = DatabaseProvider.getInstance();
 		return db.retquestchoices(quizID, questionNum);
 	}
+
+	public ArrayList<Quiz> getQuizList(
+			String coursename) {
+		IDatabase db = DatabaseProvider.getInstance();
+		return db.getQuizList(coursename);
+	}
 }

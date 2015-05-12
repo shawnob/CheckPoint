@@ -70,7 +70,7 @@
   
   <servlet-mapping>
     <servlet-name>QuizTakerServlet</servlet-name>
-    <url-pattern>/quiztaker</url-pattern>
+    <url-pattern>/quiztaker/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>courseSettingsServlet</servlet-name>

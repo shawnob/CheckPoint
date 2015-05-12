@@ -292,4 +292,19 @@ public class FakeDatabase implements IDatabase {
 		return false;
 	}
 
+	@Override
+	public ArrayList<Quiz> getQuizList(String coursename) {
+		ArrayList<Quiz> qList = new ArrayList<Quiz>();
+		
+		for (int i = 0; i < quizList.size(); i++)
+		{
+			if(quizList.get(i).getCourse().equals(coursename))
+			{
+				qList.add(quizList.get(i));
+			}
+		}
+		
+		return qList;
+	}
+
 }

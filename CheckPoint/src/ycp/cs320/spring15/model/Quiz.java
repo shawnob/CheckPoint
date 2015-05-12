@@ -9,15 +9,17 @@ public class Quiz {
 	private User Teacher;
 	private String course;
 	private int UniqueID;
+	private String strID;
 	
 	
 
 	public Quiz(String quizName, User Teacher, String course, int UniqueID ){
 		this.quizName = quizName;
 		questionList = new ArrayList<Question>();
-		this.Teacher = Teacher;
+		this.setTeacher(Teacher);
 		this.course = course;
 		this.UniqueID = UniqueID;
+		strID = ("" + UniqueID);
 		
 	}
 
@@ -64,6 +66,12 @@ public class Quiz {
 
 	public void setUniqueID(int uniqueID) {
 		UniqueID = uniqueID;
+		strID = ("" + uniqueID);
+	}
+	
+	public String getstrID()
+	{
+		return strID;
 	}
 	
 }
