@@ -30,7 +30,7 @@ public class QuizMakerServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
+		int showQuizNameBox = 1; 
 		System.out.println("doGet called");
 		controller = new Controller();
 		// force user to choose the question type
@@ -173,7 +173,7 @@ public class QuizMakerServlet extends HttpServlet {
 			
 			if(result == null){
 				questionNum = 0;
-				req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
+				resp.sendRedirect(req.getContextPath() + "/course/"+course);
 				
 			}else{
 				req.setAttribute("errorMessage", errorMessage);
