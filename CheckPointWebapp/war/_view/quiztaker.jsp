@@ -8,9 +8,9 @@
 
   <meta charset="UTF-8">
 
-  <title>CheckPoint</title>
+  <title>Good Luck!</title>
 
-	<link href="_view/css/quiztakerStyle.css" rel="stylesheet" type="text/css">
+	<link href="${pageContext.servletContext.contextPath}/_view/css/quiztakerStyle.css" rel="stylesheet" type="text/css">
 	
 
 </head>
@@ -73,17 +73,17 @@
      </c:if>   
      </form>
       
-
-  <!--<div class="quiztaker-failed">
+	<div class="quiztaker-failed">
 		${result}
 	</div>
 	
 	  <div class="quiztaker-failed">
 		${result}
-	</div>--!>
+	</div>
+   
   
   </div>
-</div>
+</div>	
 
 
 </body>
