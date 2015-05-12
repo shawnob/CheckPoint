@@ -46,13 +46,18 @@ body {
   display:inline-block;
   margin-bottom: 10px;
   position: center;
-  align: right;
+  align: Left;
+  display: inline-block;
 }
 
 .QuizMaker-card input[type=text], input[type=password] {
   height: 44px;
   font-size: 16px;
   width: 100%;
+  text-align: center;
+  float: right;
+  display: inline-block;
+  margin-top: 10px;
   margin-bottom: 10px;
   -webkit-appearance: none;
   background: #fff;
