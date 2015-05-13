@@ -11,11 +11,11 @@ body {
 
 .quiztaker-card {
   padding: 40px;
-  width: 274px;
+  width: 500px;
   background-color: #F7F7F7;
   margin: 0 auto 10px;
-  border-radius: 2px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
@@ -23,6 +23,9 @@ body {
   font-weight: 100;
   text-align: center;
   font-size: 3.5em;
+  border-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #00C5A8;
 }
 
 .quiztaker-card h2 {
