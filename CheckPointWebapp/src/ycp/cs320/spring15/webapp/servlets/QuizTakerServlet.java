@@ -23,6 +23,7 @@ public class QuizTakerServlet extends HttpServlet {
 	private int check = 0;
 	private int other = 0;
 	private int quizID = 0;
+	private int other2 = 0;
 
 
 	@Override
@@ -31,19 +32,24 @@ public class QuizTakerServlet extends HttpServlet {
 
 		//System.out.println(questionnum);
 		Controller controller = new Controller();
-		
-		String quizPath = req.getPathInfo();
-		
-		if (quizPath == null || quizPath.equals("/"))
-		{
-			resp.sendRedirect(req.getContextPath() + "/index");
-		}
-		else
-		{
-			quizPath = quizPath.substring(1);
-		}
 
-		quizID = Integer.parseInt(quizPath);
+		if (other2 == 0){
+
+			String quizPath = req.getPathInfo();
+
+			if (quizPath == null || quizPath.equals("/"))
+			{
+				resp.sendRedirect(req.getContextPath() + "/index");
+			}
+			else
+			{
+				quizPath = quizPath.substring(1);
+			}
+
+			quizID = Integer.parseInt(quizPath);
+			other2++;
+
+		}
 
 		if (other == 0){
 			System.out.println("doGetT called");
@@ -143,6 +149,7 @@ public class QuizTakerServlet extends HttpServlet {
 			rcount = 0;
 			check = 0;
 			other = 0;
+			other2 = 0;
 
 			req.getRequestDispatcher("/_view/index.jsp").forward(req, resp);
 		}else{
