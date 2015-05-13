@@ -43,6 +43,8 @@ public class FakeDatabase implements IDatabase {
 		//questList1.addQuestion(new Question(0, "quest", null, "ans"));
 
 		String[] choices = {"Marvin", "no this one", "Maybe this one"};
+		String[] choices2 = {"5", "no this one", "Maybe this one"};
+		String[] choices3 = {"2", "no this one", "Maybe this one"};
 
 		quizList = new ArrayList<Quiz>();
 
@@ -53,11 +55,12 @@ public class FakeDatabase implements IDatabase {
 		quizList.add(new Quiz("The Quiz", userList.getUser("marvin") ,"cs320" , 666));
 		
 		//short answer questions
-		this.getQuiz(666).addQuestion(new Question(0,0, "What is 2+3?", null, 5));
-		this.getQuiz(666).addQuestion(new Question(0,1, "What is 2+0?", null, 2));
+		
+		this.getQuiz(666).addQuestion(new Question(1,0, "What is 2+3?", choices2, 0));
+		this.getQuiz(666).addQuestion(new Question(1,1, "What is 2+0?", choices3, 0));
 		
 		//multiple cloice questions
-		this.getQuiz(666).addQuestion(new Question(1,2, "Whats your name?", choices, 0));
+		this.getQuiz(666).addQuestion(new Question(0,2, "Whats your name?", choices, 1));
 		//this.getQuiz(666).addQuestion(new Question(1,3, "n2", choices, 1));
 		//this.getQuiz(666).addQuestion(new Question(1,4, "n3", choices, 2));
 

@@ -10,7 +10,8 @@
 
   <title>CheckPoint</title>
 
-	<link href="_view/css/quiztakerStyle.css" rel="stylesheet" type="text/css">
+	
+	<link href="${pageContext.servletContext.contextPath}/_view/css/quiztakerStyle.css" rel="stylesheet" type="text/css">
 	
 
 </head>
@@ -22,7 +23,7 @@
     
     <c:if test="${type != 3}">
     
-    <h3>Question Number: ${questionnum}</h3>
+    <h3>Question Number: ${questionnum+1}</h3>
     <h3>Total Correct: ${rcount}</h3>
     
     <c:if test="${check == 1}">
@@ -36,7 +37,7 @@
     <h2>Question: ${question}</h2>    
     
     <form action="${pageContext.servletContext.contextPath}/quiztaker" method="post">
-    <c:if test="${type == 1}">
+    <c:if test="${type == 0}">
 		<h3>Multiple Choice</h3>
     	
     		<input type="submit" name="submited" class="login login-submit" value="${choice1}">
@@ -52,7 +53,7 @@
     	
         </c:if>
     	
-    <c:if test="${type == 0}">
+    <c:if test="${type == 1}">
     	<h3>Fill in the Blank</h3>  
     	
     	<input type="text" name="submited" placeholder="Correct Choice" value="${submited}"/>
